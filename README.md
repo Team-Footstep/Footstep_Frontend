@@ -3,4 +3,5 @@ Footstep Frontend (Web) Dev
 
 add develop branch
 
-develop branch에서 작성된 코드
+main branch에서 작성된 코드
+
