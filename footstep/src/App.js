@@ -1,5 +1,8 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import SideBar from './components/SideBar/SideBar';
+import "./css/reset.css";
+import "./css/variables.css";
 
 const GlobalStyle = createGlobalStyle`
   body {
