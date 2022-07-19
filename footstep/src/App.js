@@ -16,6 +16,7 @@ function App() {
       <GlobalStyle/>
       <div>
         {/* 코드를 작성해주세요 */}
+        <SideBar/>
       </div>
     </>
   );
