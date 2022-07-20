@@ -85,6 +85,39 @@
   color: var(--footstep_blue);
 }
 
+/* login 전 */
+.start_footstep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slogan {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.027rem;
+  text-align: center;
+  color: var(--footstep_blue);
+}
+
+a.start_button {
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  margin-bottom: 4rem;
+  border-radius: 1.5rem;
+  background-color: var(--footstep_blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  letter-spacing: -0.008rem;
+  text-align: center;
+  color: var(--white);
+}
 
 
 .blind {

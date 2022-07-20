@@ -2,10 +2,10 @@ import React from 'react';
 import styles from "../SideBar/SideBar.module.css";
 import Button from "../Button/Button.js";
 
-function SideBar ({img, name, job, footprint, display}) {
+function SideBar ({img, name, job, footprint, display, login}) {
   return (
   <div className={`${styles.side_bar} ${display ? styles.blind : null}`}>
-    <div className={styles.profile}>
+    <div className={`${styles.profile} ${login ? null : styles.blind}`}>
       <img src={img} className={styles.img}></img>
       <h3 className={styles.name}>{name}</h3>
       <h4 className={styles.job}>{job}</h4>
@@ -19,7 +19,20 @@ function SideBar ({img, name, job, footprint, display}) {
         <span>My Follow</span>
       </div>
     </div>
-    <div>
+    <div className={`${styles.start_footstep} ${login ? styles.blind : null}`}>
+      <img src={null} className={styles.img}></img>
+      <div className={styles.slogan}>
+      풋스텝의 슬로건이 들어갈 자리입니다. <br/>
+      짧게, 두줄로 만들어 주세요
+      </div>
+      <a className={styles.start_button}>시작하기</a>
+      <div className={styles.menu}>
+        <span>Portfolio</span>
+        <span>My Footstep</span>
+        <span>My Follow</span>
+      </div>
+    </div>
+    <div className={login ? null : styles.blind}>
       <Button value={`설정`} onClick={null}/>
       <Button value={`로그아웃`} onClick={null}/>
     </div>
