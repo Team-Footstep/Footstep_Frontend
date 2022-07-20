@@ -1,16 +1,19 @@
 .side_bar {
   width: 25rem;
-  height: 108vh;
+  height: 94vh;
   background-color: var(--whiteblue-bg);
   padding: 5.8rem 0 3rem 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile {
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .img {
@@ -19,4 +22,71 @@
   margin-bottom: 1rem;
   border-radius: 1.5rem;
   background-color: var(--grayblue-border);
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.43;
+  letter-spacing: -0.01rem;
+  text-align: center;
+  color: var(--font-black);
+}
+
+.job {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.8rem;
+  letter-spacing: -0.07rem;
+  text-align: center;
+  color: var(--gray-font);
+}
+
+.footprint {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.footprint p {
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1.8;
+  letter-spacing: -0.07rem;
+  text-align: center;
+  color: var(--footstep_blue);
+}
+
+.footprintNum {
+  margin-left: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: -0.007rem;
+  text-align: center;
+  color: var(--footstep_blue);
+}
+
+.menu {
+  width: 15rem;
+  border-top: solid 0.1rem var(--grayblue-border);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu span {
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.43;
+  letter-spacing: -0.01rem;
+  color: var(--footstep_blue);
+}
+
+
+
+.blind {
+  display: none;
 }

@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  z-index: 100;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+}
+
+.side_bar {
+  position: relative;
+  top: 6rem;
+}
+
+.scroll {
+
+}
