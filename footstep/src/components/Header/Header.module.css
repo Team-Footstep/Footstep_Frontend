@@ -8,6 +8,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position:fixed;
+}
+
+.block{
+  width: 100vw;
+  height: 6rem;
 }
 
 .logo {
