@@ -1,0 +1,142 @@
+.card_long {
+    position: relative;
+    width: 237px;
+    height: 291px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    margin: 20px;
+}
+.card_profile_img {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 57px;
+    height: 57px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+.card_name {
+    width: 108px;
+    height: 12px;
+    line-height: 12px;
+
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.1px;
+    text-align: left;
+    color: var(--footstep_blue);
+    overflow: hidden;
+    white-space: nowrap;
+    /* text-overflow: ellipsis; */
+
+    position: absolute;
+    top: 31px;
+    left: 85px;
+}
+.card_job {
+    width: 108px;
+    height: 12px;
+    line-height: 12px;
+
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.07px;
+    text-align: left;
+    color: var(--gray-font);
+    overflow: hidden;
+    white-space: nowrap;
+    /* text-overflow: ellipsis; */
+
+    position: absolute;
+    top: 48px;
+    left: 85px;
+}
+.card_title {
+    width: 207px;
+    height: 32px;
+    line-height: 16px;
+
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.08px;
+    text-align: left;
+    color: var(--font-black);
+    overflow: hidden;
+
+    position: absolute;
+    top: 85px;
+    left: 16px;
+}
+.card_content {
+    position: absolute;
+    top: 122px;
+    left: 16px;
+
+    width: 206px;
+    height: 112px;
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 16px;
+    letter-spacing: -0.07px;
+    text-align: left;
+    color: var(--darkblack-font);
+    overflow: hidden;
+}
+
+.card_footer {
+    width: 237px;
+    height: 40px;
+    background-color: var(--footstep_blue);
+    border-radius: 0 0 15px 15px;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    font-size: 10px;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.27px;
+    color: var(--white);
+    text-align: right;
+}
+.card_footprint,
+.card_follow,
+.card_comment {
+    display: inline-block;
+    margin: 12px 0 10px 0;
+}
+.card_footer_text {
+    line-height: 18px;
+    font-weight: normal;
+    text-align: right;
+    margin-right: 4px;
+    font-family: Pretendard;
+}
+.card_footer_cnt {
+    line-height: 18px;
+    font-weight: 600;
+    text-align: left;
+    font-family: Pretendard;
+}
+.card_footprint {
+    margin-right: 10px;
+}
+.card_follow {
+    margin-right: 18px;
+}

@@ -1,0 +1,119 @@
+.card_short {
+    position: relative;
+    width: 237px;
+    height: 175px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+}
+.card_profile_img {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+.card_name {
+    width: 108px;
+    height: 12px;
+    line-height: 12px;
+
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.1px;
+    text-align: left;
+    color: var(--footstep_blue);
+    overflow: hidden;
+    white-space: nowrap;
+    /* text-overflow: ellipsis; */
+
+    position: absolute;
+    top: 28px;
+    left: 85px;
+}
+.card_job {
+    width: 108px;
+    height: 12px;
+    line-height: 12px;
+
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.07px;
+    text-align: left;
+    color: var(--gray-font);
+    overflow: hidden;
+    white-space: nowrap;
+    /* text-overflow: ellipsis; */
+
+    position: absolute;
+    top: 45px;
+    left: 85px;
+}
+.card_title {
+    width: 207px;
+    height: 32px;
+    line-height: 16px;
+
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.08px;
+    text-align: left;
+    color: var(--footstep_blue);
+    overflow: hidden;
+
+    position: absolute;
+    top: 85px;
+    left: 16px;
+}
+.card_line {
+    width: 207px;
+    height: 1px;
+    background-color: #bcc8d8;
+
+    position: absolute;
+    bottom: 38px;
+    left: 16px;
+}
+.card_footprint {
+    height: 18px;
+
+    position: absolute;
+    bottom: 11px;
+    right: 14px;
+
+    display: flex;
+}
+.card_foot_cnt {
+    height: 18px;
+    margin: 0 4px 0 0;
+    font-family: "Noto Sans KR";
+    font-size: 8px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: -0.06px;
+    text-align: left;
+    color: var(--darkblack-font);
+}
+.card_foot_img {
+    width: 12px;
+    height: 12px;
+    margin: 3px 4px 3px 0;
+    color: var(--darkblack-font);
+    display: inline-block;
+}
