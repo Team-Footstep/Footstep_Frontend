@@ -2,7 +2,7 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import "./css/reset.css";
 import "./css/variables.css";
-import Footer from "./components/Footer/Footer";
+import Home from './routes/Home/Home.js';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,7 +15,7 @@ function App() {
     <>
       <GlobalStyle />
       <div>
-        <Footer />
+        <Home/>
       </div>
     </>
   );
