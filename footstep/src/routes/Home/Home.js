@@ -25,7 +25,7 @@ function Home () {
               job={"프론트앤드 디자이너"}
               footprint={2000}
               display={!open}
-              login={false}
+              login={true}
           />
         </div>
         <div className={styles.scroll}>

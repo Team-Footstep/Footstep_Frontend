@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "../SideBar/SideBar.module.css";
 import Button from "../Button/Button.js";
+import { useState } from "react";
+import SubToggle from '../SubToggle/SubToggle';
 
 function SideBar ({img, name, job, footprint, display, login}) {
   return (
@@ -14,9 +16,15 @@ function SideBar ({img, name, job, footprint, display, login}) {
         <div className={styles.footprintNum}>{(footprint >= 1000) ? `${Math.floor(footprint/1000)}K` : footprint}</div>
       </div>
       <div className={styles.menu}>
-        <span>Portfolio</span>
-        <span>My Footstep</span>
-        <span>My Follow</span>
+        <SubToggle 
+          title={"Portfolio"}
+        />
+        <SubToggle 
+          title={"My Footstep"}
+        />
+        <SubToggle 
+          title={"My Follow"}
+        />
       </div>
     </div>
     <div className={`${styles.start_footstep} ${login ? styles.blind : null}`}>
@@ -27,9 +35,15 @@ function SideBar ({img, name, job, footprint, display, login}) {
       </div>
       <a className={styles.start_button}>시작하기</a>
       <div className={styles.menu}>
-        <span>Portfolio</span>
-        <span>My Footstep</span>
-        <span>My Follow</span>
+        <SubToggle 
+          title={"Portfolio"}
+        />
+        <SubToggle 
+          title={"My Footstep"}
+        />
+        <SubToggle 
+          title={"My Follow"}
+        />
       </div>
     </div>
     <div className={login ? null : styles.blind}>
