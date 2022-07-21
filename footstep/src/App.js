@@ -1,6 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import SideBar from './components/SideBar/SideBar';
+// import SideBar from './components/SideBar/SideBar';
+import ProfileCard from './components/ProfileCard/ProfileCard'
 import "./css/reset.css";
 import "./css/variables.css";
 
@@ -14,9 +15,10 @@ function App() {
   return (
     <>
       <GlobalStyle/>
-      <div>
-        {/* 코드를 작성해주세요 */}
-      </div>
+      {/* <div className="ProfileCard"></div> */}
+      <ProfileCard/>
+      
+      
     </>
   );
 }
