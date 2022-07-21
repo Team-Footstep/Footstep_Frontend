@@ -121,14 +121,14 @@
     display: inline-block;
     margin: 12px 0 10px 0;
 }
-.card_foot_text {
+.card_footer_text {
     line-height: 18px;
     font-weight: normal;
     text-align: right;
     margin-right: 4px;
     font-family: Pretendard;
 }
-.card_foot_cnt {
+.card_footer_cnt {
     line-height: 18px;
     font-weight: 600;
     text-align: left;

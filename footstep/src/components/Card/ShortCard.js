@@ -1,21 +1,16 @@
 import styles from "./ShortCard.module.css";
 
-function ShortCard() {
+function ShortCard({ content }) {
     return (
         <div className={styles.card_short}>
             <img
                 className={styles.card_profile_img}
-                src="https://via.placeholder.com/60x40"
-                alt="화이트"
+                src={content.img_url}
+                alt={content.name}
             />
-            <h3 className={styles.card_name}>화이트 화이트 화이트</h3>
-            <h4 className={styles.card_job}>
-                프론트엔드 개발자 프론트엔드 개발자
-            </h4>
-            <p className={styles.card_title}>
-                카드 제목이 들어갈 자리입니다. 이 카드의 제목은 때로는 두줄까지
-                가능합니다. 카드 제목이 들어갈 자리입니다.
-            </p>
+            <h3 className={styles.card_name}>{content.name}</h3>
+            <h4 className={styles.card_job}>{content.job}</h4>
+            <p className={styles.card_title}>{content.title}</p>
             <div className={styles.card_line}></div>
             <div className={styles.card_footprint}>
                 <svg
@@ -57,7 +52,7 @@ function ShortCard() {
                         fill="currentColor"
                     />
                 </svg>
-                <span className={styles.card_foot_cnt}>12345</span>
+                <span className={styles.card_foot_cnt}>{content.foot_cnt}</span>
             </div>
         </div>
     );
