@@ -19,21 +19,19 @@ function Home () {
         />
       </div>
       <div className={styles.contents}>
-        <div className={styles.side_bar}>
           <SideBar
-              img={null}
-              name={"문비"}
-              job={"프론트앤드 디자이너"}
-              footprint={2000}
-              display={!open}
-              login={true}
+            img={null}
+            name={"문비"}
+            job={"프론트앤드 디자이너"}
+            footprint={2000}
+            display={!open}
+            login={true}
           />
-        </div>
         <div className={styles.scroll}>
-          <div></div>
-          <div>
-            <Footer/>
-          </div>
+          <div className={styles.body_contents}></div>
+          <Footer
+            className={styles.footer}
+          />
         </div>
       </div>
     </div>

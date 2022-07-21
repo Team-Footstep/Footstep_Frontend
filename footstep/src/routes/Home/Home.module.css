@@ -8,11 +8,13 @@
   flex-direction: row;
 }
 
-.side_bar {
-  position: relative;
-  top: 6rem;
+.scroll {
+  width: 100%;
 }
 
-.scroll {
+.body_contents {
+  height: 200rem;
+}
 
+.footer {
 }
