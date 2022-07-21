@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from "../SideBar/SideBar.module.css";
 import Button from "../Button/Button.js";
-import { useState } from "react";
 import SubToggle from '../SubToggle/SubToggle';
 
 function SideBar ({img, name, job, footprint, display, login}) {

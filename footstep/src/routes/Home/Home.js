@@ -3,6 +3,7 @@ import SideBar from "../../components/SideBar/SideBar.js";
 import styles from "../Home/Home.module.css";
 import Header from "../../components/Header/Header.js"
 import { useState } from "react";
+import Footer from "../../components/Footer/Footer.js"
 
 function Home () {
   const [open, setOpen] = useState(true);
@@ -29,7 +30,10 @@ function Home () {
           />
         </div>
         <div className={styles.scroll}>
-
+          <div></div>
+          <div>
+            <Footer/>
+          </div>
         </div>
       </div>
     </div>

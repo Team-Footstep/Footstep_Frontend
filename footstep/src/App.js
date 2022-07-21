@@ -1,5 +1,5 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import React from "react";
+import { createGlobalStyle } from "styled-components";
 import "./css/reset.css";
 import "./css/variables.css";
 import Home from './routes/Home/Home.js';
@@ -13,9 +13,8 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-      <GlobalStyle/>
+      <GlobalStyle />
       <div>
-        {/* 코드를 작성해주세요 */}
         <Home/>
       </div>
     </>
