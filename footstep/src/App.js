@@ -5,6 +5,7 @@ import "./css/reset.css";
 import "./css/variables.css";
 import ShortCard from "./components/Card/ShortCard";
 import LongCard from "./components/Card/LongCard";
+import Home from './routes/Home/Home.js';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,6 +33,7 @@ function App() {
             <GlobalStyle />
 
             <div>
+                <Home/>
                 <ShortCard content={cardContent} />
                 <LongCard content={cardContent} />
             </div>

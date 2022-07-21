@@ -86,13 +86,12 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 62.5%;
-    font: inherit;
-    vertical-align: baseline;
-    font-family: NotoSansKR;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;;
 }
 article,
 aside,
@@ -177,4 +176,8 @@ input:focus {
 
 .transparency {
     background-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
 }
