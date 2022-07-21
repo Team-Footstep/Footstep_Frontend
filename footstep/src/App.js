@@ -1,8 +1,8 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-// import SideBar from "./components/SideBar/SideBar";
 import "./css/reset.css";
 import "./css/variables.css";
+import Footer from "./components/Footer/Footer";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,7 +14,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <div>{/* 코드를 작성해주세요 */}</div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
