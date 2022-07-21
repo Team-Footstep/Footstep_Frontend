@@ -4,7 +4,7 @@
     height: 291px;
     border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: var(--white);
     margin: 20px;
 }
 .card_profile_img {
@@ -30,7 +30,7 @@
     font-style: normal;
     letter-spacing: -0.1px;
     text-align: left;
-    color: #32465e;
+    color: var(--footstep_blue);
     overflow: hidden;
     white-space: nowrap;
     /* text-overflow: ellipsis; */
@@ -51,7 +51,7 @@
     font-style: normal;
     letter-spacing: -0.07px;
     text-align: left;
-    color: #737373;
+    color: var(--gray-font);
     overflow: hidden;
     white-space: nowrap;
     /* text-overflow: ellipsis; */
@@ -72,7 +72,7 @@
     font-style: normal;
     letter-spacing: -0.08px;
     text-align: left;
-    color: #343a40;
+    color: var(--font-black);
     overflow: hidden;
 
     position: absolute;
@@ -94,14 +94,14 @@
     line-height: 16px;
     letter-spacing: -0.07px;
     text-align: left;
-    color: #424242;
+    color: var(--darkblack-font);
     overflow: hidden;
 }
 
 .card_footer {
     width: 237px;
     height: 40px;
-    background-color: #32465e;
+    background-color: var(--footstep_blue);
     border-radius: 0 0 15px 15px;
 
     position: absolute;
@@ -112,7 +112,7 @@
     font-stretch: normal;
     font-style: normal;
     letter-spacing: 0.27px;
-    color: #fff;
+    color: var(--white);
     text-align: right;
 }
 .card_footprint,
