@@ -1,19 +1,19 @@
-.card_short {
+.card_long {
     position: relative;
     width: 237px;
-    height: 175px;
-    margin: 20px;
+    height: 291px;
     border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    margin: 20px;
 }
 .card_profile_img {
     position: absolute;
     top: 15px;
     left: 15px;
 
-    width: 55px;
-    height: 55px;
+    width: 57px;
+    height: 57px;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
@@ -36,7 +36,7 @@
     /* text-overflow: ellipsis; */
 
     position: absolute;
-    top: 28px;
+    top: 31px;
     left: 85px;
 }
 .card_job {
@@ -57,7 +57,7 @@
     /* text-overflow: ellipsis; */
 
     position: absolute;
-    top: 45px;
+    top: 48px;
     left: 85px;
 }
 .card_title {
@@ -79,41 +79,64 @@
     top: 85px;
     left: 16px;
 }
-.card_line {
-    width: 207px;
-    height: 1px;
-    background-color: #bcc8d8;
-
+.card_content {
     position: absolute;
-    bottom: 38px;
+    top: 122px;
     left: 16px;
-}
-.card_footprint {
-    height: 18px;
 
-    position: absolute;
-    bottom: 11px;
-    right: 14px;
-
-    display: flex;
-}
-.card_foot_cnt {
-    height: 18px;
-    margin: 0 4px 0 0;
-    font-family: "Noto Sans KR";
-    font-size: 8px;
-    font-weight: 500;
+    width: 206px;
+    height: 112px;
+    font-family: Pretendard;
+    font-size: 10px;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: 18px;
-    letter-spacing: -0.06px;
+    line-height: 16px;
+    letter-spacing: -0.07px;
     text-align: left;
     color: #424242;
+    overflow: hidden;
 }
-.card_foot_img {
-    width: 12px;
-    height: 12px;
-    margin: 3px 4px 3px 0;
-    color: #424242;
+
+.card_footer {
+    width: 237px;
+    height: 40px;
+    background-color: #32465e;
+    border-radius: 0 0 15px 15px;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    font-size: 10px;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.27px;
+    color: #fff;
+    text-align: right;
+}
+.card_footprint,
+.card_follow,
+.card_comment {
     display: inline-block;
+    margin: 12px 0 10px 0;
+}
+.card_foot_text {
+    line-height: 18px;
+    font-weight: normal;
+    text-align: right;
+    margin-right: 4px;
+    font-family: Pretendard;
+}
+.card_foot_cnt {
+    line-height: 18px;
+    font-weight: 600;
+    text-align: left;
+    font-family: Pretendard;
+}
+.card_footprint {
+    margin-right: 10px;
+}
+.card_follow {
+    margin-right: 18px;
 }

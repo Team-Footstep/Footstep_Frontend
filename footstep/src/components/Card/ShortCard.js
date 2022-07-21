@@ -12,7 +12,7 @@ function ShortCard() {
             <h4 className={styles.card_job}>
                 프론트엔드 개발자 프론트엔드 개발자
             </h4>
-            <p className={styles.card_content_short}>
+            <p className={styles.card_title}>
                 카드 제목이 들어갈 자리입니다. 이 카드의 제목은 때로는 두줄까지
                 가능합니다. 카드 제목이 들어갈 자리입니다.
             </p>

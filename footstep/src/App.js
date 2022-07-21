@@ -4,6 +4,7 @@ import SideBar from "./components/SideBar/SideBar";
 import "./css/reset.css";
 import "./css/variables.css";
 import ShortCard from "./components/Card/ShortCard";
+import LongCard from "./components/Card/LongCard";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +18,7 @@ function App() {
             <GlobalStyle />
             <div>{/* 코드를 작성해주세요 */}</div>
             <div>
-                <ShortCard />
+                <LongCard />
             </div>
         </>
     );
