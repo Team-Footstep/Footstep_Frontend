@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header.js"
 import Footer from "../../components/Footer/Footer.js"
 import ShortCard from "../../components/Card/ShortCard.js";
 import LongCard from "../../components/Card/LongCard.js";
+import ProfileCard from "../../components/ProfileCard/ProfileCard.js"
 
 function Home () {
   const [open, setOpen] = useState(true);
@@ -42,6 +43,15 @@ function Home () {
           />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
+            <ProfileCard
+              image={null}
+              username={"문비"}
+              job={"프론트앤드 디자이너"}
+              introduction={"새로운 기록입니다."}
+              date={"2021/07/12"}
+              Foot_print={"footprint"}
+              k={"2K"}
+            />
             <ShortCard content={cardContent}/>
             <LongCard content={cardContent}/>
           </div>

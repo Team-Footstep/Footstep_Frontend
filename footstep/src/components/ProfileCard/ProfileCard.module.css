@@ -1,0 +1,139 @@
+.profile_card{
+    width: 1008px;
+    height: 292px;
+    margin-left: 150px;
+    background-color:#F8FBFE;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    position:relative
+}
+/* px-> rem 변환 방법 => 구글링해도 다른것 같음 */
+/* padding 크기 잘 모르겠어서 비워둠
+ 배경색도 다시 한번 check하기 */
+
+.image{
+  width: 241px;
+  height: 242px;
+  left: -121px;
+  top: 25px;
+  background: #D9D9D9;
+  border-radius:50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position:absolute;
+  overflow: hidden;
+  /* border-radius: 50px => 둥글게 해서 사진처리해야하는지 아니면 네모로 받기*/
+}
+
+.username{
+    position:absolute;
+    width: 63px;
+    height: 27px;
+    left: 217px;
+    top: 35px;
+    font-family: Pretendard;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.24;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color:#32465e;
+    
+  }
+.job{
+    position:absolute;
+    width: 239px;
+    height: 27px;
+    left: 217px;
+    top: 66px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.34px;
+    text-align: left;
+    color:#737373;
+
+  }
+.introduction{
+    position:absolute;
+    width: 665px;
+    height: 55px;
+    left: 217px;
+    top: 100px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.34px;
+    text-align: left;
+    color:#343a40;
+  }
+.vector{
+    position:absolute;
+    width: 36px;
+    height: 36px;
+    font-family: Pretendard;
+  }
+.date{
+    position:absolute;
+    width: 74px;
+    height: 20px;
+    left: 217px;
+    top: 182px;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: 0.32px;
+    text-align: left;
+    color:#737373;
+  }
+.line_4{
+    position:absolute;
+    width: 700px;
+    height: 1.5px;
+    left: 217px;
+    top: 215px;
+    background-color: rgba(152, 172, 206, 0.6);
+  }
+.Foot_print{
+    position:absolute;
+    width: 65px;
+    height: 20px;
+    left: 828px;
+    top: 247px;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: 0.32px;
+    text-align: right;
+    color:#737373;
+  }
+.k{
+    position:absolute;
+    width: 19px;
+    height: 20px;
+    left: 898px;
+    top: 247px;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: 0.32px;
+    text-align: right;
+    color:#737373;
+  }
+  
