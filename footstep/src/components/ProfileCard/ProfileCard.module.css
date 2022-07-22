@@ -2,7 +2,7 @@
     width: 100.8rem;
     height: 29.2rem;
     margin-left: 15.0rem;
-    background-color:#F8FBFE;
+    background-color:var(--whiteblue-bg);
     border-radius: 1.5rem;
     box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
     position:relative
@@ -38,7 +38,7 @@
     line-height: 1.24;
     letter-spacing: 0.05rem;
     text-align: left;
-    color:#32465e;
+    color:var(--footstep_blue);
     
   }
 .job{
@@ -55,7 +55,7 @@
     line-height: 1.5;
     letter-spacing: 0.034rem;
     text-align: left;
-    color:#737373;
+    color:var(--gray-font);
 
   }
 .introduction{
@@ -72,7 +72,7 @@
     line-height: 1.5;
     letter-spacing: 0.034rem;
     text-align: left;
-    color:#343a40;
+    color:var(--font-black);
   }
 .vector{
     position:absolute;
@@ -94,7 +94,7 @@
     line-height: 1.43;
     letter-spacing: 0.032rem;
     text-align: left;
-    color:#737373;
+    color:var(--gray-font);
   }
 .line_4{
     position:absolute;
@@ -118,7 +118,7 @@
     line-height: 1.43;
     letter-spacing: 0.032rem;
     text-align: right;
-    color:#737373;
+    color:var(--gray-font);
   }
 .k{
     position:absolute;
@@ -134,6 +134,6 @@
     line-height: 1.43;
     letter-spacing: 0.032rem;
     text-align: right;
-    color:#737373;
+    color: var(--gray-font);
   }
   
