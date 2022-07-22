@@ -54,6 +54,7 @@ function Home () {
             />
             <ShortCard content={cardContent}/>
             <LongCard content={cardContent}/>
+            
           </div>
           <Footer/>
         </div>
