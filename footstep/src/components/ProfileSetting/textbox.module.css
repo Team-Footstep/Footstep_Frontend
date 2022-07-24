@@ -1,0 +1,13 @@
+.name_job {
+  border-radius: 0.7rem;
+  width: 72.1rem;
+  height: 3.4rem;
+  border: solid 0.1rem var(--light-blue);
+}
+
+.aboutme {
+  border-radius: 0.7rem;
+  width: 72.1rem;
+  height: 5.8rem;
+  border: solid 0.1rem var(--light-blue);
+}

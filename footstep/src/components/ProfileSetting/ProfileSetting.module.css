@@ -1,0 +1,92 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: var(--footstep_blue);
+}
+
+.container {
+  width: 100.8rem;
+  height: 55.5rem;
+  display: flex;
+  /* justify-content: center; */
+}
+
+.profile_container {
+  flex-direction: column;
+  /* justify-content: center; */
+  position: relative;
+  width: 100.8rem;
+  height: 34.7rem;
+  margin: 0 0 2rem;
+  padding: 3rem 0 0 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--whiteblue-bg);
+}
+
+.image {
+  width: 15rem;
+  height: 15.1rem;
+  position: absolute;
+  top: 3rem;
+
+  /* margin: 0.4rem 5.7rem 10.7rem 0;
+  padding: 11.5rem 0 0 11.4rem; */
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: #d9d9d9;
+  border-radius: 50%;
+}
+
+.textbox_bundle {
+  /* padding-left: 5.7rem; */
+  position: absolute;
+  right: 5rem;
+  margin-left: 5.7rem;
+  display: inline-block;
+  width: 72.1rem;
+  overflow: hidden;
+}
+.button_bundle {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 5rem;
+  bottom: 3rem;
+}
+.button_cancle {
+  margin-right: 3rem;
+}
+p {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.34px;
+  text-align: left;
+  color: #343a40;
+  margin-bottom: 0.4rem;
+}
+.name {
+  margin-bottom: 1.4rem;
+}
+.job {
+  margin-bottom: 1.4rem;
+}
+
+/* 여기서 부터가 이메일 컨테이너 꾸미기 */
+.email_container {
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100.8rem;
+  height: 16.8rem;
+  margin: 2rem 0 0;
+  /* padding: 27px 174px 30px; */
+  border-radius: 1.5rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--whiteblue-bg);
+}
