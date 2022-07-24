@@ -34,13 +34,19 @@ function ProfileSetting({ image }) {
         </div>
         <div className={styles.email_container}>
           <div>
-            <div className={styles.email}></div>
+            <div className={styles.email}>
+              <p>이메일</p>
+              <TextBox text="이메일" />
+            </div>
             <div className={styles.button_certifi_code}>
               <Button value="인증코드 보내기" differ={false} />
             </div>
           </div>
           <div>
-            <div className={styles.enter_code}></div>
+            <div className={styles.enter_code}>
+              <p>코드 입력</p>
+              <TextBox text="코드" />
+            </div>
             <div className={styles.button_change}>
               <Button value="변경하기" differ={true} />
             </div>
