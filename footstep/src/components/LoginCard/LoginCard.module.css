@@ -1,0 +1,150 @@
+#align_wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+}
+#wrapper {
+    width: 45rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+}
+#header {
+    width: 100%;
+    height: 6rem;
+    background-color: var(--footstep_blue);
+    border-radius: 25px 25px 0 0;
+}
+#header h2 {
+    font-family: NotoSansKR;
+    font-size: 2rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 6rem;
+    letter-spacing: 0.6px;
+    text-align: center;
+    color: var(--white);
+}
+
+#content {
+    padding: 2.9rem 2.4rem 3rem 2.6rem;
+}
+
+#login_div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3.4rem;
+}
+#login_input {
+    width: 30.2rem;
+    height: 6rem;
+    border-radius: 15px;
+    border: solid 1px var(--light-blue);
+    background-color: var(--white);
+    padding-left: 2rem;
+}
+#login_input::placeholder {
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    text-align: left;
+    color: var(--gray-font);
+}
+#login_btn {
+    width: 8.3rem;
+    height: 6rem;
+    border-radius: 15px;
+    background-color: #32465e;
+
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    color: var(--white);
+}
+
+#join_div {
+    width: 40rem;
+}
+#join_text {
+    font-family: Pretendard;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.3px;
+    color: var(--gray-font);
+    text-align: center;
+    margin-bottom: 0.4rem;
+}
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--light-blue);
+    margin-bottom: 2rem;
+}
+.join_input {
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    border: solid 1px var(--light-blue);
+    background-color: var(--white);
+    padding-left: 2rem;
+}
+.join_input::placeholder {
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    color: #737373;
+}
+
+#create_btn {
+    margin: 1rem 0 2rem;
+    width: 100%;
+    height: 6rem;
+    border-radius: 15px;
+    border: solid 2px var(--footstep_blue);
+
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 6rem;
+    letter-spacing: 0.34px;
+    text-align: center;
+    color: var(--footstep_blue);
+}
+
+#find_div {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+#find_text {
+    height: 1.8rem;
+    font-family: Pretendard;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.8;
+    vertical-align: middle;
+    letter-spacing: 0.3px;
+    color: var(--gray-font);
+    text-decoration: underline;
+}
