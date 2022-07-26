@@ -11,3 +11,11 @@
   height: 5.8rem;
   border: solid 0.1rem var(--light-blue);
 }
+
+.email_code {
+  width: 32rem;
+  height: 3.4rem;
+  border-radius: 7px;
+  border: solid 1px #e7eaee;
+  background-color: #fff;
+}

@@ -80,7 +80,9 @@ p {
 
 /* 여기서 부터가 이메일 컨테이너 꾸미기 */
 .email_container {
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: row; */
+  /* flex-direction: column; */
   /* justify-content: center; */
   width: 100.8rem;
   height: 16.8rem;
@@ -89,4 +91,30 @@ p {
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--whiteblue-bg);
+}
+.email_container_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2.7rem;
+}
+
+.email_certifi_code {
+  width: 32rem;
+  margin-right: 1rem;
+  /* overflow: inherit; */
+}
+
+.enter_code_change {
+  width: 32rem;
+  margin-left: 1rem;
+  /* overflow: inherit; */
+}
+
+.button_certifi_code {
+  float: right;
+}
+
+.button_change {
+  float: right;
 }

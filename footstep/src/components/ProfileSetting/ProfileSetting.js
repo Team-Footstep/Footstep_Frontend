@@ -12,11 +12,11 @@ function ProfileSetting({ image }) {
           <div className={styles.textbox_bundle}>
             <div className={styles.name}>
               <p>이름</p>
-              <TextBox isSpecial={true} />
+              <TextBox isSpecial={true} value={1} />
             </div>
             <div className={styles.job}>
               <p>직업</p>
-              <TextBox isSpecial={true} />
+              <TextBox isSpecial={true} value={1} />
             </div>
             <div className={styles.about_me}>
               <p>자기소개</p>
@@ -33,22 +33,24 @@ function ProfileSetting({ image }) {
           </div>
         </div>
         <div className={styles.email_container}>
-          <div>
-            <div className={styles.email}>
-              <p>이메일</p>
-              <TextBox text="이메일" />
+          <div className={styles.email_container_content}>
+            <div className={styles.email_certifi_code}>
+              <div className={styles.email}>
+                <p>이메일</p>
+                <TextBox isSpecial={true} value={0} />
+              </div>
+              <div className={styles.button_certifi_code}>
+                <Button value="인증코드 보내기" differ={false} />
+              </div>
             </div>
-            <div className={styles.button_certifi_code}>
-              <Button value="인증코드 보내기" differ={false} />
-            </div>
-          </div>
-          <div>
-            <div className={styles.enter_code}>
-              <p>코드 입력</p>
-              <TextBox text="코드" />
-            </div>
-            <div className={styles.button_change}>
-              <Button value="변경하기" differ={true} />
+            <div className={styles.enter_code_change}>
+              <div className={styles.enter_code}>
+                <p>코드 입력</p>
+                <TextBox isSpecial={true} value={0} />
+              </div>
+              <div className={styles.button_change}>
+                <Button value="변경하기" differ={true} />
+              </div>
             </div>
           </div>
         </div>
