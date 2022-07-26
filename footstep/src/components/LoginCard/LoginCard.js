@@ -9,7 +9,7 @@ function LoginCard() {
         /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
     const [loginStatus, setLoginStatus] = useState(0);
     const onLoginHandler = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         setJoinStatus(0);
 
         console.log(event.target[0].value);
@@ -28,12 +28,12 @@ function LoginCard() {
 
     const [joinStatus, setJoinStatus] = useState(0);
     const onJoinHandler = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         setLoginStatus(0);
 
         console.log(event.target[0].value);
         console.log(event.target[1].value);
-        if (event.target[0].value == "") {
+        if (event.target[0].value === "") {
             return false;
         } else if (!regEmail.test(event.target[1].value)) {
             setJoinStatus(-1);

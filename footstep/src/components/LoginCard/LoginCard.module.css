@@ -163,7 +163,7 @@
     padding: 1.8rem 2rem;
 }
 .successNoti span {
-    /* font-family: NotoSansKR; */
+    font-family: "Noto Sans KR";
     font-size: 16px;
     font-weight: 500;
     font-stretch: normal;
