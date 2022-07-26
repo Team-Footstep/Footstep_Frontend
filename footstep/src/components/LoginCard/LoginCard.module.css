@@ -35,11 +35,6 @@
     padding: 2rem 2.4rem 3rem 2.6rem;
 }
 
-#login_div {
-    /* display: flex;
-    justify-content: space-between; */
-    /* margin: 0.9rem 0 3.4rem; */
-}
 #login_div form {
     display: flex;
     justify-content: space-between;
