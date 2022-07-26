@@ -1,12 +1,12 @@
 import React from "react";
+import TopBanner from "../components/Banner/TopBanner";
 import Header from "../components/Header/Header";
-import LoginCard from "../components/LoginCard/LoginCard";
 
 function Test() {
     return (
         <div>
             <Header />
-            <LoginCard />
+            <TopBanner />
         </div>
     );
 }
