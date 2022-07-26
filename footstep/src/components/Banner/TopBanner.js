@@ -1,4 +1,4 @@
-import styles from "./Banner.module.css";
+import styles from "./TopBanner.module.css";
 
 function TopBanner() {
     return (
