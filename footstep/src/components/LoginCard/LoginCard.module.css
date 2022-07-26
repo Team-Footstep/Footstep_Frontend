@@ -32,13 +32,18 @@
 }
 
 #content {
-    padding: 2.9rem 2.4rem 3rem 2.6rem;
+    padding: 2rem 2.4rem 3rem 2.6rem;
 }
 
 #login_div {
+    /* display: flex;
+    justify-content: space-between; */
+    /* margin: 0.9rem 0 3.4rem; */
+}
+#login_div form {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3.4rem;
+    margin: 0.9rem 0 3.4rem;
 }
 #login_input {
     width: 30.2rem;
@@ -75,6 +80,9 @@
 
 #join_div {
     width: 40rem;
+}
+#join_div form {
+    margin-top: 1.9rem;
 }
 #join_text {
     font-family: Pretendard;
@@ -147,4 +155,34 @@
     letter-spacing: 0.3px;
     color: var(--gray-font);
     text-decoration: underline;
+}
+
+.successNoti {
+    display: flex;
+    width: 100%;
+    height: 6rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+    background-color: var(--login-green-bg);
+    padding: 1.8rem 2rem;
+}
+.successNoti span {
+    /* font-family: NotoSansKR; */
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    line-height: 2.4rem;
+    color: var(--login-green-text);
+}
+.successNoti img {
+    margin: 0.3rem 1rem 0.3rem 0;
+}
+.failNoti {
+    background-color: var(--login-red-bg);
+}
+.failNoti span {
+    color: var(--login-red-text);
 }
