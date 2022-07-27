@@ -1,0 +1,142 @@
+/* .searchcard_frame{
+    width: 94.8rem;
+    height: 17.6rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    position:relative;
+} */
+
+.search_card{
+  
+    width: 92.8rem;
+    height: 16.6rem;
+    flex:none;
+    order: 0;
+    flex-grow: 0;
+    position:relative;
+
+}
+
+.searchcard_profile_img{
+    width: 6rem;
+    height: 6rem;
+    background-color: #d9d9d9;
+    position:absolute;
+    border-radius:50%;
+}
+
+.searchcard_text_title{
+    width: 84.8rem;
+    height: 2.4rem;
+    left: 8rem;
+    top: 0.4rem;
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.4rem;
+    letter-spacing: 0.034rem;
+    color: var(--font-black);
+    position:absolute;
+}
+
+.searchcard_name{
+    width: 2.8rem;
+    height: 2.4rem;
+    left: 8rem;
+    top: 3.2rem;
+    font-family: 'Pretendard';
+    font-size: 1.5rem;
+    /* 디자인에서는 1.6rem이었는데 사이즈가 커서 계획한 칸안에 맞춰지지 X */
+    font-weight: 400;
+    font-style: normal;
+    line-height: 2.4rem;
+    letter-spacing: 0.34px;
+    color:var(--footstep_blue);
+    position:absolute;
+}
+
+.searchcard_job{
+    width: 10rem;
+    height: 1.8rem;
+    left: 11.2rem;
+    top: 3.5rem;
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.8rem;
+    letter-spacing: 0.03rem;
+    text-align: left;
+    color:var( --gray-font);
+    position:absolute;
+}
+
+.searchcard_contents{
+    width: 84.8rem;
+    height: 5.4rem;
+    left: 8rem;
+    top: 7.2rem;
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.8rem;
+    letter-spacing: 0.03rem;
+    color:var(--darkblack-font);
+    position:absolute;
+}
+
+.searchcard_date{
+    width: 4.9rem;
+    height: 1.8rem;
+    left: 8rem;
+    top: 13.6em;
+    font-family: 'Pretendard';
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.8;
+    letter-spacing: 0.027rem;
+    color:var(--gray-font);
+    position:absolute;
+}
+
+.searchcard_foot_img{
+    width: 1.2rem;
+    height: 1.2rem;
+    left:90.2rem;
+    top: 14.1rem;
+    position:absolute;
+}
+
+.searchcard_num{
+    width: 0.5rem;
+    height: 1.8rem;
+    left: 91.8rem;
+    top: 13.6rem;
+    font-family: NotoSansKR;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.25;
+    letter-spacing: -0.006rem;
+    text-align: left;
+    color:var(--footstep_blue);
+    position:absolute;
+}
+.line{
+    position: absolute;
+    width: 84.8rem;
+    height: 0rem;
+    left: 8rem;
+    top: 16.6rem;
+    border: 0.1rem solid var(--light-blue);
+}
