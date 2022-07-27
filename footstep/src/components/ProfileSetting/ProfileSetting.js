@@ -1,12 +1,25 @@
 import React from "react";
 import styles from "../ProfileSetting/ProfileSetting.module.css";
 import TextBox from "../ProfileSetting/textbox.js";
-import Button from "../ProfileSetting/Button.js";
+// import styles from "../ProfileSetting/Button.module.css";
 
 function ProfileSetting({ image }) {
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+  function resetBtn() {
+    "#tmpSendFrm"[0].reset();
+  }
+
   return (
     <div className={styles.body}>
-      <div clasName={styles.container}>
+      <form
+        id="profilesetting"
+        onSubmit={onSubmit}
+        action="/Users/mac/Woowoo/Footstep_Frontend/footstep/src/routes/ProfileSetting/ProfileSetting.js"
+        clasName={styles.container}
+        method="post"
+      >
         <div className={styles.profile_container}>
           <img src={image} className={styles.image} />
           <div className={styles.textbox_bundle}>
@@ -25,10 +38,14 @@ function ProfileSetting({ image }) {
           </div>
           <div className={styles.button_bundle}>
             <div className={styles.button_cancle}>
-              <Button value="취소하기" differ={true} />
+              <button type="button" className={styles.cancle}>
+                취소하기
+              </button>
             </div>
             <div className={styles.button_save}>
-              <Button value="저장하기" differ={false} />
+              <button type="submit" className={styles.save}>
+                저장하기
+              </button>
             </div>
           </div>
         </div>
@@ -40,7 +57,9 @@ function ProfileSetting({ image }) {
                 <TextBox isSpecial={true} value={0} />
               </div>
               <div className={styles.button_certifi_code}>
-                <Button value="인증코드 보내기" differ={false} />
+                <button type="button" className={styles.code}>
+                  인증코드 보내기
+                </button>
               </div>
             </div>
             <div className={styles.enter_code_change}>
@@ -49,12 +68,14 @@ function ProfileSetting({ image }) {
                 <TextBox isSpecial={true} value={0} />
               </div>
               <div className={styles.button_change}>
-                <Button value="변경하기" differ={true} />
+                <button onClick={resetBtn} className={styles.change}>
+                  변경하기
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

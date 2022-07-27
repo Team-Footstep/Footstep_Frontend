@@ -3,11 +3,13 @@ import React from "react";
 import styles from "../ProfileSetting/textbox.module.css";
 
 function TextBox({ isSpecial, value }) {
-  const [write, setWrite] = React.useState([]);
+  const [write, setWrite] = React.useState("");
   const onChange = (event) => {
     setWrite(event.target.value);
+    console.log(write);
   };
-  console.log(write);
+
+  // console.log(write);
   //"저장하기" 버튼 클릭시 입력된 데이터를 전송
   return (
     <div>
