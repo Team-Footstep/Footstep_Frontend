@@ -49,6 +49,7 @@
   width: 72.1rem;
   overflow: hidden;
 }
+
 .button_bundle {
   display: flex;
   flex-direction: row;
@@ -56,9 +57,11 @@
   right: 5rem;
   bottom: 3rem;
 }
+
 .button_cancle {
   margin-right: 3rem;
 }
+
 p {
   font-family: Pretendard;
   font-size: 16px;
@@ -71,9 +74,11 @@ p {
   color: #343a40;
   margin-bottom: 0.4rem;
 }
+
 .name {
   margin-bottom: 1.4rem;
 }
+
 .job {
   margin-bottom: 1.4rem;
 }
@@ -92,6 +97,7 @@ p {
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--whiteblue-bg);
 }
+
 .email_container_content {
   display: flex;
   flex-direction: row;
@@ -113,8 +119,10 @@ p {
 
 .button_certifi_code {
   float: right;
+  margin-top: 2rem;
 }
 
 .button_change {
   float: right;
+  margin-top: 2rem;
 }
