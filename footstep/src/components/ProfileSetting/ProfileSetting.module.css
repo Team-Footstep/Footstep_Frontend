@@ -38,16 +38,28 @@ label {
   margin-bottom: 2rem;
 }
 
+.profile_image_edit {
+  width: 15rem;
+  height: 15.1rem;
+  display: inline-block;
+  position: relative;
+}
 .image {
   width: 15rem;
   height: 15.1rem;
   position: absolute;
-  top: 3rem;
+  /* top: 3rem; */
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: #d9d9d9;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+}
+
+.profile_edit_button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .profile_form_container {
@@ -59,10 +71,10 @@ label {
   overflow: hidden;
 }
 
-.profile_button_bundle {
+/* .profile_button_bundle {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .name,
 .job {

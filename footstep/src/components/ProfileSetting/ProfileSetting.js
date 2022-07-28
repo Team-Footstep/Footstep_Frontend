@@ -19,8 +19,15 @@ function ProfileSetting({ image }) {
   };
 
   const onSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     alert(JSON.stringify(values, null, 2));
+    // const regEmail =
+    //   /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    // if (!regEmail.test(values.email)) {
+    //   return
+    // } else {
+    //   alert(JSON.stringify(values, null, 2));
+    // }
   };
 
   const onClick = () => {
@@ -42,7 +49,24 @@ function ProfileSetting({ image }) {
     <div className={styles.body}>
       <div className={styles.container}>
         <div className={styles.profile_container}>
-          <img src={image} className={styles.image} />
+          <div className={styles.profile_image_edit}>
+            <img src={image} className={styles.image} />
+            <button type="button" className={styles.profile_edit_button}>
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="18" cy="18" r="18" fill="#32465E" />
+                <path
+                  d="M20.06 15.02L20.98 15.94L11.92 25H11V24.08L20.06 15.02ZM23.66 9C23.41 9 23.15 9.1 22.96 9.29L21.13 11.12L24.88 14.87L26.71 13.04C27.1 12.65 27.1 12.02 26.71 11.63L24.37 9.29C24.17 9.09 23.92 9 23.66 9ZM15.125 17.25L9 23.25V27H12.75L23.81 15.94L20.06 12.19L15.125 17.25Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
           <form
             action=""
             method="post"
