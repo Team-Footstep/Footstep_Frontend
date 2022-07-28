@@ -1,30 +1,41 @@
+/* 전체적으로 꾸미기 */
+label {
+  display: block;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.034rem;
+  text-align: left;
+  color: #343a40;
+}
+
 .body {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: var(--footstep_blue);
+  background-color: var(--footstep_blue);
 }
 
 .container {
   width: 100.8rem;
-  height: 55.5rem;
-  display: flex;
-  /* justify-content: center; */
+  height: 53.5rem;
 }
 
+/* 프로필정보 꾸미기 */
 .profile_container {
-  flex-direction: column;
-  /* justify-content: center; */
-  position: relative;
   width: 100.8rem;
   height: 34.7rem;
-  margin: 0 0 2rem;
+  position: relative;
   padding: 3rem 0 0 3rem;
-  border-radius: 1.5rem;
+  border-radius: 15px;
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--whiteblue-bg);
+  margin-bottom: 2rem;
 }
 
 .image {
@@ -32,16 +43,14 @@
   height: 15.1rem;
   position: absolute;
   top: 3rem;
-
-  /* margin: 0.4rem 5.7rem 10.7rem 0;
-  padding: 11.5rem 0 0 11.4rem; */
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: #d9d9d9;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
 }
 
-.textbox_bundle {
-  /* padding-left: 5.7rem; */
+.profile_form_container {
   position: absolute;
   right: 5rem;
   margin-left: 5.7rem;
@@ -50,101 +59,112 @@
   overflow: hidden;
 }
 
-.button_bundle {
+.profile_button_bundle {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 5rem;
-  bottom: 3rem;
 }
 
-.button_cancle {
-  margin-right: 3rem;
-}
-
-p {
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: 0.34px;
-  text-align: left;
-  color: #343a40;
-  margin-bottom: 0.4rem;
-}
-
-.name {
-  margin-bottom: 1.4rem;
-}
-
+.name,
 .job {
-  margin-bottom: 1.4rem;
+  width: 72.1rem;
+  height: 3.4rem;
+  margin: 0.4rem 0 1.4rem 0;
+  border-radius: 0.7rem;
+  border: solid 0.1rem var(--light-blue);
+  background-color: var(--white);
 }
 
-/* 여기서 부터가 이메일 컨테이너 꾸미기 */
-.email_container {
-  /* display: flex;
-  flex-direction: row; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  width: 100.8rem;
-  height: 16.8rem;
-  margin: 2rem 0 0;
-  /* padding: 27px 174px 30px; */
-  border-radius: 1.5rem;
-  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
-  background-color: var(--whiteblue-bg);
+.about_me {
+  width: 72.1rem;
+  height: 5.8rem;
+  margin: 0.4rem 0 2.4rem 0;
+  border-radius: 0.7rem;
+  border: solid 0.1rem var(--light-blue);
+  background-color: var(--white);
 }
 
-.email_container_content {
+.profile_button_bundle {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 2.7rem;
+  justify-content: flex-end;
 }
-
-.email_certifi_code {
-  width: 32rem;
-  margin-right: 1rem;
-  /* overflow: inherit; */
-}
-
-.enter_code_change {
-  width: 32rem;
-  margin-left: 1rem;
-  /* overflow: inherit; */
-}
-
-.button_certifi_code {
-  float: right;
-  margin-top: 2rem;
-}
-
-.button_change {
-  float: right;
-  margin-top: 2rem;
-}
-
-/* 여기서부터 버튼을 꾸밉니다 */
 
 .cancle,
 .change {
-  width: 132px;
-  height: 29px;
-  /* display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; */
-  gap: 10px;
+  width: 13.2rem;
+  height: 2.9rem;
   /* margin: 24px 20px 0 494px; */
   /* padding: 5px 10px; */
+  border-radius: 1.5rem;
+  border: solid 0.2rem #32465e;
+}
+
+.save,
+.send_email {
+  margin-left: 2rem;
+  width: 13.2rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  background-color: #32465e;
+}
+/* 이메일인증 꾸미기 */
+.email_Authen_container {
+  width: 100.8rem;
+  height: 16.8rem;
+  display: flex;
+  justify-content: center;
   border-radius: 15px;
-  border: solid 2px #32465e;
-  background-color: white;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--whiteblue-bg);
+  /* margin-top: 1rem; */
+}
+
+.email_form_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 66rem;
+  height: 11.1rem;
+  margin-top: 2.7rem;
+}
+
+.emailtextbox_sendbutton {
+  position: relative;
+  /* margin-top: 2.7rem; */
+  margin-right: 1rem;
+}
+
+.codetextbox_changebutton {
+  position: relative;
+  /* margin-top: 2.7rem; */
+  margin-left: 1rem;
+}
+
+.email,
+.code {
+  width: 32rem;
+  height: 3.4rem;
+  border-radius: 7px;
+  border: solid 1px #e7eaee;
+  background-color: #fff;
+  margin-top: 0.4rem;
+}
+
+.send_email {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.change {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.text_cancle,
+.text_change {
   font-family: NotoSans;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -154,21 +174,10 @@ p {
   color: #32465e;
 }
 
-.save,
-.code {
-  width: 132px;
-  height: 29px;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  /* padding: 5px 20px; */
-  border-radius: 15px;
-  background-color: #32465e;
+.text_save,
+.text_send_email {
   font-family: NotoSans;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
