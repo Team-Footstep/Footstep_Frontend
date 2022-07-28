@@ -1,34 +1,38 @@
-.profile_card{
+.profile_card {
     width: 100.8rem;
     height: 29.2rem;
-    margin-left: 15.0rem;
-    background-color:var(--whiteblue-bg);
+    background-color: var(--whiteblue-bg);
     border-radius: 1.5rem;
     box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
-    position:relative
+    position: relative;
+    margin: 0 auto;
 }
 /*. rem-> rem 변환 방법 => 구글링해도 다른것 같음 */
 /* padding 크기 잘 모르겠어서 비워둠
  배경색도 다시 한번 check하기 */
 
-.image{
-  width: 24.1rem;
-  height: 24.2rem;
-  left: -12.1rem;
-  top: 2.5rem;
-  background: #D9D9D9;
-  border-radius:50%;
-  box-shadow: 0.0rem 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
-  position:absolute;
-  overflow: hidden;
-  /* border-radius: 5.0rem => 둥글게 해서 사진처리해야하는지 아니면 네모로 받기*/
+.image {
+    width: 24.1rem;
+    height: 24.2rem;
+    left: -12.1rem;
+    top: 2.5rem;
+
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0rem 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+    /* border-radius: 5.0rem => 둥글게 해서 사진처리해야하는지 아니면 네모로 받기*/
 }
 
-.username{
-    position:absolute;
-    width: 6.3rem;
-    height: 2.7rem;
+.content {
+    position: absolute;
     left: 21.7rem;
+}
+.username {
+    position: absolute;
+    width: 66.5rem;
+    height: 2.7rem;
     top: 3.5rem;
     font-family: Pretendard;
     font-size: 2.4rem;
@@ -38,14 +42,12 @@
     line-height: 1.24;
     letter-spacing: 0.05rem;
     text-align: left;
-    color:var(--footstep_blue);
-    
-  }
-.job{
-    position:absolute;
-    width: 23.9rem;
+    color: var(--footstep_blue);
+}
+.job {
+    position: absolute;
+    width: 66.5rem;
     height: 2.7rem;
-    left: 21.7rem;
     top: 6.6rem;
     font-family: Pretendard;
     font-size: 1.6rem;
@@ -55,15 +57,13 @@
     line-height: 1.5;
     letter-spacing: 0.034rem;
     text-align: left;
-    color:var(--gray-font);
-
-  }
-.introduction{
-    position:absolute;
+    color: var(--gray-font);
+}
+.introduction {
+    position: absolute;
     width: 66.5rem;
-    height: 5.5rem;
-    left: 21.7rem;
-    top: 10.0rem;
+    height: 5.2rem;
+    top: 10rem;
     font-family: Pretendard;
     font-size: 1.6rem;
     font-weight: normal;
@@ -72,44 +72,44 @@
     line-height: 1.5;
     letter-spacing: 0.034rem;
     text-align: left;
-    color:var(--font-black);
-  }
-.vector{
-    position:absolute;
-    width: 3.6rem;
-    height: 3.6rem;
-    font-family: Pretendard;
-  }
-.date{
-    position:absolute;
-    width: 7.4rem;
-    height: 2.0rem;
-    left: 21.7rem;
-    top: 18.2rem;
+    color: var(--font-black);
+    overflow: hidden;
+}
+
+.date_box {
+    position: absolute;
+    top: 17.4rem;
+}
+.date {
+    position: absolute;
+    height: 2rem;
     font-family: Pretendard;
     font-size: 1.4rem;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.43;
+    line-height: 3.6rem;
     letter-spacing: 0.032rem;
     text-align: left;
-    color:var(--gray-font);
-  }
-.line_4{
-    position:absolute;
-    width: 70.0rem;
+    color: var(--gray-font);
+    margin-left: 0.6rem;
+}
+.line_4 {
+    position: absolute;
+    width: 70rem;
     height: 0.01rem;
-    left: 21.7rem;
     top: 21.5rem;
     background-color: rgba(152, 172, 206, 0.6);
-  }
-.Foot_print{
-    position:absolute;
-    width: 6.5rem;
-    height: 2.0rem;
-    left: 82.8rem;
+}
+.foot_box {
+    position: absolute;
     top: 24.7rem;
+    text-align: right;
+    width: 70rem;
+}
+.Foot_print {
+    width: 6.5rem;
+    height: 2rem;
     font-family: Pretendard;
     font-size: 1.4rem;
     font-weight: normal;
@@ -118,14 +118,11 @@
     line-height: 1.43;
     letter-spacing: 0.032rem;
     text-align: right;
-    color:var(--gray-font);
-  }
-.k{
-    position:absolute;
-    width: 1.9rem;
-    height: 2.0rem;
-    left: 89.8rem;
-    top: 24.7rem;
+    color: var(--gray-font);
+    margin-right: 0.5rem;
+}
+.k {
+    height: 2rem;
     font-family: Pretendard;
     font-size: 1.4rem;
     font-weight: 600;
@@ -135,5 +132,4 @@
     letter-spacing: 0.032rem;
     text-align: right;
     color: var(--gray-font);
-  }
-  
+}

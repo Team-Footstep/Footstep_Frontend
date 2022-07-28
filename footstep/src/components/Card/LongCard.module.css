@@ -5,7 +5,6 @@
     border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: var(--white);
-    margin: 20px;
 }
 .card_profile_img {
     position: absolute;

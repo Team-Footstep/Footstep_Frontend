@@ -46,8 +46,7 @@ function TopBanner() {
         <div
             className={styles.outer_container}
             style={{
-                backgroundImage: `url(${bannerArr[slideCnt].img_url}
-            )`,
+                backgroundImage: `url(${bannerArr[slideCnt].img_url})`,
             }}
         >
             <div className={styles.inner_container}>
