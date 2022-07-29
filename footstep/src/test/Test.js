@@ -1,5 +1,4 @@
 import React from "react";
-import ProfileSetting from "../components/ProfileSetting/ProfileSetting.js";
 
 function Test() {
   return (
