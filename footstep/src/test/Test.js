@@ -4,7 +4,7 @@ import ProfileSetting from "../components/ProfileSetting/ProfileSetting.js";
 function Test() {
   return (
     <div>
-      <ProfileSetting />
+      <h1>TEST PAGE</h1>
     </div>
   );
 }
