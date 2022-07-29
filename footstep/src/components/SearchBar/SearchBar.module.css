@@ -29,8 +29,23 @@
   position: relative;
   right:5rem;
   border-radius: 50%;
-  box-shadow: -4px 0 4px 0 rgba(50, 70, 94, 0.29);
+  box-shadow: -0.4rem 0 0.rem 0 rgba(50, 70, 94, 0.29);
   background-image: url(../../icons/searchbtn.svg);
+  /* background-size: cover; */
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right center;
+}
+
+.search_btn:hover {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--footstep_blue);
+  position: relative;
+  right: 5rem;
+  border-radius: 50%;
+  box-shadow: -4px 0 4px 0 rgba(50, 70, 94, 0.29);
+  background-image: url(../../icons/searchbtn_click.svg);
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: right center;
 }

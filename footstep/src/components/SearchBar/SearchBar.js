@@ -6,7 +6,7 @@ function SearchBar () {
     return (
         <div className={styles.search_bar}>
           <input className={styles.search_input} type="text" placeholder="Search for other’s footstep..." />
-          <button className={styles.search_btn}>
+          <button className={styles.search_btn} onClick={null}>
           </button>
             
               
