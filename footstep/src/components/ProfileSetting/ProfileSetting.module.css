@@ -2,14 +2,14 @@
 label {
   display: block;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: 0.034rem;
   text-align: left;
-  color: #343a40;
+  color: var(--font-black);
 }
 
 .body {
@@ -26,13 +26,29 @@ label {
   height: 53.5rem;
 }
 
+.inputstyles {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.6rem;
+  font-family: Pretendard;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--font-black);
+}
+
+button {
+  transition-duration: 0.4s;
+}
+
 /* 프로필정보 꾸미기 */
 .profile_container {
   width: 100.8rem;
   height: 34.7rem;
   position: relative;
   padding: 3rem 0 0 3rem;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--whiteblue-bg);
   margin-bottom: 2rem;
@@ -44,6 +60,7 @@ label {
   display: inline-block;
   position: relative;
 }
+
 .image {
   width: 15rem;
   height: 15.1rem;
@@ -89,11 +106,32 @@ label {
 .about_me {
   width: 72.1rem;
   height: 5.8rem;
+  resize: none;
   margin: 0.4rem 0 2.4rem 0;
   border-radius: 0.7rem;
   border: solid 0.1rem var(--light-blue);
   background-color: var(--white);
+  display: flex;
+  align-items: center;
+  outline-color: var(--footstep_blue);
 }
+
+/* .about_me::placeholder {
+  position: relative;
+  top: 0.8rem;
+} */
+
+.about_me::-webkit-scrollbar {
+  display: none;
+}
+/* .input_text_about_me {
+  white-space: pre-line;
+  width: 45.9rem;
+  height: 4.8rem;
+  border: none;
+} */
+
+/* 이제 버튼을 꾸며볼게 */
 
 .profile_button_bundle {
   display: flex;
@@ -107,7 +145,50 @@ label {
   /* margin: 24px 20px 0 494px; */
   /* padding: 5px 10px; */
   border-radius: 1.5rem;
-  border: solid 0.2rem #32465e;
+  border: solid 0.2rem var(--footstep_blue);
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--footstep_blue);
+}
+.cancle:hover,
+.change:hover {
+  width: 13.2rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  /* border: solid 0.2rem var(--footstep_blue); */
+  background-color: var(--footstep_blue);
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+
+.cancel:focus,
+.change:focus {
+  width: 13.2rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+  background-color: #222c38;
 }
 
 .save,
@@ -116,18 +197,62 @@ label {
   width: 13.2rem;
   height: 2.9rem;
   border-radius: 1.5rem;
-  background-color: #32465e;
+  background-color: var(--footstep_blue);
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
 }
-/* 이메일인증 꾸미기 */
+
+.save:hover,
+.send_email:hover {
+  width: 13.2rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+  background-color: #222c38;
+}
+
+.save:focus,
+.send_email:focus {
+  width: 13.2rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  background-color: #8294a9;
+  flex-grow: 0;
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+
+/* 이메일인증 컨테이너 꾸미기 */
 .email_Authen_container {
   width: 100.8rem;
   height: 16.8rem;
   display: flex;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--whiteblue-bg);
-  /* margin-top: 1rem; */
 }
 
 .email_form_container {
@@ -156,45 +281,14 @@ label {
   width: 32rem;
   height: 3.4rem;
   border-radius: 7px;
-  border: solid 1px #e7eaee;
-  background-color: #fff;
+  border: solid 1px var(--light-blue);
+  background-color: var(--white);
   margin-top: 0.4rem;
 }
 
-.send_email {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
+.send_email,
 .change {
   position: absolute;
   right: 0;
   bottom: 0;
-}
-
-.text_cancle,
-.text_change {
-  font-family: NotoSans;
-  font-size: 1.4rem;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #32465e;
-}
-
-.text_save,
-.text_send_email {
-  font-family: NotoSans;
-  font-size: 1.4rem;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
 }

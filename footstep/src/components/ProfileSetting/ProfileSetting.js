@@ -16,22 +16,23 @@ function ProfileSetting({ image }) {
       ...values,
       [event.target.name]: event.target.value,
     });
+    // values.about_me = values.replace.about_me("\r", "<br/>");
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    alert(JSON.stringify(values, null, 2));
-    // const regEmail =
-    //   /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-    // if (!regEmail.test(values.email)) {
-    //   return
-    // } else {
-    //   alert(JSON.stringify(values, null, 2));
-    // }
+    // alert(JSON.stringify(values, null, 2));
+    const regEmail =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    if (!regEmail.test(values.email)) {
+      return alert("e-mail양식이 틀렸습니다");
+    } else {
+      alert(JSON.stringify(values, null, 2));
+    }
   };
 
   const onClick = () => {
-    setValues("");
+    setValues(values.map((k) => ""));
     //변경하기를 클릭할시 input안의 state value값을 초기화 하고싶다!!!
   };
 
@@ -80,7 +81,7 @@ function ProfileSetting({ image }) {
                 <input
                   type="text"
                   id="name"
-                  className={styles.name}
+                  className={`${styles.name} ${styles.inputstyles}`}
                   name="name"
                   value={values.name}
                   placeholder="이름을 작성해 주세요..."
@@ -92,7 +93,7 @@ function ProfileSetting({ image }) {
                 <input
                   type="text"
                   id="job"
-                  className={styles.job}
+                  className={`${styles.job} ${styles.inputstyles}`}
                   name="job"
                   value={values.job}
                   placeholder="직업을 작성해 주세요..."
@@ -101,28 +102,38 @@ function ProfileSetting({ image }) {
               </div>
               <div>
                 <label htmlFor="about_me">자기소개</label>
-                <input
+                {/* <input
                   type="text"
                   id="about_me"
-                  className={styles.about_me}
+                  className={`${styles.about_me} ${styles.inputstyles}`}
                   name="about_me"
                   value={values.about_me}
                   placeholder="자기소개를 작성해 주세요..."
                   onChange={onChange}
-                ></input>
+                ></input> */}
+                <textarea
+                  id="about_me"
+                  className={`${styles.about_me} ${styles.inputstyles}`}
+                  name="about_me"
+                  value={values.about_me}
+                  placeholder="자기소개를 작성해 주세요..."
+                  onChange={onChange}
+                ></textarea>
               </div>
             </div>
             <div className={styles.profile_button_bundle}>
               <div>
                 <button type="button" className={styles.cancle}>
                   <Link to="/">
-                    <span className={styles.text_cancle}>취소하기</span>
+                    {/* <span className={styles.text_cancle}>취소하기</span> */}
+                    취소하기
                   </Link>
                 </button>
               </div>
               <div>
                 <button className={styles.save}>
-                  <span className={styles.text_save}>저장하기</span>
+                  {/* <span className={styles.text_save}>저장하기</span> */}
+                  저장하기
                 </button>
               </div>
             </div>
@@ -143,7 +154,7 @@ function ProfileSetting({ image }) {
                   type="text"
                   id="email"
                   name="email"
-                  className={styles.email}
+                  className={`${styles.email} ${styles.inputstyles}`}
                   value={values.email}
                   placeholder="e-mail을 작성해 주세요..."
                   onChange={onChange}
@@ -151,9 +162,10 @@ function ProfileSetting({ image }) {
               </div>
               <div>
                 <button className={styles.send_email}>
-                  <span className={styles.text_send_email}>
+                  {/* <span className={styles.text_send_email}>
                     인증코드 보내기
-                  </span>
+                  </span> */}
+                  인증코드 보내기
                 </button>
               </div>
             </div>
@@ -165,7 +177,7 @@ function ProfileSetting({ image }) {
                   type="number"
                   id="code"
                   name="code"
-                  className={styles.code}
+                  className={`${styles.code} ${styles.inputstyles}`}
                   value={values.code}
                   placeholder="코드를 입력해 주세요..."
                   onChange={onChange}
@@ -177,7 +189,8 @@ function ProfileSetting({ image }) {
                   onClick={onClick}
                   className={styles.change}
                 >
-                  <span className={styles.text_change}>변경하기</span>
+                  {/* <span className={styles.text_change}>변경하기</span> */}
+                  변경하기
                 </button>
               </div>
             </div>
