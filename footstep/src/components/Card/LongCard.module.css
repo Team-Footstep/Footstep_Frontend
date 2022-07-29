@@ -5,7 +5,9 @@
     border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: var(--white);
-    margin: 20px;
+}
+.card_long:hover {
+    background-color: var(--light-blue);
 }
 .card_profile_img {
     position: absolute;
@@ -39,6 +41,9 @@
     top: 31px;
     left: 85px;
 }
+/* .card_long:hover .card_name {
+    color: var(--white);
+} */
 .card_job {
     width: 108px;
     height: 12px;
@@ -60,6 +65,9 @@
     top: 48px;
     left: 85px;
 }
+/* .card_long:hover .card_job {
+    color: var(--grayblue-border);
+} */
 .card_title {
     width: 207px;
     height: 32px;
@@ -79,6 +87,9 @@
     top: 85px;
     left: 16px;
 }
+/* .card_long:hover .card_title {
+    color: var(--white);
+} */
 .card_content {
     position: absolute;
     top: 122px;
@@ -97,7 +108,9 @@
     color: var(--darkblack-font);
     overflow: hidden;
 }
-
+/* .card_long:hover .card_content {
+    color: var(--whiteblue-bg);
+} */
 .card_footer {
     width: 237px;
     height: 40px;

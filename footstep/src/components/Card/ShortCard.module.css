@@ -2,10 +2,12 @@
     position: relative;
     width: 237px;
     height: 175px;
-    margin: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: var(--white);
+}
+.card_short:hover {
+    background-color: var(--light-blue);
 }
 .card_profile_img {
     position: absolute;
@@ -39,6 +41,7 @@
     top: 28px;
     left: 85px;
 }
+
 .card_job {
     width: 108px;
     height: 12px;
@@ -117,3 +120,13 @@
     color: var(--darkblack-font);
     display: inline-block;
 }
+
+/* .card_short:hover .card_name,
+.card_short:hover .card_title,
+.card_short:hover .card_foot_cnt,
+.card_short:hover .card_foot_img {
+    color: var(--white);
+}
+.card_short:hover .card_job {
+    color: var(--light-blue);
+} */
