@@ -68,6 +68,10 @@
     border-radius: 15px;
     border: solid 2px var(--footstep_blue);
 }
+.more_btn:hover {
+    background-color: var(--footstep_blue);
+    color: var(--white);
+}
 
 #trend_box {
     margin: 12rem auto 26.1rem;

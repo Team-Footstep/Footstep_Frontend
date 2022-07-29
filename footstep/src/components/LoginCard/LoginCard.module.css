@@ -47,6 +47,13 @@
     border: solid 1px var(--light-blue);
     background-color: var(--white);
     padding-left: 2rem;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    color: var(--font-black);
 }
 #login_input::placeholder {
     font-family: Pretendard;
@@ -71,6 +78,9 @@
     font-style: normal;
     letter-spacing: 0.34px;
     color: var(--white);
+}
+#login_btn:hover {
+    background-color: #222c38;
 }
 
 #join_div {
@@ -104,6 +114,13 @@
     border: solid 1px var(--light-blue);
     background-color: var(--white);
     padding-left: 2rem;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.34px;
+    color: var(--font-black);
 }
 .join_input::placeholder {
     font-family: Pretendard;
@@ -112,7 +129,7 @@
     font-stretch: normal;
     font-style: normal;
     letter-spacing: 0.34px;
-    color: #737373;
+    color: var(--gray-font);
 }
 
 #create_btn {
@@ -131,6 +148,10 @@
     letter-spacing: 0.34px;
     text-align: center;
     color: var(--footstep_blue);
+}
+#create_btn:hover {
+    background-color: var(--footstep_blue);
+    color: var(--white);
 }
 
 #find_div {
