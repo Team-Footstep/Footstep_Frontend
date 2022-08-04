@@ -8,6 +8,7 @@ import LongCard from "../../components/Card/LongCard.js";
 import ProfileCard from "../../components/ProfileCard/ProfileCard.js";
 import TopBanner from "../../components/Banner/TopBanner.js";
 import BodyBanner from "../../components/Banner/BodyBanner.js";
+import MainSearchBar from "../../components/MainSearchBar/MainSearchBar.js";
 
 function Home() {
     const [open, setOpen] = useState(true);
@@ -28,6 +29,13 @@ function Home() {
             follow_cnt: "16",
         });
     }, []);
+
+    const keywords = [
+        "프론트앤드 경험",
+        "백앤드 경력",
+        "IT회사 면접",
+        "디자인 커리큘럼",
+    ];
     return (
         <div>
             <Header state={open} clickFunc={sideBarHandler} />
@@ -43,9 +51,8 @@ function Home() {
                 <div className={styles.scroll}>
                     <div className={styles.body_contents}>
                         <TopBanner />
-                        <div style={{ height: 193 }}>
-                            {/* 검색바 들어갈 자리
-                        이 div를 없애고 검색바 컴포넌트 넣기 */}
+                        <div id={styles.searchBar_div}>
+                            <MainSearchBar keywords={keywords} />
                         </div>
                         <ProfileCard
                             image={"https://via.placeholder.com/200x100"}

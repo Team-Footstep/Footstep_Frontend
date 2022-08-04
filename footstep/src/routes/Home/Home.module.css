@@ -19,6 +19,10 @@
     height: 100vh;
 }
 
+#searchBar_div {
+    margin-bottom: 12.1rem;
+}
+
 #new_footstep {
     margin: 17.1rem auto 14rem;
     width: 100.8rem;
