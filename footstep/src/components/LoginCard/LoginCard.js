@@ -2,6 +2,7 @@ import styles from "./LoginCard.module.css";
 import arrow from "../../icons/ArrowForward.svg";
 import checkCircle from "../../icons/CheckCircle.svg";
 import cancel from "../../icons/Cancel.svg";
+import { ReactComponent as CheckRec } from "../../icons/checkRec.svg";
 import { useState } from "react";
 
 function LoginCard() {
@@ -34,6 +35,13 @@ function LoginCard() {
         console.log(event.target[0].value);
         console.log(event.target[1].value);
         if (event.target[0].value === "") {
+            setJoinStatus(-2); //이름 미입력
+            return false;
+        } else if (event.target[1].value === "") {
+            setJoinStatus(-3); //이메일 미입력
+            return false;
+        } else if (!checked) {
+            setJoinStatus(-4);
             return false;
         } else if (!regEmail.test(event.target[1].value)) {
             setJoinStatus(-1);
@@ -46,6 +54,9 @@ function LoginCard() {
         event.target[0].value = "";
         event.target[1].value = "";
     };
+
+    const [checked, setChecked] = useState(false);
+
     return (
         <div id={styles.align_wrapper}>
             <div id={styles.wrapper}>
@@ -86,6 +97,23 @@ function LoginCard() {
                                 <img src={checkCircle} alt="" />
                                 <span>계정 생성이 완료되었습니다.</span>
                             </div>
+                        ) : joinStatus < 0 ? (
+                            <div
+                                className={`${styles.successNoti} ${styles.failNoti}`}
+                            >
+                                <img src={cancel} alt="" />
+                                <span>
+                                    {joinStatus === -1
+                                        ? "계정 생성에 실패하였습니다."
+                                        : joinStatus === -2
+                                        ? "이름을 입력해주세요."
+                                        : joinStatus === -3
+                                        ? "E-mail을 입력해주세요."
+                                        : joinStatus === -4
+                                        ? "개인정보 수집 및 이용에 대한 동의가 필요합니다."
+                                        : null}
+                                </span>
+                            </div>
                         ) : null}
                         <form onSubmit={onJoinHandler}>
                             <input
@@ -98,17 +126,36 @@ function LoginCard() {
                                 placeholder="E-mail을 입력하세요"
                                 className={styles.join_input}
                             />
+                            <label id={styles.agree_label}>
+                                <input
+                                    type="checkbox"
+                                    checked={checked}
+                                    onChange={(e) =>
+                                        setChecked(e.target.checked)
+                                    }
+                                ></input>
+                                {checked ? (
+                                    <CheckRec stroke="#32465e" />
+                                ) : (
+                                    <CheckRec stroke="#999FA7" />
+                                )}
+
+                                <span>
+                                    <a href="#">개인 정보 수집 및 이용</a>에
+                                    대해서 동의합니다.
+                                </span>
+                            </label>
                             <button id={styles.create_btn}>
                                 Create Account
                             </button>
                         </form>
                     </div>
-                    <div id={styles.find_div}>
+                    {/* <div id={styles.find_div}>
                         <a id={styles.find_text} href="#">
                             이메일 계정 찾기
                         </a>
                         <img src={arrow} alt="" />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

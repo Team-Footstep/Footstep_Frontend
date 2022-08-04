@@ -6,6 +6,7 @@
     align-items: center;
     position: absolute;
     top: 0;
+    background-color: var(--whiteblue-bg);
 }
 #wrapper {
     width: 45rem;
@@ -132,8 +133,40 @@
     color: var(--gray-font);
 }
 
+/* input[type="checkbox"] {
+    appearance: none;
+} */
+.checkbox_checked {
+    fill: #000;
+}
+#agree_label {
+    display: flex;
+    margin: 1.2rem 0 1.4rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    vertical-align: middle;
+}
+#agree_label span {
+    /* height: 2.4rem; */
+    margin-left: 0.6rem;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.342857px;
+    color: var(--gray-font);
+}
+#agree_label a {
+    text-decoration: underline;
+}
+
+#agree_label img {
+    fill: var(--font-black);
+}
+
 #create_btn {
-    margin: 1rem 0 2rem;
+    margin: 1rem 0 1.8rem;
     width: 100%;
     height: 6rem;
     border-radius: 15px;
