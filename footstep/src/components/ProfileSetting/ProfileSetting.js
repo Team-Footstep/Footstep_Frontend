@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "../ProfileSetting/ProfileSetting.module.css";
 import { Link } from "react-router-dom";
 
-function ProfileSetting({ image }) {
+function ProfileSetting() {
   const [values, setValues] = useState({
     name: "",
     job: "",
@@ -17,6 +17,26 @@ function ProfileSetting({ image }) {
       [event.target.name]: event.target.value,
     });
     // values.about_me = values.replace.about_me("\r", "<br/>");
+  };
+
+  const onChange_image = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    } else {
+      //업로드 취소할 시
+      setImage(
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      );
+      return;
+    }
+    //화면에 프로필 사진 표시
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
 
   const onSubmit = (event) => {
@@ -36,6 +56,11 @@ function ProfileSetting({ image }) {
     //변경하기를 클릭할시 input안의 state value값을 초기화 하고싶다!!!
   };
 
+  const [Image, setImage] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
+  const fileInput = useRef(null);
+
   // const obj = JSON.parse(values);
 
   // console.log(
@@ -51,8 +76,14 @@ function ProfileSetting({ image }) {
       <div className={styles.container}>
         <div className={styles.profile_container}>
           <div className={styles.profile_image_edit}>
-            <img src={image} className={styles.image} />
-            <button type="button" className={styles.profile_edit_button}>
+            <img src={Image} className={styles.image} />
+            <button
+              type="button"
+              onClick={() => {
+                fileInput.current.click();
+              }}
+              className={styles.profile_edit_button}
+            >
               <svg
                 width="36"
                 height="36"
@@ -67,6 +98,14 @@ function ProfileSetting({ image }) {
                 />
               </svg>
             </button>
+            <input
+              type="file"
+              style={{ display: "none" }}
+              accept="image/jpg,impge/png,image/jpeg"
+              name="profile_img"
+              onChange={onChange_image}
+              ref={fileInput}
+            />
           </div>
           <form
             action=""
