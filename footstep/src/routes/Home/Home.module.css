@@ -17,6 +17,11 @@
 
 .body_contents {
     height: 100vh;
+    padding-top: 6rem;
+}
+
+#searchBar_div {
+    margin-bottom: 12.1rem;
 }
 
 #new_footstep {
