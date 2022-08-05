@@ -1,12 +1,12 @@
-// import React from "react";
-// import styles from "../ProfileSetting/ProfileSetting.module.css";
+import React from "react";
+import styles from "../ProfileSetting/ProfileSetting.module.css";
+import ProfileSetting from "../../components/ProfileSetting/ProfileSetting";
+function Route_ProfileSetting() {
+  return (
+    <div>
+      <ProfileSetting />
+    </div>
+  );
+}
 
-// function ProfileSetting () {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default ProfileSetting;
+export default Route_ProfileSetting;
