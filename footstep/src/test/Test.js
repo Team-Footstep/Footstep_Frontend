@@ -1,9 +1,10 @@
 import React from "react";
+import MyFootstep from "../routes/MyFootstep/MyFootstep";
 
 function Test() {
     return (
         <div>
-            <h1>TEST PAGE</h1>
+            <MyFootstep/>
         </div>
     );
 }

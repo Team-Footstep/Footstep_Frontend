@@ -1,0 +1,14 @@
+.header {
+    position: fixed;
+    z-index: 100;
+}
+
+.contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    position: fixed;
+    flex-direction: row;
+}
