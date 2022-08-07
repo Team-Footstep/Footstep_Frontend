@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Header/Header.module.css";
 
-function Header({ state, clickFunc, icon }) {
+function Header({ state, clickFunc, icon, comments_clickFunc }) {
   return (
     <div>
       <div className={styles.header}>
@@ -21,10 +21,19 @@ function Header({ state, clickFunc, icon }) {
             Footstep
           </div>
         </button>
+        <div className={styles.center}></div>
         <div className={styles.right}>
-          <button className={icon ? styles.icon_eye : styles.blind}></button>
-          <button></button>
-          <button></button>
+          <button className={icon ? styles.icon_public : styles.blind}></button>
+          <button
+            className={icon ? styles.icon_bookmark : styles.blind}
+          ></button>
+          <button
+            className={icon ? styles.icon_comments : styles.blind}
+            onClick={comments_clickFunc}
+          ></button>
+          <button
+            className={icon ? styles.icon_notification : styles.blind}
+          ></button>
           <button className={icon ? styles.blind : styles.start}>
             시작하기
           </button>
