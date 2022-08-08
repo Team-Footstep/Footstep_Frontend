@@ -21,6 +21,7 @@ function Test() {
         clickFunc={sideBarHandler}
         comments_clickFunc={commentsHandler}
         icon={true}
+        upper_block={true}
       />
       <div>
         <SideBar

@@ -38,7 +38,12 @@ function Home() {
   ];
   return (
     <div>
-      <Header state={open} clickFunc={sideBarHandler} icon={false} />
+      <Header
+        state={open}
+        clickFunc={sideBarHandler}
+        icon={false}
+        upper_block={false}
+      />
       <div className={styles.contents}>
         <SideBar
           img={null}

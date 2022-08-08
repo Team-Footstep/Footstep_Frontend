@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Header/Header.module.css";
 
-function Header({ state, clickFunc, icon, comments_clickFunc }) {
+function Header({ state, clickFunc, icon, comments_clickFunc, upper_block }) {
   return (
     <div>
       <div className={styles.header}>
@@ -21,7 +21,7 @@ function Header({ state, clickFunc, icon, comments_clickFunc }) {
             Footstep
           </div>
         </button>
-        <div className={styles.center}></div>
+        <div className={upper_block ? styles.center : styles.blind}></div>
         <div className={styles.right}>
           <button className={icon ? styles.icon_public : styles.blind}></button>
           <button
