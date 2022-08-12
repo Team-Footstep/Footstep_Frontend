@@ -24,12 +24,12 @@
   margin-bottom: 5.6rem;
 }
 
-#new_footstep {
-  margin: 0 auto 12.1rem;
+.new_footstep {
+  margin: 0 auto;
   width: 100.8rem;
   text-align: center;
 }
-#new_footstep h2 {
+.new_footstep h2 {
   height: 3.5rem;
   font-family: "Noto Sans KR";
   font-size: 1.7rem;
@@ -40,8 +40,9 @@
   letter-spacing: -0.12px;
   text-align: center;
   color: var(--darkblack-font);
+  margin-bottom: 4rem;
 }
-#new_footstep h2 span {
+.new_footstep h2 span {
   font-family: "Noto Sans KR";
   font-size: 2rem;
   font-weight: bold;
@@ -54,9 +55,10 @@
 }
 
 .longcard_box {
-  margin: 4.2rem 0 5rem;
+  margin: 7rem 0 5rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1.9rem;
+  justify-content: space-around;
 }
 .more_btn {
   width: 11.8rem;

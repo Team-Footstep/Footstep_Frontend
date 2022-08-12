@@ -10,12 +10,12 @@ function ProfileCard({ content }) {
     footprintNum: content.footprintNum,
   };
   return (
-    <div className={styles.profile_card}>
+    <div id={styles.profile_card}>
       <img src={content.userImgUrl} className={styles.image}></img>
       <div className={styles.content}>
-        <h2 className={styles.username}>{content.userName}</h2>
+        <h3 className={styles.username}>{content.userName}</h3>
         <p className={styles.job}>
-          {content.job} | Foot Print<span>2K</span>
+          {content.job} | Foot Print<span>{content.profileFootprint}</span>
         </p>
         <p
           className={styles.introduction}

@@ -1,4 +1,4 @@
-.profile_card {
+#profile_card {
   width: 100.8rem;
   height: 21.5rem;
   background-color: var(--whiteblue-bg);
@@ -7,6 +7,7 @@
   position: relative;
   margin: 0 auto;
   margin-right: 8.6rem;
+  text-align: left;
 }
 /*. rem-> rem 변환 방법 => 구글링해도 다른것 같음 */
 /* padding 크기 잘 모르겠어서 비워둠
@@ -100,6 +101,7 @@
   text-align: left;
   color: var(--gray-font);
   margin-left: 0.6rem;
+  white-space: nowrap;
 }
 .line_4 {
   position: absolute;
