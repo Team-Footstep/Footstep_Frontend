@@ -11,7 +11,6 @@ import BodyBanner from "../../components/Banner/BodyBanner.js";
 import MainSearchBar from "../../components/MainSearchBar/MainSearchBar.js";
 
 function Home() {
-
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(true);
   const sideBarHandler = () => {
@@ -38,7 +37,6 @@ function Home() {
     console.log(content);
 
     setLongCardContent((current) => [content, ...current]);
-    setProfCardContent(longCardContent);
     setLoading(true);
   };
   const getNewContent = async () => {
@@ -48,7 +46,6 @@ function Home() {
       getProfile(contentJson.result[i].userId, contentJson.result[i]);
     }
   };
-  console.log(longCardContent, longCardContent[0], profCardContent);
   console.log(loading);
 
   //세션(?)에 저장된 로그인 정보에 따라 userid 부분은 변수로 수정할 예정
