@@ -1,0 +1,49 @@
+.userCommentBox {
+  margin-top: 1.2rem;
+}
+
+.user_image_name {
+  display: flex;
+  align-items: center;
+}
+
+.comment_image {
+  width: 2rem;
+  height: 2rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: #d9d9d9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.userName {
+  display: inline-block;
+  margin-left: 0.6rem;
+  font-family: NotoSans;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: -00.1rem;
+  text-align: left;
+  color: var(--footstep_blue);
+}
+
+.userComment {
+  width: 26.4rem;
+  /* margin: 0.3rem 1.5rem 0.3rem 0.6rem; */
+  margin: 0.3rem auto;
+  font-family: NotoSans;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: -0.08rem;
+  text-align: left;
+  color: var(--footstep_blue);
+}
