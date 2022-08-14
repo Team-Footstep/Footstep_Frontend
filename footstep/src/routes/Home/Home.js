@@ -70,84 +70,7 @@ function Home() {
     });
   }, []);
 
-<<<<<<< HEAD
-    const keywords = [
-        "프론트앤드 경험",
-        "백앤드 경력",
-        "IT회사 면접",
-        "디자인 커리큘럼",
-    ];
-  
-    return (
-        <div>
-            <Header state={open} clickFunc={sideBarHandler} />
-            <div className={styles.contents}>
-                <SideBar
-                    img={null}
-                    name={"문비"}
-                    job={"프론트앤드 디자이너"}
-                    footprint={2000}
-                    display={!open}
-                    login={true}
-                />
-                <div className={styles.scroll}>
-                    <div className={styles.body_contents}>
-                        <TopBanner />
-                        <div id={styles.searchBar_div}>
-                            <MainSearchBar keywords={keywords} />
-                        </div>
-                        <ProfileCard
-                            image={"https://via.placeholder.com/200x100"}
-                            username={"문비"}
-                            job={"프론트앤드 디자이너"}
-                            introduction={`새로운 기록입니다.
-                            <br />Preview에 작성한 내용이 출력됩니다.`}
-                            date={"2021/07/12"}
-                            k={"2K"}
-                        />
-                        <div id={styles.new_footstep}>
-                            <h2>
-                                Follower's<span>NEW FOOTSTEP</span>
-                            </h2>
-                            <div className={styles.longcard_box}>
-                                <LongCard content={cardContent} />
-                                <LongCard content={cardContent} />
-                                <LongCard content={cardContent} />
-                                <LongCard content={cardContent} />
-                            </div>
-                            <button className={styles.more_btn}>
-                                View More
-                            </button>
-                        </div>
-                        <BodyBanner />
-                        <div id={styles.trend_box}>
-                            <h2>
-                                Trending<span>THIS WEEK</span>
-                            </h2>
-                            <div className={styles.shortcard_box}>
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                                <ShortCard content={cardContent} />
-                            </div>
-                        </div>
 
-                        <Footer />
-                    </div>
-                </div>
-=======
   const keywords = [
     "프론트앤드 경험",
     "백앤드 경력",
@@ -176,7 +99,6 @@ function Home() {
             <TopBanner />
             <div id={styles.searchBar_div}>
               <MainSearchBar keywords={keywords} />
->>>>>>> develop
             </div>
 
             <div className={styles.new_footstep}>

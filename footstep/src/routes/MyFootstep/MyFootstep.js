@@ -5,16 +5,28 @@ import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
 import MyfootstepBanner from "../../components/Banner/MyfootstepBanner";
 import TopBanner from"../../components/Banner/TopBanner";
+import Comments_SideBar from "../../components/Comments_SideBar/Comments_SideBar";
 
 function MyFootstep () {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [commentsopen, setCommentsOpen] = useState(false);
   const sideBarHandler = () => {
-      setOpen((prev) => !prev);
+    setOpen((prev) => !prev);
+  };
+
+  const commentsHandler = () => {
+    setCommentsOpen((prev) => !prev);
   };
 
   return (
     <div>
-        <Header state={open} clickFunc={sideBarHandler} />
+        <Header
+        state={open}
+        clickFunc={sideBarHandler}
+        comments_clickFunc={commentsHandler}
+        icon={true}
+        upper_block={true}
+        />
         <div className={styles.contents}>
             <SideBar
                 img={null}
@@ -29,6 +41,9 @@ function MyFootstep () {
             <TopBanner />
             </div>
           </div>
+        <div>
+          <Comments_SideBar display={commentsopen} />
+        </div>
         </div>
       
       <Footer />
