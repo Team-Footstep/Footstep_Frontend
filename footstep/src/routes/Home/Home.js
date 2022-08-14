@@ -36,6 +36,7 @@ function Home() {
         "IT회사 면접",
         "디자인 커리큘럼",
     ];
+  
     return (
         <div>
             <Header state={open} clickFunc={sideBarHandler} />

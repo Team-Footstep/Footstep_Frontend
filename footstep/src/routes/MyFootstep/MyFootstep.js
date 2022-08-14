@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../../components/SideBar/SideBar.js";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
+import MyfootstepBanner from "../../components/Banner/MyfootstepBanner";
+import TopBanner from"../../components/Banner/TopBanner";
 
 function MyFootstep () {
   const [open, setOpen] = useState(true);
@@ -22,11 +24,14 @@ function MyFootstep () {
                 display={!open}
                 login={true} 
             />
+          <div className={styles.scroll}>
             <div className={styles.body_contents}>
-              
+            <TopBanner />
             </div>
+          </div>
         </div>
-        <Footer />
+      
+      <Footer />
             
       
     </div>
