@@ -1,5 +1,5 @@
 import styles from "../Search/Search.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import SideBar from "../../components/SideBar/SideBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -15,6 +15,73 @@ function Search() {
     const [cate, setCate] = useState(true);
 
     //임시 데이터, api에서 받아온 결과로 대체할 예정
+    // function Test() {
+    //     useEffect(() => {
+    //         fetch("/search/?word=")
+    //             .then((response) => {
+    //                 return response.json();
+    //             })
+    //             .then(function (data) {
+    //                 console.log(JSON.stringify(data));
+    //             });
+    //     }, []);
+
+    // function useFetch(url) {
+    //     const [title, setTitle] = useState(true);
+    //     const [img_url, setimg_url] = useState(null);
+    //     const [name, setName] = useState(null);
+    //     const [job, setJob] = useState(null);
+    //     const [content, setContent] = useState(null);
+    //     const [date, setDate] = useState(null);
+    //     const [foot_cnt, setFoot_cnt] = useState(null);
+
+      
+    //     useEffect(() => {
+    //       searchResultArr
+    //         .fetch(url)
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //           setData(data);
+    //           setLoading(false);
+    //         })
+    //         .catch((error) => {
+    //           setError(error);
+    //           setLoading(false);
+    //         });
+    //     }, [url]);
+      
+    //     return { loading, data, error };
+    //   }
+    // -----------------------------------------------------
+    // 
+
+
+    //--------------------------------------------------
+    const [word, setWord] = useState("");
+    const getWord = (text)=>{
+        setWord(text);
+        console.log(text);
+        // console.log(word);
+        // getResult(word);
+    }
+    const getResult = async (word) => {
+        const res = await fetch(
+          `/search?word=${word}&page=1`
+        ).then((res) => res.json());
+        console.log(res);
+    }
+
+    useEffect(()=>{
+        getResult(word);
+    }, [word]);
+    // return{title, img_url, name, job, content, date, foot_cnt};
+    // useEffect(() => {
+    //     searchResultArr();
+    //   }, []);
+
+
+    console.log(word);
+    
     const searchResultArr = [
         {
             title: "111Preview 내용이 들어갈 자리입니다. 이 카드의 제목은 한 줄까지 가능합니다. 111Preview 내용이 들어갈 자리입니다. 이 카드의 제목은 한 줄까지 가능합니다.",
@@ -99,7 +166,7 @@ function Search() {
                 <div className={styles.scroll}>
                     <div className={styles.body_contents}>
                         <div id={styles.body_header}>
-                            <SearchBar />
+                            <SearchBar getWord={getWord} />
                             <div className={styles.cate_btns}>
                                 <button
                                     className={

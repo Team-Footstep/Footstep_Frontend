@@ -70,6 +70,7 @@ function Home() {
     });
   }, []);
 
+
   const keywords = [
     "프론트앤드 경험",
     "백앤드 경력",
