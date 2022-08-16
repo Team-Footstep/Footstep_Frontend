@@ -1,5 +1,4 @@
 import styles from "./LoginCard.module.css";
-import arrow from "../../icons/ArrowForward.svg";
 import checkCircle from "../../icons/CheckCircle.svg";
 import cancel from "../../icons/Cancel.svg";
 import { ReactComponent as CheckRec } from "../../icons/checkRec.svg";
@@ -14,7 +13,7 @@ function LoginCard() {
     setJoinStatus(0);
 
     console.log(event.target[0].value);
-    if (event.target[0].value == "") {
+    if (event.target[0].value === "") {
       return false;
     } else if (!regEmail.test(event.target[0].value)) {
       setLoginStatus(-1);
@@ -133,7 +132,8 @@ function LoginCard() {
                 )}
 
                 <span>
-                  <a href="#">개인 정보 수집 및 이용</a>에 대해서 동의합니다.
+                  <a href="/login/terms">개인 정보 수집 및 이용</a>에 대해서
+                  동의합니다.
                 </span>
               </label>
               <button id={styles.create_btn}>Create Account</button>

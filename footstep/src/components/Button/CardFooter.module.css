@@ -1,0 +1,18 @@
+.footer {
+  display: inline-flex;
+}
+
+.cnt {
+  padding: 0 0.9rem 0 0.4rem;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.007em;
+  color: var(--white);
+}
+
+.footer img {
+  color: var(--gray-font);
+}
