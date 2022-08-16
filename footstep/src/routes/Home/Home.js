@@ -21,7 +21,7 @@ function Home() {
 
   const getProfile = async (userId, contentJson) => {
     const json = await (await fetch(`/users/profile/${userId}`)).json();
-    console.log(contentJson, json);
+    // console.log(contentJson, json);
     const content = {
       userImgUrl: json.result.userImgUrl,
       userName: json.result.userName,
@@ -34,7 +34,7 @@ function Home() {
       footprintNum: contentJson.footprintNum,
       commentNum: contentJson.commentNum,
     };
-    console.log(content);
+    // console.log(content);
 
     setLongCardContent((current) => [content, ...current]);
     setLoading(true);
@@ -46,7 +46,7 @@ function Home() {
       getProfile(contentJson.result[i].userId, contentJson.result[i]);
     }
   };
-  console.log(loading);
+  // console.log(loading);
 
   //세션(?)에 저장된 로그인 정보에 따라 userid 부분은 변수로 수정할 예정
   useEffect(() => {
@@ -104,13 +104,8 @@ function Home() {
               <h2>
                 Follower's<span>NEW FOOTSTEP</span>
               </h2>
-              {loading ? <ProfileCard content={longCardContent[0]} /> : null};
+              {loading ? <ProfileCard content={longCardContent[0]} /> : null}
               <div className={styles.longcard_box}>
-                {/* {longCardContent.length > 3
-                  ? longCardContent.map((item, index) => (
-                      <LongCard content={item} key={index} />
-                    ))
-                  : null} */}
                 {loading
                   ? longCardContent
                       .slice(1)
