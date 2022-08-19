@@ -58,7 +58,7 @@ function Home() {
   //trending 가져오기
   const getTrendProfile = async (userId, contentJson) => {
     const json = await (await fetch(`/users/profile/${userId}`)).json();
-    console.log(contentJson, json);
+    // console.log(contentJson, json);
 
     const content = {
       userImgUrl: json.result.userImgUrl,
@@ -70,7 +70,7 @@ function Home() {
       footprintNum: contentJson.footprintNum,
       commentNum: contentJson.commentNum,
     };
-    // console.log(content);
+    console.log(content);
 
     setTrendContent((current) => [content, ...current]);
     // setLoading(true);

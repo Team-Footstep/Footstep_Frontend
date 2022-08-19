@@ -6,12 +6,14 @@ import { ReactComponent as FootIcon } from "../../icons/footprint-icon.svg";
 function CardFooter({ content, color }) {
   return (
     <div className={styles.footer}>
-      <div className={styles.comment}>
-        <ComIcon fill={color} />
-        <span className={styles.cnt} style={{ color: color }}>
-          {content.commentNum}
-        </span>
-      </div>
+      {content.commentNum !== null ? (
+        <div className={styles.comment}>
+          <ComIcon fill={color} />
+          <span className={styles.cnt} style={{ color: color }}>
+            {content.commentNum}
+          </span>
+        </div>
+      ) : null}
       <div className={styles.stamp}>
         <StmIcon fill={color} />
         <span className={styles.cnt} style={{ color: color }}>

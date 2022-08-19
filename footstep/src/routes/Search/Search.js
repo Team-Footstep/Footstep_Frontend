@@ -20,7 +20,7 @@ function Search() {
     location.search.substring(location.search.indexOf("word=") + 5)
   );
   const [page, setPage] = useState(1);
-  console.log(word, page);
+  // console.log(word, page);
 
   const [postList, setPostList] = useState([
     {
@@ -67,27 +67,32 @@ function Search() {
     const userJson = await (
       await fetch(`/users/profile/${json.userIdx}`)
     ).json();
-    console.log(userJson);
-    json.commentNum = userJson.result.commentNum;
+    // console.log(userJson.result.commentNum);
+    if (userJson.result.commentNum === undefined) {
+      json.commentNum = null;
+    } else {
+      json.commentNum = userJson.result.commentNum;
+    }
     json.stampNum = userJson.result.stampNum;
     json.footprintNum = userJson.result.footprintNum;
 
-    console.log(json);
+    // console.log(json);
     setUserList((current) => [json, ...current]);
   };
   const getResult = async () => {
     const json = await (
       await fetch(`/search?word=${word}&page=${page}`)
     ).json();
-    console.log(json.result.postInfoList, json.result.usersInfoList);
+    // console.log(json.result.postInfoList, json.result.usersInfoList);
 
     for (let user of json.result.usersInfoList) {
       getProfile(user);
     }
 
+    // setUserList((current) => [...json.result.usersInfoList, ...current]);
     setPostList((current) => [...json.result.postInfoList, ...current]);
   };
-  console.log(userList, postList);
+  // console.log(userList, postList);
 
   useEffect(() => {
     getResult();
