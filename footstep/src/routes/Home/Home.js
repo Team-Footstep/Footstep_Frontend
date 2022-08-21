@@ -101,7 +101,6 @@ function Home() {
   //   commentNum: "16",
   // }
 
-
   const keywords = [
     "프론트엔드 경험",
     "백엔드 경력",
