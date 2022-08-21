@@ -5,6 +5,7 @@ import Comments_SideBar from "../components/Comments_SideBar/Comments_SideBar";
 
 //지금 이  Test 컴포넌트가 myfootstep컴포넌트라고 생각하고 만드는 중입니다..!!!
 function Test() {
+
   const [open, setOpen] = useState(false);
   const [commentsopen, setCommentsOpen] = useState(false);
   const sideBarHandler = () => {
@@ -39,5 +40,6 @@ function Test() {
     </div>
   );
 }
+
 
 export default Test;

@@ -1,0 +1,21 @@
+.header {
+    position: fixed;
+    z-index: 100;
+}
+
+.contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.scroll {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.body_contents {
+    height: 100vh;
+    padding-top: 6rem;
+}
