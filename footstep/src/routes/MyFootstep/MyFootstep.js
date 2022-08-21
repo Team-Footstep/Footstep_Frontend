@@ -10,14 +10,14 @@ import TextEditor from "../../components/TextEditor/TextEditor.js";
 import newDummyComment from "../../db/newDummyComment.json";
 import dummyBlock from "../../db/dummyBlock.json";
 
-function MyFootstep () {
+function MyFootstep ({userId}) {
   //calling api area==================
   useEffect(()=>{
     getNewContent();
   },[]);
   
   const getNewContent = async () => {
-    const contentJson = await (await fetch("/mainpage/new/2")).json();
+    const contentJson = await (await fetch("/pages/get/14")).json();
     console.log(contentJson);
   };
 

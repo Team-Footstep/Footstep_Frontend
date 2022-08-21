@@ -9,7 +9,7 @@ import CommentModal from '../CommentModal/CommentModal.js';
 
 function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime}) {
   const BLOCK_ID = "blockId";
-  const COMMENT_ID = "comment_id"
+  const COMMENT_ID = "comment_id";
   // const textArray = blockArray["result"]; => 이미 번역되어 들어옴
   const targetTextArray = blockArray.filter((id) => id[BLOCK_ID] == blockId);
   //입력받은 id에 해당하는 Array 필터
