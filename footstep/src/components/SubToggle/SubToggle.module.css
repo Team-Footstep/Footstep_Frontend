@@ -1,0 +1,38 @@
+.blind {
+  display: none;
+}
+
+.menu {
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.menu button {
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1.43;
+  letter-spacing: -0.01rem;
+  color: var(--footstep_blue);
+  cursor: pointer;
+}
+
+.menu_detail {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+a.detail {
+  font-size: 1.2rem;
+  font-weight: normal;
+  line-height: 1.8;
+  letter-spacing: -0.007rem;
+  text-align: left;
+  color: var(--footstep_blue);
+}
+
+a.detail:hover {
+  text-decoration: underline;
+}

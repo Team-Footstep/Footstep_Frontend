@@ -1,0 +1,95 @@
+.search_frame {
+    width: 60rem;
+    height: 7.2rem;
+    margin: 0 auto;
+}
+
+.search_bar {
+    background-color: var(--light-blue);
+    display: flex;
+    width: 60rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    border-radius: 2.5rem;
+    background-color: var(--light-blue);
+    border: none;
+    /* position:absolute; */
+}
+
+.search_input {
+    width: 55rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    background-color: var(--light-blue);
+    border: none;
+    padding-left: 2rem;
+
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: -0.01rem;
+    text-align: left;
+    color: var(--font-black);
+}
+
+.search_input::placeholder {
+    font-family: "Noto Sans";
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: -0.01rem;
+    text-align: left;
+    color: var(--gray-font);
+}
+.search_btn {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--footstep_blue);
+    position: relative;
+    /* right:5rem; */
+    border-radius: 50%;
+    box-shadow: -0.4rem 0 0.4rem 0 rgba(50, 70, 94, 0.29);
+    background-image: url(../../icons/searchbtn.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.search_btn:hover {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--footstep_blue);
+    position: relative;
+    /* right: 5rem; */
+    border-radius: 50%;
+    box-shadow: -4px 0 4px 0 rgba(50, 70, 94, 0.29);
+    background-image: url(../../icons/searchbtn_click.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.category_box {
+    position: column;
+    padding-left: 2rem;
+    margin-top: 0.4rem;
+}
+
+.hot_keyword {
+    font-family: "Noto Sans";
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.8;
+    letter-spacing: -0.07px;
+    text-align: left;
+    color: #737373;
+    height: 18px;
+    margin-right: 1rem;
+}
+.hot_keyword:hover {
+    text-decoration: underline;
+}

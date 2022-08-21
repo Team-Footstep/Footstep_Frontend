@@ -1,0 +1,132 @@
+.card_short {
+  position: relative;
+  width: 23.7rem;
+  height: 17.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+}
+.card_short:hover {
+  background-color: var(--light-blue);
+}
+.card_profile_img {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.card_name {
+  width: 10.8rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.1px;
+  text-align: left;
+  color: var(--footstep_blue);
+  overflow: hidden;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+
+  position: absolute;
+  top: 2.8rem;
+  left: 8.5rem;
+}
+
+.card_job {
+  width: 10.8rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.07px;
+  text-align: left;
+  color: var(--gray-font);
+  overflow: hidden;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+
+  position: absolute;
+  top: 4.5rem;
+  left: 8.5rem;
+}
+.card_title {
+  width: 20.7rem;
+  height: 3.2rem;
+  line-height: 1.6rem;
+
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.08px;
+  text-align: left;
+  color: var(--footstep_blue);
+  overflow: hidden;
+
+  position: absolute;
+  top: 8.5rem;
+  left: 1.6rem;
+}
+.card_line {
+  width: 20.7rem;
+  height: 0.1rem;
+  background-color: #bcc8d8;
+
+  position: absolute;
+  bottom: 3.8rem;
+  left: 1.6rem;
+}
+.card_footprint {
+  height: 1.8rem;
+
+  position: absolute;
+  bottom: 1.1rem;
+  right: 1.4rem;
+
+  display: flex;
+}
+.card_foot_cnt {
+  height: 1.8rem;
+  margin: 0 0.4rem 0 0;
+  font-family: "Noto Sans KR";
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.8rem;
+  letter-spacing: -0.06px;
+  text-align: left;
+  color: var(--darkblack-font);
+}
+.card_foot_img {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  color: var(--darkblack-font);
+  display: inline-block;
+}
+
+/* .card_short:hover .card_name,
+.card_short:hover .card_title,
+.card_short:hover .card_foot_cnt,
+.card_short:hover .card_foot_img {
+    color: var(--white);
+}
+.card_short:hover .card_job {
+    color: var(--light-blue);
+} */

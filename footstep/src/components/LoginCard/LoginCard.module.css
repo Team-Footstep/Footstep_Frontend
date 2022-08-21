@@ -1,0 +1,237 @@
+#align_wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  background-color: var(--whiteblue-bg);
+}
+#wrapper {
+  width: 45rem;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+}
+#header {
+  width: 100%;
+  height: 6rem;
+  background-color: var(--footstep_blue);
+  border-radius: 2.5rem 2.5rem 0 0;
+}
+#header h2 {
+  font-family: NotoSansKR;
+  font-size: 2rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 6rem;
+  letter-spacing: 0.6px;
+  text-align: center;
+  color: var(--white);
+}
+
+#content {
+  padding: 2rem 2.4rem 3rem 2.6rem;
+}
+
+#login_div form {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.9rem 0 3.4rem;
+}
+#login_input {
+  width: 30.2rem;
+  height: 6rem;
+  border-radius: 1.5rem;
+  border: solid 1px var(--light-blue);
+  background-color: var(--white);
+  padding-left: 2rem;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  color: var(--font-black);
+}
+#login_input::placeholder {
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  text-align: left;
+  color: var(--gray-font);
+}
+#login_btn {
+  width: 8.3rem;
+  height: 6rem;
+  border-radius: 1.5rem;
+  background-color: #32465e;
+
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  color: var(--white);
+}
+#login_btn:hover {
+  background-color: #222c38;
+}
+
+#join_div {
+  width: 40rem;
+}
+#join_div form {
+  margin-top: 1.9rem;
+}
+#join_text {
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.3px;
+  color: var(--gray-font);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.line {
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--light-blue);
+  margin-bottom: 2rem;
+}
+.join_input {
+  width: 100%;
+  height: 6rem;
+  margin-bottom: 1rem;
+  border-radius: 1.5rem;
+  border: solid 1px var(--light-blue);
+  background-color: var(--white);
+  padding-left: 2rem;
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  color: var(--font-black);
+}
+.join_input::placeholder {
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  color: var(--gray-font);
+}
+
+/* input[type="checkbox"] {
+    appearance: none;
+} */
+.checkbox_checked {
+  fill: #000;
+}
+#agree_label {
+  display: flex;
+  margin: 1.2rem 0 1.4rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+}
+#agree_label span {
+  /* height: 2.4rem; */
+  margin-left: 0.6rem;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.342857px;
+  color: var(--gray-font);
+}
+#agree_label a {
+  text-decoration: underline;
+}
+
+#agree_label img {
+  fill: var(--font-black);
+}
+
+#create_btn {
+  margin: 1rem 0 1.8rem;
+  width: 100%;
+  height: 6rem;
+  border-radius: 1.5rem;
+  border: solid 2px var(--footstep_blue);
+
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 6rem;
+  letter-spacing: 0.34px;
+  text-align: center;
+  color: var(--footstep_blue);
+}
+#create_btn:hover {
+  background-color: var(--footstep_blue);
+  color: var(--white);
+}
+
+#find_div {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+#find_text {
+  height: 1.8rem;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.8;
+  vertical-align: middle;
+  letter-spacing: 0.3px;
+  color: var(--gray-font);
+  text-decoration: underline;
+}
+
+.successNoti {
+  display: flex;
+  width: 100%;
+  height: 6rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--login-green-bg);
+  padding: 1.8rem 2rem;
+}
+.successNoti span {
+  font-family: "Noto Sans KR";
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.34px;
+  line-height: 2.4rem;
+  color: var(--login-green-text);
+}
+.successNoti img {
+  margin: 0.3rem 1rem 0.3rem 0;
+}
+.failNoti {
+  background-color: var(--login-red-bg);
+}
+.failNoti span {
+  color: var(--login-red-text);
+}
