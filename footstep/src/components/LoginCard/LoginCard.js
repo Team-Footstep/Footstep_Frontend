@@ -7,6 +7,25 @@ import { useState } from "react";
 function LoginCard() {
   const regEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
+  const loginUser = async (email) => {
+    const json = await await fetch(`users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+    console.log(json);
+
+    if (json.code === 1000) {
+      setLoginStatus(1);
+    } else {
+      setLoginStatus(-1);
+    }
+  };
   const [loginStatus, setLoginStatus] = useState(0);
   const onLoginHandler = (event) => {
     event.preventDefault();
@@ -22,8 +41,30 @@ function LoginCard() {
 
     //login api 호출
     //login 성공시 status:1, 실패시 status:-1
-    setLoginStatus(1);
+    loginUser(event.target[0].value);
     event.target[0].value = "";
+  };
+
+  const joinUser = async (email, name) => {
+    const json = await (
+      await fetch(`users/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          userName: name,
+        }),
+      })
+    ).json();
+    console.log(json);
+
+    if (json.code === 1000) {
+      setJoinStatus(1);
+    } else {
+      setJoinStatus(-1);
+    }
   };
 
   const [joinStatus, setJoinStatus] = useState(0);
@@ -49,7 +90,7 @@ function LoginCard() {
 
     //join api 호출
     //join 성공시 status:1, 실패시 status:-1
-    setJoinStatus(1);
+    joinUser(event.target[1].value, event.target[0].value);
     event.target[0].value = "";
     event.target[1].value = "";
   };
@@ -90,7 +131,7 @@ function LoginCard() {
             {joinStatus === 1 ? (
               <div className={styles.successNoti}>
                 <img src={checkCircle} alt="" />
-                <span>계정 생성이 완료되었습니다.</span>
+                <span>이메일로 전송된 회원가입 링크를 확인하세요.</span>
               </div>
             ) : joinStatus < 0 ? (
               <div className={`${styles.successNoti} ${styles.failNoti}`}>

@@ -9,6 +9,7 @@ import Route_ProfileSetting from "./routes/ProfileSetting/ProfileSetting.js";
 import Search from "./routes/Search/Search.js";
 import Test from "./test/Test.js";
 import LoginTerms from "./routes/Login/LoginTerms";
+import Confirm from "./routes/Login/Confirm";
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/terms" element={<LoginTerms />} />
+        <Route
+          path="/users/signup/confirm"
+          element={<Confirm type="signup" />}
+        />
+        <Route path="/users/confirmlogin" element={<Confirm type="login" />} />
         <Route path="/myfootstep" element={<MyFootstep />} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route path="/search" element={<Search />} />
