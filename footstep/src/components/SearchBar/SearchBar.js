@@ -1,37 +1,33 @@
-//import { render } from '@testing-library/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 
-function SearchBar ({getWord}) {
-  const [word, setWord] = useState("");
-  const onChange = (event)=>{
-    setWord(event.target.value);
-  }
+function SearchBar({ word }) {
+  const [searchWord, setSearchWord] = useState("");
+  useEffect(() => {
+    setSearchWord(word);
+  }, []);
+  const navigate = useNavigate();
+  const onChange = (event) => {
+    setSearchWord(event.target.value);
+  };
+  const onSearch = (event) => {
+    navigate(`/search?word=${searchWord}`);
+    event.preventDefault();
+  };
 
-    const search_btn = () =>{
-      getWord(word);
-    
-      
+  return (
+    <form className={styles.search_bar}>
+      <input
+        className={styles.search_input}
+        type="text"
+        placeholder="Search for other’s footstep..."
+        onChange={onChange}
+        value={searchWord}
+      />
+      <button className={styles.search_btn} onClick={onSearch}></button>
+    </form>
+  );
+}
 
-      // console.log(textValue)
-      // const getTextValue = (text) => {
-      //   setTextValue(text);
-      //   console.log()
-      
-    }
-
-    return (
-        <div className={styles.search_bar}>
-          <input onChange={onChange} className={styles.search_input} type="text" placeholder="Search for other’s footstep..." />
-          
-          <button className={styles.search_btn} onClick={search_btn}>
-          </button>
-            
-              
-        </div>
-        
-      );
-    
-  }
-  
-  export default SearchBar;
+export default SearchBar;

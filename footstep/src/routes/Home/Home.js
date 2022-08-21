@@ -18,23 +18,31 @@ function Home() {
   };
 
   const [longCardContent, setLongCardContent] = useState([]);
+  const [trendContent, setTrendContent] = useState([]);
 
-  const getProfile = async (userId, contentJson) => {
+  //new footstep 가져오기
+  const getNewProfile = async (userId, contentJson) => {
     const json = await (await fetch(`/users/profile/${userId}`)).json();
-    console.log(contentJson, json);
+
+    let contentText = "";
+    for (let block of contentJson.contents) {
+      // console.log(block.content);
+      contentText = contentText + " " + block.content;
+    }
+
     const content = {
       userImgUrl: json.result.userImgUrl,
       userName: json.result.userName,
       job: json.result.job,
       profileFootprint: json.result.footprintNum,
       preview: contentJson.preview,
-      content: `글의 내용이 들어갈 자리입니다. 이 내용은 대충 7줄 정도?`,
+      content: contentText,
       date: contentJson.createdAt,
       stampNum: contentJson.stampNum,
       footprintNum: contentJson.footprintNum,
       commentNum: contentJson.commentNum,
     };
-    console.log(content);
+    // console.log(content);
 
     setLongCardContent((current) => [content, ...current]);
     setLoading(true);
@@ -43,37 +51,60 @@ function Home() {
     const contentJson = await (await fetch("/mainpage/new/2")).json();
 
     for (let i = 0; i < contentJson.result.length; i++) {
-      getProfile(contentJson.result[i].userId, contentJson.result[i]);
+      getNewProfile(contentJson.result[i].userId, contentJson.result[i]);
     }
   };
-  console.log(loading);
 
-  //세션(?)에 저장된 로그인 정보에 따라 userid 부분은 변수로 수정할 예정
+  //trending 가져오기
+  const getTrendProfile = async (userId, contentJson) => {
+    const json = await (await fetch(`/users/profile/${userId}`)).json();
+    // console.log(contentJson, json);
+
+    const content = {
+      userImgUrl: json.result.userImgUrl,
+      userName: json.result.userName,
+      job: json.result.job,
+      profileFootprint: json.result.footprintNum,
+      preview: contentJson.content,
+      stampNum: contentJson.stampNum,
+      footprintNum: contentJson.footprintNum,
+      commentNum: contentJson.commentNum,
+    };
+    console.log(content);
+
+    setTrendContent((current) => [content, ...current]);
+    // setLoading(true);
+  };
+  const getTrendContent = async () => {
+    const contentJson = await (await fetch("/mainpage/trending")).json();
+
+    for (let i = 0; i < contentJson.result.length; i++) {
+      getTrendProfile(contentJson.result[i].userId, contentJson.result[i]);
+    }
+  };
+
   useEffect(() => {
-    getNewContent();
+    getNewContent(); //세션(?)에 저장된 로그인 정보에 따라 userid 부분은 변수로 수정할 예정
+    getTrendContent();
   }, []);
 
-  //예시. trending 완성되면 지울것
-  const [cardContent, setCardContent] = useState([]);
-  useEffect(() => {
-    setCardContent({
-      userImgUrl: "https://placeimg.com/640/480/animals",
-      userName: "백은미",
-      job: "프론트엔드 개발자",
-      preview: `카드 제목이 들어갈 자리입니다. 이 카드의 제목은 때로는 두줄까지
-                    가능합니다. 카드 제목이 들어갈 자리입니다.`,
-      content: `글의 내용이 들어갈 자리입니다. 이 내용은 대충 7줄 정도?`,
-      date: "2022/08/08",
-      stampNum: "12345",
-      footprintNum: "2K",
-      commentNum: "16",
-    });
-  }, []);
+  // {
+  //   userImgUrl: "https://placeimg.com/640/480/animals",
+  //   userName: "백은미",
+  //   job: "프론트엔드 개발자",
+  //   preview: `카드 제목이 들어갈 자리입니다. 이 카드의 제목은 때로는 두줄까지
+  //                 가능합니다. 카드 제목이 들어갈 자리입니다.`,
+  //   content: `글의 내용이 들어갈 자리입니다. 이 내용은 대충 7줄 정도?`,
+  //   date: "2022/08/08",
+  //   stampNum: "12345",
+  //   footprintNum: "2K",
+  //   commentNum: "16",
+  // }
 
 
   const keywords = [
-    "프론트앤드 경험",
-    "백앤드 경력",
+    "프론트엔드 경험",
+    "백엔드 경력",
     "IT회사 면접",
     "디자인 커리큘럼",
   ];
@@ -105,16 +136,11 @@ function Home() {
               <h2>
                 Follower's<span>NEW FOOTSTEP</span>
               </h2>
-              {loading ? <ProfileCard content={longCardContent[0]} /> : null};
+              {loading ? <ProfileCard content={longCardContent[0]} /> : null}
               <div className={styles.longcard_box}>
-                {/* {longCardContent.length > 3
-                  ? longCardContent.map((item, index) => (
-                      <LongCard content={item} key={index} />
-                    ))
-                  : null} */}
                 {loading
                   ? longCardContent
-                      .slice(1)
+                      .slice(1, 5)
                       .map((item, index) => (
                         <LongCard content={item} key={index} />
                       ))
@@ -129,18 +155,13 @@ function Home() {
                 Trending<span>THIS WEEK</span>
               </h2>
               <div className={styles.shortcard_box}>
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
-                <ShortCard content={cardContent} />
+                {loading
+                  ? trendContent
+                      .slice(0, 12)
+                      .map((item, index) => (
+                        <ShortCard content={item} key={index} />
+                      ))
+                  : null}
               </div>
             </div>
             <Footer />
