@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function Confirm({ type }) {
+function Confirm({ type, setUserId }) {
   const location = useLocation().search;
   const navigate = useNavigate();
 
@@ -38,6 +38,8 @@ function Confirm({ type }) {
     console.log(json);
 
     if (json.code === 1000 && json.result.status === 1) {
+      setUserId(json.result.userId);
+      // setUserId(json.result.userId);
       alert("로그인에 성공하였습니다.");
       navigate(`/`);
     } else {
