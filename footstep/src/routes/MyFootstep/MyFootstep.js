@@ -11,34 +11,33 @@ import newDummyComment from "../../db/newDummyComment.json";
 import dummyBlock from "../../db/dummyBlock.json";
 
 function MyFootstep ({userId}) {
-  //calling api area==================
-  useEffect(()=>{
-    getNewContent();
-  },[]);
-  
-  const getNewContent = async () => {
-    const contentJson = await (await fetch("/pages/get/14")).json();
-    console.log(contentJson);
-  };
-
-  // const postEditedContent = async () => {
-  //   fetch(`/mainpage/new/${2}`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify([...localBlock]),
-  //   }).then((response) => response.json())
-  // }
-  //calling api area==================
   const [open, setOpen] = useState(false);
   const [commentsopen, setCommentsOpen] = useState(false);
-  const [localLiveBlock, setLocalLiveBlock] = useState(dummyBlock["result"]["blocks"]);
+  const [localLiveBlock, setLocalLiveBlock] = useState([]);
   const [localBlock, setLocalBlock] = useState(localLiveBlock);
   const [localComment, setLocalComment] = useState(newDummyComment["result"][0]["comments"]);
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
+  //calling api area==================
+  useEffect(()=>{
+    getNewContent();
+    getNewComments();
+  },[]);
+  
+  const getNewContent = async () => {
+    await fetch(`/pages/get/${14}`)
+    .then(response => response.json())
+    .then(data => setLocalLiveBlock(data["result"]["blocks"]))
+    .catch(error => console.log(error));
+  };
+  const getNewComments = async () => {
+    await fetch(`/comment/${4}/${2}`)
+    .then(response => response.json())
+    .then(data => console.log("comments data message", data.message))
+    .catch(error => console.log(error))
+  };
+  //calling api area==================
 
   const commentsHandler = () => {
     setCommentsOpen((prev) => !prev);
@@ -51,14 +50,15 @@ function MyFootstep ({userId}) {
   //local data array
   const handleTextData = (liveTextArray, deadTextArray, localCommentArray) => {
     console.log("liveTextArray:", liveTextArray, "deadTextArray", deadTextArray, "localCommentArray", localCommentArray);
-    setLocalLiveBlock(liveTextArray);
+    // setLocalLiveBlock(liveTextArray);
+    // setLocalLiveBlock([...liveTextArray]);
     setLocalBlock(liveTextArray+deadTextArray);
     setLocalComment(localCommentArray);
   };
   //TextEditor===============
   const handleCommentData = (feedcomments) => {
-    console.log(feedcomments);
-  }
+    console.log("댓글 업데이트:", feedcomments);
+  };
 
 
   return (
@@ -84,10 +84,11 @@ function MyFootstep ({userId}) {
               <TopBanner />
               <div className={styles.body_texteditor}>
                 <TextEditor
-                  blockData={dummyBlock["result"]["blocks"]}
+                  blockData={localLiveBlock}
                   commentData={newDummyComment["result"][0]["comments"]}
                   propDataFunction={handleTextData}
                   userId={USER_ID}
+                  pageId={14}
                   editorType={"myfootstep"}
                 />
               </div>

@@ -7,34 +7,35 @@ import usefocusContentEditableTextToEnd from "../../Hooks/usefocusContentEditabl
 import useClick from '../../Hooks/useClick.js';
 import CommentModal from '../CommentModal/CommentModal.js';
 
-function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime}) {
+function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime}) {
   const BLOCK_ID = "blockId";
   const COMMENT_ID = "comment_id";
   // const textArray = blockArray["result"]; => 이미 번역되어 들어옴
-  const targetTextArray = blockArray.filter((id) => id[BLOCK_ID] == blockId);
+  // const targetTextArray = blockArray.filter((id) => id[BLOCK_ID] == blockId);
+  const targetTextArray = blockObj;
   //입력받은 id에 해당하는 Array 필터
   const [comments, setComments] = useState(commentArray);
 
-  const CHILD_ID = targetTextArray[0]["childPageId"];
+  const CHILD_ID = targetTextArray["childPageId"];
   //하위 페이지 데이터 입력받음
   const newChildId = Date.now();
   //새로운 childId 부여
-  const textContent = targetTextArray[0]["content"];
+  const textContent = targetTextArray["content"];
   //content 키 영역의 text만 추출
   const [newtext, setNewtext] = useState(textContent);
 
   const NEWLINE_OBJECT = {
-    blockId: `${Date.now()}`, 
+    blockId: 0, 
     content: ``,
-    childPageId: `null`,
+    childPageId: 0,
     originalFolloweeId : {
-      originalId: `null`,
-      followeeId:`null`,
+      originalId: 0,
+      followeeId:0,
     },
-    status: `1`,
-    new: `1`,
-    stampNum: `0`,
-    footprintNum: `0`
+    status: 1,
+    new: 1,
+    stampNum: 0,
+    footprintNum: 0
   };
 
   const editModalRef = useRef(null);
@@ -82,14 +83,15 @@ function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFun
     console.log("e.target.innerText", e.target.innerText, "followText", e.target.innerText.slice(document.getSelection().extentOffset), "caretPosition", caretPosition);
     if ((e.key === "Delete" || e.key === "Backspace") && (caretPosition === 0)) {
       // console.log({...targetTextArray[0], content: newtext});
-      propBlockFunction({...targetTextArray[0], content: newtext}, {}, false, true, e.target.innerText.slice(document.getSelection().extentOffset), caretPosition);
+      propBlockFunction({...targetTextArray, content: newtext}, {}, false, true, e.target.innerText.slice(document.getSelection().extentOffset), caretPosition);
     } else if (e.key === "Enter" && e.key !== "Shift") {
+      setNewtext(e.target.innerText.replace(/<div>|<\/div>|<br>|/gi, "").slice(0, caretPosition));
       propBlockFunction({
-        ...targetTextArray[0],
-        blockId: `${blockId}`,
+        ...targetTextArray,
+        blockId: blockId,
         content: e.target.innerText.replace(/<div>|<\/div>|<br>|/gi, "").slice(0, caretPosition), 
         childPageId: CHILD_ID
-        }, {...NEWLINE_OBJECT, content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
+        }, {...NEWLINE_OBJECT, blockId: Date.now(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
     } else {
       return;
     };
@@ -104,8 +106,8 @@ function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFun
     // console.log(e.nativeEvent.inputType);
     if (e.nativeEvent.inputType === "insertText" && e.nativeEvent.inputType !== "insertParagraph" || e.nativeEvent.inputType === "deleteContentBackward") {
       propBlockFunction({}, {
-        ...targetTextArray[0],
-        blockId: `${blockId}`,
+        ...targetTextArray,
+        blockId: blockId,
         content: text,
         childPageId: CHILD_ID
       }, false, false, null, caretPosition);
@@ -159,9 +161,9 @@ function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFun
   const handleNewCommentSubmit = (event) => {
     event.preventDefault();
     setComments([...comments, {
-      "comment_id": `${Date.now()}`,
-      "blockId": `${blockId}`,
-      "userId": `${userId}`,
+      "comment_id": Date.now(),
+      "blockId": blockId,
+      "userId": userId,
       "userName": "홍길동",
       "content": event.target[0].value,
       "createdAt": nowTime
@@ -206,34 +208,34 @@ function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFun
   };
 
   return (
-    <div className={`${styles.text_template} ${(status === "1") ? null : styles.blind}`}>
+    <div className={`${styles.text_template} ${(status === 1) ? null : styles.blind}`}>
       <div className={styles.textbox}>
-        <div className={`${styles.history} ${(targetTextArray[0]["originalFolloweeId"]["originalId"] !== "null" || targetTextArray[0]["originalFolloweeId"]["followeeId"] !== "null") ? null : styles.blind}`}>
+        <div className={`${styles.history} ${(targetTextArray["originalFolloweeId"]["originalId"] !== 0 || targetTextArray["originalFolloweeId"]["followeeId"] !== 0) ? null : styles.blind}`}>
           <span className={styles.original_img}>
-            <img className={styles.original} src=""></img>
+            <img className={styles.original} src={`${targetTextArray["originalFolloweeId"]["originalImgUrl"] !== 0 ? targetTextArray["originalFolloweeId"]["originalImgUrl"] : null}`}></img>
           </span>
           <span className={styles.newer_img}>
-            <img className={styles.newer} src=""></img>
+            <img className={styles.newer} src={`${targetTextArray["originalFolloweeId"]["followeeImgUrl"] !== 0 ? targetTextArray["originalFolloweeId"]["followeeImgUrl"] : null}`}></img>
           </span>
         </div>
         <div className={styles.contentbox}>
           <span onContextMenu={detailDisplayHandler} className={`${styles.handling_icon} ${styles.icon}`}></span>
-          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyDown={handleKey} disabled={false} className={`${styles.default_text} ${CHILD_ID != "null" ? styles.parent_page : null}`} html={newtext}/>
+          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyDown={handleKey} disabled={false} className={`${styles.default_text} ${CHILD_ID !== 0 ? styles.parent_page : null}`} html={newtext}/>
         </div>
-        <div className={`${styles.interaction_info} ${(targetTextArray[0]["stampNum"]==="0" && targetTextArray[0]["footprintNum"] === "0") ? styles.blind : null}`}>
+        <div className={`${styles.interaction_info} ${(targetTextArray["stampNum"] === 0 && targetTextArray["footprintNum"] === 0) ? styles.blind : null}`}>
           <button className={`${styles.info_icon} ${styles.icon}`}></button>
           <div className={`${styles.info_modal}`}>
-            <div className={styles.follow}>{`${useNumberFormatter(targetTextArray[0]["stampNum"])} stamps`}</div>
-            <div className={styles.following}>{`${useNumberFormatter(targetTextArray[0]["footprintNum"])} footprints`}</div>
+            <div className={styles.follow}>{`${useNumberFormatter(targetTextArray["stampNum"])} stamps`}</div>
+            <div className={styles.following}>{`${useNumberFormatter(targetTextArray["footprintNum"])} footprints`}</div>
           </div>
         </div>
       </div>
       <div className={`${styles.innerpage_modal} ${detailDisplay ? null : styles.blind}`}>
-        <div className={`${styles.subpage_btn} ${((CHILD_ID === "null") && ((type === "myfootstep") || (type === "myfollow"))) ? null : styles.blind}`}>
+        <div className={`${styles.subpage_btn} ${((CHILD_ID === 0) && ((type === "myfootstep") || (type === "myfollow"))) ? null : styles.blind}`}>
           <span className={`${styles.add_icon} ${styles.icon}`}></span>
           <Link to={`/subpage/${newChildId}`} className={`${styles.add} ${styles.icon_text}`}>작성</Link>
         </div>
-        <div className={`${styles.subpage_btn} ${CHILD_ID != "null" ? null : styles.blind}`}>
+        <div className={`${styles.subpage_btn} ${CHILD_ID !== 0 ? null : styles.blind}`}>
           <span className={`${styles.detail_icon} ${styles.icon}`}></span>
           <Link to={`/subpage/${CHILD_ID}`} className={`${styles.detail} ${styles.icon_text}`}>자세히</Link>
         </div>
@@ -242,8 +244,8 @@ function NewTextTemplate ({blockArray, commentArray, blockId, type, propBlockFun
           <span className={`${styles.comment_icon} ${styles.icon}`}></span>
           <div className={`${styles.comment} ${styles.icon_text}`}>댓글</div>
         </div>
-        <div className={`${styles.bar} ${((CHILD_ID != "null")&&(type === "otherfootstep")&&(type === "myfollow")) ? null : styles.blind}`}></div>
-        <div className={`${styles.subpage_btn} ${((CHILD_ID != "null") && (type === "myfollow")) ? null : styles.blind}`}>
+        <div className={`${styles.bar} ${((CHILD_ID !== 0)&&(type === "otherfootstep")&&(type === "myfollow")) ? null : styles.blind}`}></div>
+        <div className={`${styles.subpage_btn} ${((CHILD_ID !== 0) && (type === "myfollow")) ? null : styles.blind}`}>
           <span className={`${styles.finish_icon} ${styles.icon}`}></span>
           <div className={`${styles.finish} ${styles.icon_text}`}>종료</div>
         </div>
