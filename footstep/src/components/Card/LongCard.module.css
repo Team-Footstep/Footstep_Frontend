@@ -3,7 +3,7 @@
   width: 23.7rem;
   height: 29rem;
   border-radius: 1.5rem;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
   background-color: var(--white);
 }
 .card_long:hover {
@@ -119,16 +119,16 @@
 }
 
 .card_footer {
-  width: 237px;
-  height: 40px;
+  width: 23.7rem;
+  height: 4rem;
   background-color: var(--footstep_blue);
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 1.5rem 1.5rem;
 
   position: absolute;
   bottom: 0;
   left: 0;
 
-  font-size: 10px;
+  font-size: 1rem;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: 0.27px;

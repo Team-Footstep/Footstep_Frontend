@@ -72,7 +72,7 @@
   letter-spacing: -0.11px;
   text-align: center;
   color: var(--footstep_blue);
-  border-radius: 15px;
+  border-radius: 1.5rem;
   border: solid 2px var(--footstep_blue);
 }
 .more_btn:hover {

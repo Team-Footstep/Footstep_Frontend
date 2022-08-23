@@ -1,20 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Comments_SideBar.module.css";
 import CommentList from "../CommentList/CommentList";
+import moment from 'moment';
+import 'moment/locale/ko';
 
-function Comments_SideBar({ display }) {
+function Comments_SideBar({ display, commentArray, propFunction, getUserID }) {
   const [userimg] = useState([]);
   const [username, setUsername] = useState("IBORY");
   const [comment, setComment] = useState("");
-  const [feedcomments, setFeedcomments] = useState([]);
+  const [feedcomments, setFeedcomments] = useState(commentArray);
   const [isvalid, setIsvalid] = useState(false);
+  const COMMENT_ID = "comment_id";
 
   const post = () => {
-    const copyFeedcomments = [...feedcomments];
-    copyFeedcomments.push(comment);
-    setFeedcomments(copyFeedcomments);
+    setFeedcomments([...feedcomments, comment]);
     setComment("");
   };
+
+  const NEWCOMMENTS = {
+    comment_id: `${Date.now()}`,
+    blockId: "0",
+    userId: `${getUserID}`,
+    userName: "홍길동",
+    content: "",
+    createdAt: `${moment().format('YYYY-MM-DD HH:mm')}`
+  };
+
+  useEffect(()=>{
+    propFunction(feedcomments);
+  }, [feedcomments]);
 
   //이건 comment배열에 저장하고 저장된 배열 전체를 출력
   //   {
@@ -32,12 +46,10 @@ function Comments_SideBar({ display }) {
           <p className={styles.title}>댓글</p>
         </div>
         <div className={styles.comment_boxes}>
-          {feedcomments.map((commentArr, k) => {
+          {feedcomments.map((list, k) => {
             return (
               <CommentList
-                image={userimg}
-                userName={username}
-                userComment={commentArr}
+                data={list}
                 key={k}
               />
             );
@@ -45,19 +57,20 @@ function Comments_SideBar({ display }) {
         </div>
         <div className={styles.input_box}>
           <img src={userimg} className={styles.input_image}></img>
-          <textarea
-            type="text"
-            placeholder="댓글 달기"
-            onChange={(e) => {
-              setComment(e.target.value);
-            }}
-            value={comment}
-          ></textarea>
-          <button
-            type="button"
-            onClick={post}
-            className={styles.post_btn}
-          ></button>
+          <form onSubmit={post}>
+            <textarea
+              type="text"
+              placeholder="댓글 달기"
+              onChange={(e) => {
+                setComment({...NEWCOMMENTS, content: e.target.value});
+              }}
+              value={comment.content}
+            ></textarea>
+            <button
+              type="button"
+              className={styles.post_btn}
+            ></button>
+          </form>
         </div>
       </div>
     </div>

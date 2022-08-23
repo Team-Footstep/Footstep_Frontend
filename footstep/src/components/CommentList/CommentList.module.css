@@ -47,3 +47,15 @@
   text-align: left;
   color: var(--footstep_blue);
 }
+
+.time {
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: -0.008rem;
+  text-align: left;
+  color: #999fa7;
+  margin-left: 0.6rem;
+}

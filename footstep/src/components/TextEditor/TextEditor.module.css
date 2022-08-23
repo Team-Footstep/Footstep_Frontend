@@ -1,0 +1,31 @@
+.texteditor_list {
+  width: 100.8rem;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 0;
+  border-radius: 1.5rem;
+  align-items: center;
+  margin-bottom: 30rem;
+}
+
+.input {
+  height: 3.2rem;
+  border: none;
+  max-width:99rem;
+  padding: 0.3rem 0.2rem;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.011rem;
+  text-align: left;
+  color: var(--font-black);
+  margin-left: 1.9rem;
+}
+
+.blind {
+  display: none;
+}

@@ -1,0 +1,321 @@
+.icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.3rem;
+  background-size: cover;
+}
+
+.text_template {
+  position: relative;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  overflow: visible;
+  cursor: text;
+}
+
+.textbox {
+  overflow: visible;
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.1rem 0;
+}
+
+.history {
+  width: 6.5rem;
+  height: 3rem;
+  position:absolute;
+  left: -7.9rem;
+  top: 0.1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+span.original_img, span.newer_img {
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem;
+}
+
+span.original_img:hover, span.newer_img:hover {
+  background-color: #d9d9d9;
+}
+
+.original, .newer {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1.3rem;
+  background-color: var(--grayblue-border);
+  overflow:hidden;
+}
+
+.contentbox {
+  max-width: 90rem;
+  min-width: 90rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.011rem;
+  text-align: left;
+  color: var(--font-black);
+}
+
+.text_template:hover .handling_icon{
+  background-color: var(--light-blue);
+  background-image: url(../../icons/texthandler.svg);
+  background-size: cover;
+}
+
+.handling_icon {
+  width: 1.7rem;
+  height: 2.4rem;
+  border-radius: 0.3rem;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  flex-basis: 1.7rem;
+}
+
+.handling_icon:active ~ .default_text {
+  background-color: var(--light-blue);
+}
+
+.default_text {
+  max-width: 95rem;
+  word-break: normal;
+  white-space: pre-wrap;
+  outline: none;
+  border-radius: 0.3rem;
+}
+
+.parent_page {
+  text-decoration: underline;
+  color: var(--gray-font);
+}
+
+.interaction_info{
+  overflow:visible;
+  position:relative;
+  margin-left: 1rem;
+}
+
+button.info_icon {
+  background-image: url(../../icons/footprint_info_icon.svg);
+  width: 1.8rem;
+  height: 1.8rem;
+  background-size: cover;
+}
+
+.info_modal {
+  display: none;
+}
+
+.interaction_info:hover .info_modal {
+  position: absolute;
+  width: 19rem;
+  display:flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  background-color: var(--light-blue);
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -0.011rem;
+  text-align: left;
+  color: var(--footstep_blue);
+  z-index: 99;
+}
+
+.innerpage_modal {
+  max-width: fit-content;
+  height: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+  z-index: 98;
+}
+
+.subpage_btn {
+  border-radius: 0.3rem;
+  color: var(--footstep_blue);
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.03rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.subpage_btn:hover {
+  background-color: var(--light-blue);
+}
+
+span.add_icon {
+  color: var(--footstep_blue);
+  background-image: url(../../icons/add_box.svg);
+}
+
+span.detail_icon {
+  color: var(--footstep_blue);
+  background-image: url(../../icons/detail.svg);
+}
+
+span.comment_icon {
+  color: var(--footstep_blue);
+  background-image: url(../../icons/comment.svg);
+}
+
+span.finish_icon {
+  color: var(--footstep_blue);
+  background-image: url(../../icons/follow_end.svg);
+}
+
+span.stamp_icon {
+  color: var(--footstep_blue);
+  background-image: url(../../icons/stamp.svg);
+}
+
+.bar {
+  width: 0.1rem;
+  height: 1.8rem;
+  background-color: var(--grayblue-border);
+}
+
+.edit_modal {
+  width: 16.3rem;
+  border-radius: 1rem;
+  background-color: var(--light-blue);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  gap: 0.3rem;
+}
+
+.modal_bar{
+  width: 0.1rem;
+  height: 2.5rem;
+  background-color: rgba(152, 172, 206, 0.6);
+}
+
+
+.bold_icon {
+  background: url(../../icons/bold_icon.svg);
+}
+.underline_icon {
+  background: url(../../icons/underline_icon.svg);
+}
+.textcolor_icon {
+  background: url(../../icons/textcolo_icon.svg);
+}
+.highlight_icon {
+  background: url(../../icons/bgcolor_icon.svg);
+}
+.textresizing_icon {
+  background: url(../../icons/textsizing_icon.svg);
+}
+
+.modal_icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.modal_icon:hover {
+  cursor: pointer;
+  background-color: var(--grayblue-border);
+}
+
+.comment_modal {
+  width: 19rem;
+  padding: 1rem;
+  background-color: var(--whiteblue-bg);
+  border: solid 1px #999fa7;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: absolute;
+  right: -19rem;
+  top: 0;
+}
+
+.comment_modal_bar {
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--light-blue);
+}
+
+.comment_form {
+  position:relative;
+}
+
+.comment_input {
+  width: 17rem;
+  height: 6.5rem;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  border: solid 1px var(--light-blue);
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.008rem;
+  text-align: left;
+  color: var(--gray-font);
+  resize: none;
+  word-wrap:break-word;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+.comment_btn {
+  width: 2rem;
+  height: 2rem;
+  background-image: url(../../icons/Submit_icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.3rem;
+}
+
+.blind {
+  display:none;
+}
+
+.icon_blind {
+  background-image: none;
+}

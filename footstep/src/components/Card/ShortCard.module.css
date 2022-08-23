@@ -1,124 +1,124 @@
 .card_short {
-    position: relative;
-    width: 237px;
-    height: 175px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
+  position: relative;
+  width: 23.7rem;
+  height: 17.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
 }
 .card_short:hover {
-    background-color: var(--light-blue);
+  background-color: var(--light-blue);
 }
 .card_profile_img {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
 
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 .card_name {
-    width: 108px;
-    height: 12px;
-    line-height: 12px;
+  width: 10.8rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
 
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: -0.1px;
-    text-align: left;
-    color: var(--footstep_blue);
-    overflow: hidden;
-    white-space: nowrap;
-    /* text-overflow: ellipsis; */
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.1px;
+  text-align: left;
+  color: var(--footstep_blue);
+  overflow: hidden;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
 
-    position: absolute;
-    top: 28px;
-    left: 85px;
+  position: absolute;
+  top: 2.8rem;
+  left: 8.5rem;
 }
 
 .card_job {
-    width: 108px;
-    height: 12px;
-    line-height: 12px;
+  width: 10.8rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
 
-    font-family: Pretendard;
-    font-size: 10px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: -0.07px;
-    text-align: left;
-    color: var(--gray-font);
-    overflow: hidden;
-    white-space: nowrap;
-    /* text-overflow: ellipsis; */
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.07px;
+  text-align: left;
+  color: var(--gray-font);
+  overflow: hidden;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
 
-    position: absolute;
-    top: 45px;
-    left: 85px;
+  position: absolute;
+  top: 4.5rem;
+  left: 8.5rem;
 }
 .card_title {
-    width: 207px;
-    height: 32px;
-    line-height: 16px;
+  width: 20.7rem;
+  height: 3.2rem;
+  line-height: 1.6rem;
 
-    font-family: Pretendard;
-    font-size: 12px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: -0.08px;
-    text-align: left;
-    color: var(--footstep_blue);
-    overflow: hidden;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.08px;
+  text-align: left;
+  color: var(--footstep_blue);
+  overflow: hidden;
 
-    position: absolute;
-    top: 85px;
-    left: 16px;
+  position: absolute;
+  top: 8.5rem;
+  left: 1.6rem;
 }
 .card_line {
-    width: 207px;
-    height: 1px;
-    background-color: #bcc8d8;
+  width: 20.7rem;
+  height: 0.1rem;
+  background-color: #bcc8d8;
 
-    position: absolute;
-    bottom: 38px;
-    left: 16px;
+  position: absolute;
+  bottom: 3.8rem;
+  left: 1.6rem;
 }
 .card_footprint {
-    height: 18px;
+  height: 1.8rem;
 
-    position: absolute;
-    bottom: 11px;
-    right: 14px;
+  position: absolute;
+  bottom: 1.1rem;
+  right: 1.4rem;
 
-    display: flex;
+  display: flex;
 }
 .card_foot_cnt {
-    height: 18px;
-    margin: 0 4px 0 0;
-    font-family: "Noto Sans KR";
-    font-size: 8px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 18px;
-    letter-spacing: -0.06px;
-    text-align: left;
-    color: var(--darkblack-font);
+  height: 1.8rem;
+  margin: 0 0.4rem 0 0;
+  font-family: "Noto Sans KR";
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.8rem;
+  letter-spacing: -0.06px;
+  text-align: left;
+  color: var(--darkblack-font);
 }
 .card_foot_img {
-    width: 12px;
-    height: 12px;
-    margin: 3px 4px 3px 0;
-    color: var(--darkblack-font);
-    display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  color: var(--darkblack-font);
+  display: inline-block;
 }
 
 /* .card_short:hover .card_name,

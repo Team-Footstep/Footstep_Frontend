@@ -1,0 +1,55 @@
+{
+  "isSuccess": "true",
+  "code": "1000",
+  "message": "요청에 성공하였습니다.",
+  "result": {
+    "pageId": "6",
+    "topOrNot": "1",
+    "preview": "null",
+    "parentBlockId": "0",
+    "parentBlockContent": "null",
+    "access": "1",
+    "bookmark": "1",
+    "blocks": [
+      {
+        "blockId": "2",
+        "content": "블럭 텍스트입니다",
+        "childPageId": "5",
+        "originalFolloweeId": {
+          "originalId": "13",
+          "followeeId": "125243"
+        },
+        "status": "1",
+        "new": "0",
+        "stampNum": "1234567",
+        "footprintNum": "567834"
+      },
+      {
+        "blockId": "3",
+        "content": "블럭텍스트입니다.2",
+        "childPageId": "null",
+        "originalFolloweeId": {
+          "originalId": "13",
+          "followeeId": "125243"
+        },
+        "status": "1",
+        "new": "0",
+        "stampNum": "1234567",
+        "footprintNum": "567834"
+      },
+      {
+        "blockId": "14",
+        "content": "블럭텍스트입니다.3",
+        "childPageId": "142",
+        "originalFolloweeId": {
+          "originalId": "13",
+          "followeeId": "125243"
+        },
+        "status": "1",
+        "new": "0",
+        "stampNum": "1234567",
+        "footprintNum": "567834"
+      }
+    ]
+  }
+}		
