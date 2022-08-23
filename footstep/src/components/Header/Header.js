@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "../Header/Header.module.css";
 
-function Header({ state, clickFunc, icon, comments_clickFunc, upper_block }) {
+function Header({
+  state,
+  clickFunc,
+  icon,
+  login,
+  comments_clickFunc,
+  upper_block,
+}) {
   return (
     <div>
       <div className={styles.header}>
@@ -32,12 +39,22 @@ function Header({ state, clickFunc, icon, comments_clickFunc, upper_block }) {
             onClick={comments_clickFunc}
           ></button>
           <button
-            className={icon ? styles.icon_notification : styles.blind}
+            className={icon || login ? styles.icon_notification : styles.blind}
           ></button>
-          <button className={icon ? styles.blind : styles.start}>
+          <button
+            className={icon || login ? styles.blind : styles.start}
+            onClick={() => {
+              window.location.href = "/login";
+            }}
+          >
             시작하기
           </button>
-          <button className={styles.search}></button>
+          <button
+            className={styles.search}
+            onClick={() => {
+              window.location.href = "/search";
+            }}
+          ></button>
         </div>
       </div>
       <div className={styles.block}></div>

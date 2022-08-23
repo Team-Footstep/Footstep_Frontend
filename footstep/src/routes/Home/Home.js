@@ -10,11 +10,34 @@ import TopBanner from "../../components/Banner/TopBanner.js";
 import BodyBanner from "../../components/Banner/BodyBanner.js";
 import MainSearchBar from "../../components/MainSearchBar/MainSearchBar.js";
 
-function Home() {
+function Home({ userId, login }) {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(true);
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
+  };
+
+  const [loginProfile, setLoginProfile] = useState({
+    img: "",
+    name: "",
+    job: "",
+    footprint: "",
+    userId: "",
+  });
+
+  const getLoginProfile = async (userid) => {
+    const json = await (await fetch(`/users/profile/${userid}`)).json();
+    console.log(json);
+    const profile = {
+      img: json.result.userImgUrl,
+      name: json.result.userName,
+      job: json.result.job,
+      footprintNum: json.result.footprintNum,
+      userId: json.result.userId,
+    };
+
+    // console.log(profile);
+    setLoginProfile(profile);
   };
 
   const [longCardContent, setLongCardContent] = useState([]);
@@ -23,6 +46,7 @@ function Home() {
   //new footstep 가져오기
   const getNewProfile = async (userId, contentJson) => {
     const json = await (await fetch(`/users/profile/${userId}`)).json();
+    console.log(contentJson, json.result);
 
     let contentText = "";
     for (let block of contentJson.contents) {
@@ -48,7 +72,7 @@ function Home() {
     setLoading(true);
   };
   const getNewContent = async () => {
-    const contentJson = await (await fetch("/mainpage/new/2")).json();
+    const contentJson = await (await fetch(`/mainpage/new/${userId}`)).json();
 
     for (let i = 0; i < contentJson.result.length; i++) {
       getNewProfile(contentJson.result[i].userId, contentJson.result[i]);
@@ -58,22 +82,24 @@ function Home() {
   //trending 가져오기
   const getTrendProfile = async (userId, contentJson) => {
     const json = await (await fetch(`/users/profile/${userId}`)).json();
-    // console.log(contentJson, json);
+    console.log(contentJson, json.result);
 
-    const content = {
-      userImgUrl: json.result.userImgUrl,
-      userName: json.result.userName,
-      job: json.result.job,
-      profileFootprint: json.result.footprintNum,
-      preview: contentJson.content,
-      stampNum: contentJson.stampNum,
-      footprintNum: contentJson.footprintNum,
-      commentNum: contentJson.commentNum,
-    };
-    console.log(content);
+    if (json.result !== undefined) {
+      const content = {
+        userImgUrl: json.result.userImgUrl,
+        userName: json.result.userName,
+        job: json.result.job,
+        profileFootprint: json.result.footprintNum,
+        preview: contentJson.content,
+        stampNum: contentJson.stampNum,
+        footprintNum: contentJson.footprintNum,
+        commentNum: contentJson.commentNum,
+      };
+      // console.log(content);
 
-    setTrendContent((current) => [content, ...current]);
-    // setLoading(true);
+      setTrendContent((current) => [content, ...current]);
+      setLoading(true);
+    }
   };
   const getTrendContent = async () => {
     const contentJson = await (await fetch("/mainpage/trending")).json();
@@ -84,7 +110,12 @@ function Home() {
   };
 
   useEffect(() => {
-    getNewContent(); //세션(?)에 저장된 로그인 정보에 따라 userid 부분은 변수로 수정할 예정
+    console.log("로그인 된 아이디: ", userId, login);
+    if (userId > 0) {
+      getLoginProfile(userId);
+      getNewContent();
+    }
+
     getTrendContent();
   }, []);
 
@@ -113,16 +144,17 @@ function Home() {
         state={open}
         clickFunc={sideBarHandler}
         icon={false}
+        login={login}
         upper_block={false}
       />
       <div className={styles.contents}>
         <SideBar
-          img={null}
-          name={"문비"}
-          job={"프론트앤드 디자이너"}
-          footprint={2000}
+          img={loginProfile.img}
+          name={loginProfile.name}
+          job={loginProfile.job}
+          footprint={loginProfile.footprintNum}
           display={!open}
-          login={true}
+          login={login}
         />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
@@ -131,22 +163,26 @@ function Home() {
               <MainSearchBar keywords={keywords} />
             </div>
 
-            <div className={styles.new_footstep}>
-              <h2>
-                Follower's<span>NEW FOOTSTEP</span>
-              </h2>
-              {loading ? <ProfileCard content={longCardContent[0]} /> : null}
-              <div className={styles.longcard_box}>
-                {loading
-                  ? longCardContent
-                      .slice(1, 5)
-                      .map((item, index) => (
-                        <LongCard content={item} key={index} />
-                      ))
-                  : null}
+            {login ? (
+              <div className={styles.new_footstep}>
+                <h2>
+                  Follower's<span>NEW FOOTSTEP</span>
+                </h2>
+                {longCardContent.length > 0 ? (
+                  <ProfileCard content={longCardContent[0]} />
+                ) : null}
+                <div className={styles.longcard_box}>
+                  {longCardContent.length > 0
+                    ? longCardContent
+                        .slice(1, 5)
+                        .map((item, index) => (
+                          <LongCard content={item} key={index} />
+                        ))
+                    : null}
+                </div>
+                {/* <button className={styles.more_btn}>View More</button> */}
               </div>
-              {/* <button className={styles.more_btn}>View More</button> */}
-            </div>
+            ) : null}
             <div style={{ height: 210 }}></div>
             <BodyBanner />
             <div id={styles.trend_box}>
