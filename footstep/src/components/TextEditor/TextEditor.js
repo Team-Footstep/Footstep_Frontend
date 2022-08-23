@@ -6,7 +6,6 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, editorType}) {
-  console.log("blockData from texteditor: ", blockData);
   const [nowTime, setNowTime] = useState(moment().format('YYYY-MM-DD HH:mm'));
   // let [localTextArray, setLocalTextArray] = useState(blockData);
   const [localCommentArray, setLocalCommentArray] = useState(commentData);
@@ -23,31 +22,31 @@ function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, 
   }, [blockData]);
 
   //delete & edited & added 처리
-  const propBlockFunction = (originalArray, editedArray, newSignal, deleteSignal, updateText, caretPosition) => {
-    console.log("from TextEditor", originalArray, editedArray, newSignal, deleteSignal, updateText, caretPosition);
-    let copyTextArray = [...liveTextArray];
+  const propBlockFunction = (referenceArray, editedArray, newSignal, deleteSignal, updateText, caretPosition) => {
+    console.log("from TextEditor", referenceArray, editedArray, newSignal, deleteSignal, updateText, caretPosition);
     //수정 가능한 array로 복사
-    const findIndex = (newSignal || deleteSignal) ? liveTextArray.filter(list => list[BLOCK_ID] === originalArray[BLOCK_ID]) : liveTextArray.filter(list => list[BLOCK_ID] === editedArray[BLOCK_ID]);
+    const findIndex = (newSignal || deleteSignal) ? liveTextArray.filter(list => list[BLOCK_ID] === referenceArray[BLOCK_ID]) : liveTextArray.filter(list => list[BLOCK_ID] === editedArray[BLOCK_ID]);
     const key = (newSignal || deleteSignal) ? parseInt(getKeyByValueId(liveTextArray, findIndex[0], BLOCK_ID)) : null;
     //수정되었거나 새로 생긴 array 이전에 작성된 array의 값을 확인
     if (!newSignal && !deleteSignal){
       setLiveTextArray(liveTextArray.map(
         prevObj => prevObj[BLOCK_ID] === editedArray[BLOCK_ID] ? {...prevObj, content : editedArray.content } : prevObj
         ));
-    } else if (newSignal && !deleteSignal) {
-      console.log("new line key:", key, copyTextArray[key]);
-      copyTextArray[key].content =  originalArray.content;
-      console.log("new copyTextArray", copyTextArray[key+1]);//오류가 존재하는 듯
+      } else if (newSignal && !deleteSignal) {
+      let copyTextArray = [...liveTextArray];
+      copyTextArray[key].content =  referenceArray.content;
       copyTextArray.splice(key+1, 0, editedArray);
       setLiveTextArray(copyTextArray);
       setFocus(key+1);
     } else if (deleteSignal && !newSignal){
-      // const liveArray = copyTextArray.filter(list => {return (list["status"] !== "0" && list !== undefined);});
-      // let focDeleteKey = copyTextArray.map(row => row[BLOCK_ID]).indexOf(originalArray[BLOCK_ID]);
-      copyTextArray[key] = {...copyTextArray[key], status : `0`};
-      setDeadTextArray(deadTextArray.concat(originalArray));
-      setLiveTextArray(copyTextArray.filter(list => list.status !== "0"));
-      // setFocus(parseInt(getKeyByValueId(localTextArray, copyTextArray[focDeleteKey-1], BLOCK_ID)));
+      let copyTextArray = [...liveTextArray];
+      console.log("deleted key", key);
+      console.log(copyTextArray[key], referenceArray, editedArray);
+      const beforeContent = copyTextArray[key-1].content;
+      copyTextArray[key] = {...copyTextArray[key], status : 0};
+      copyTextArray[key-1] = {...copyTextArray[key-1], content: beforeContent + updateText};
+      setDeadTextArray(deadTextArray.concat(referenceArray));
+      setLiveTextArray(copyTextArray.filter(list => list.status !== 0));
       setFocus(key-1);
     };
   };

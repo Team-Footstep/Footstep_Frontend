@@ -31,12 +31,25 @@ function MyFootstep ({userId}) {
     .then(data => setLocalLiveBlock(data["result"]["blocks"]))
     .catch(error => console.log(error));
   };
+  //content get
+    const patchContent = async () => {
+      await await fetch(`pages/save`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(localBlock),
+      })
+      .catch(error => console.log(error));
+    }
+
   const getNewComments = async () => {
     await fetch(`/comment/${4}/${2}`)
     .then(response => response.json())
     .then(data => console.log("comments data message", data.message))
     .catch(error => console.log(error))
   };
+  //comment get
   //calling api area==================
 
   const commentsHandler = () => {
@@ -59,6 +72,20 @@ function MyFootstep ({userId}) {
   const handleCommentData = (feedcomments) => {
     console.log("댓글 업데이트:", feedcomments);
   };
+
+  // let keys = [];
+  // const handleKeyDown = (e) => {
+  //   keys[e.keyCode] = true;
+  //   if (keys[91] && keys[83]) {
+  //     console.log("Ctrl + Space");
+  //     e.preventDefault();	 // prevent default browser behavior
+  // }
+  //   console.log(e);
+  // }
+
+  // const handleKeyUp = (e) => {
+  //   keys[e.keyCode] = false;
+  // }
 
 
   return (
@@ -84,7 +111,8 @@ function MyFootstep ({userId}) {
               <TopBanner />
               <div className={styles.body_texteditor}>
                 <TextEditor
-                  blockData={localLiveBlock}
+                  blockData={dummyBlock["result"]["blocks"]}
+                  // blockData={localLiveBlock}
                   commentData={newDummyComment["result"][0]["comments"]}
                   propDataFunction={handleTextData}
                   userId={USER_ID}

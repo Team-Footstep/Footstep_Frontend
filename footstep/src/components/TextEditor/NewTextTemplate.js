@@ -6,6 +6,7 @@ import useNumberFormatter from "../../Hooks/useNumberFormatter.js";
 import usefocusContentEditableTextToEnd from "../../Hooks/usefocusContentEditableTextToEnd.js";
 import useClick from '../../Hooks/useClick.js';
 import CommentModal from '../CommentModal/CommentModal.js';
+import uuid from "react-uuid";
 
 function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime}) {
   const BLOCK_ID = "blockId";
@@ -18,7 +19,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
 
   const CHILD_ID = targetTextArray["childPageId"];
   //하위 페이지 데이터 입력받음
-  const newChildId = Date.now();
+  const newChildId = uuid();
   //새로운 childId 부여
   const textContent = targetTextArray["content"];
   //content 키 영역의 text만 추출
@@ -81,6 +82,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
     // console.log(e.target.innerText.slice(document.getSelection().extentOffset), caretPosition);
     // setFollowText(e.target.innerText.slice(document.getSelection().extentOffset));
     console.log("e.target.innerText", e.target.innerText, "followText", e.target.innerText.slice(document.getSelection().extentOffset), "caretPosition", caretPosition);
+    console.log("caretPosition", caretPosition);
     if ((e.key === "Delete" || e.key === "Backspace") && (caretPosition === 0)) {
       // console.log({...targetTextArray[0], content: newtext});
       propBlockFunction({...targetTextArray, content: newtext}, {}, false, true, e.target.innerText.slice(document.getSelection().extentOffset), caretPosition);
@@ -91,11 +93,18 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
         blockId: blockId,
         content: e.target.innerText.replace(/<div>|<\/div>|<br>|/gi, "").slice(0, caretPosition), 
         childPageId: CHILD_ID
-        }, {...NEWLINE_OBJECT, blockId: Date.now(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
+        }, {...NEWLINE_OBJECT, blockId: uuid(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
     } else {
       return;
     };
     };
+
+  const handleDelete = (e) => {
+    const caretPosition = document.getSelection().anchorOffset;
+    if ((e.key === "Delete" || e.key === "Backspace") && (caretPosition === 0)) {
+      propBlockFunction({...targetTextArray, content: newtext, status: 0}, {...targetTextArray, content: newtext}, false, true, `${e.target.innerText.slice(document.getSelection().extentOffset)}`, caretPosition);
+    };
+  }
 
   const handleChange = (e) => {
     const caretPosition = document.getSelection().anchorOffset;
@@ -161,7 +170,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
   const handleNewCommentSubmit = (event) => {
     event.preventDefault();
     setComments([...comments, {
-      "comment_id": Date.now(),
+      "comment_id": uuid(),
       "blockId": blockId,
       "userId": userId,
       "userName": "홍길동",
@@ -220,7 +229,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
         </div>
         <div className={styles.contentbox}>
           <span onContextMenu={detailDisplayHandler} className={`${styles.handling_icon} ${styles.icon}`}></span>
-          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyDown={handleKey} disabled={false} className={`${styles.default_text} ${CHILD_ID !== 0 ? styles.parent_page : null}`} html={newtext}/>
+          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyPress={handleKey} onKeyDown={handleDelete} disabled={false} className={`${styles.default_text} ${CHILD_ID !== 0 ? styles.parent_page : null}`} html={newtext}/>
         </div>
         <div className={`${styles.interaction_info} ${(targetTextArray["stampNum"] === 0 && targetTextArray["footprintNum"] === 0) ? styles.blind : null}`}>
           <button className={`${styles.info_icon} ${styles.icon}`}></button>

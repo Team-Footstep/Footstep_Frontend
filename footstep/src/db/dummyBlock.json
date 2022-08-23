@@ -3,52 +3,52 @@
   "code": "1000",
   "message": "요청에 성공하였습니다.",
   "result": {
-    "pageId": "6",
-    "topOrNot": "1",
-    "preview": "null",
-    "parentBlockId": "0",
-    "parentBlockContent": "null",
-    "access": "1",
-    "bookmark": "1",
+    "pageId": 6,
+    "topOrNot": 1,
+    "preview": 0,
+    "parentBlockId": 1,
+    "parentBlockContent": "프리뷰 입니다.",
+    "access": 1,
+    "bookmark": 1,
     "blocks": [
       {
-        "blockId": "2",
+        "blockId": "652407a-61d3-f622-83e-cba8cdee23bd",
         "content": "블럭 텍스트입니다",
-        "childPageId": "5",
+        "childPageId": 5,
         "originalFolloweeId": {
-          "originalId": "13",
-          "followeeId": "125243"
+          "originalId": 13,
+          "followeeId": 125243
         },
-        "status": "1",
-        "new": "0",
-        "stampNum": "1234567",
-        "footprintNum": "567834"
+        "status": 1,
+        "new": 0,
+        "stampNum": 1234567,
+        "footprintNum": 567834
       },
       {
-        "blockId": "3",
+        "blockId": "50c23f-327-db2-4aa6-608a6cf263",
         "content": "블럭텍스트입니다.2",
-        "childPageId": "null",
+        "childPageId": 0,
         "originalFolloweeId": {
-          "originalId": "13",
-          "followeeId": "125243"
+          "originalId": 13,
+          "followeeId": 125243
         },
-        "status": "1",
-        "new": "0",
-        "stampNum": "1234567",
-        "footprintNum": "567834"
+        "status": 1,
+        "new": 0,
+        "stampNum": 1234567,
+        "footprintNum": 567834
       },
       {
-        "blockId": "14",
+        "blockId": "7b4f1f-e125-522c-db0-36a08d58f",
         "content": "블럭텍스트입니다.3",
-        "childPageId": "142",
+        "childPageId": 142,
         "originalFolloweeId": {
-          "originalId": "13",
-          "followeeId": "125243"
+          "originalId": 13,
+          "followeeId": 125243
         },
-        "status": "1",
-        "new": "0",
-        "stampNum": "1234567",
-        "footprintNum": "567834"
+        "status": 1,
+        "new": 0,
+        "stampNum": 1234567,
+        "footprintNum": 567834
       }
     ]
   }
