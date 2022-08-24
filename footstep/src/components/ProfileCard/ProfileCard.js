@@ -10,7 +10,12 @@ function ProfileCard({ content }) {
     footprintNum: content.footprintNum,
   };
   return (
-    <div id={styles.profile_card}>
+    <div
+      id={styles.profile_card}
+      onClick={() => {
+        window.location.href = `footstep/${content.userId}/${content.pageId}`;
+      }}
+    >
       <img src={content.userImgUrl} className={styles.image}></img>
       <div className={styles.content}>
         <h3 className={styles.username}>{content.userName}</h3>

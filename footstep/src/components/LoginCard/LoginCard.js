@@ -9,15 +9,17 @@ function LoginCard() {
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
   const loginUser = async (email) => {
-    const json = await await fetch(`users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
-    });
+    const json = await (
+      await fetch(`users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+    ).json();
     console.log(json);
 
     if (json.code === 1000) {

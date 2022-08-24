@@ -19,19 +19,28 @@ function Search({ userId, login }) {
     job: "",
     footprint: "",
     userId: "",
+    topPageId: {
+      stamp: "",
+      print: "",
+    },
   });
 
   const getLoginProfile = async (userid) => {
     const json = await (await fetch(`/users/profile/${userid}`)).json();
-    // console.log(json);
+    console.log(json);
     const profile = {
       img: json.result.userImgUrl,
       name: json.result.userName,
       job: json.result.job,
-      footprintNum: json.result.footprintNum,
+      footprint: json.result.footprintNum,
       userId: json.result.userId,
+      topPageId: {
+        stamp: json.result.getStampTopPageRes.topStampPageId,
+        print: json.result.getPrintTopPageRes.topPrintPageId,
+      },
     };
 
+    // console.log(profile);
     setLoginProfile(profile);
   };
 
@@ -134,14 +143,7 @@ function Search({ userId, login }) {
         upper_block={false}
       />
       <div className={styles.contents}>
-        <SideBar
-          img={loginProfile.img}
-          name={loginProfile.name}
-          job={loginProfile.job}
-          footprint={loginProfile.footprintNum}
-          display={!open}
-          login={login}
-        />
+        <SideBar profile={loginProfile} display={!open} login={login} />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
             <div id={styles.body_header}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./css/reset.css";
 import "./css/variables.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,10 +15,10 @@ import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
 import OtherFootstep from "./routes/OtherFootstep/OtherFootstep";
 
 function App() {
-  const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(1);
   //userId===0 -> 로그인 안 된 상태
   //userId>0 -> 로그인 된 상태 / 로그인 된 userId값
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   return (
     <Router>
@@ -36,7 +36,10 @@ function App() {
           path="/users/signup/confirm"
           element={<Confirm type="signup" />}
         />
-        <Route path="/myfootstep" element={<MyFootstep userId={userId}/>} />
+        <Route
+          path="/myfootstep/:pageId"
+          element={<MyFootstep userId={userId} login={login} />}
+        />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route
           path="/search"

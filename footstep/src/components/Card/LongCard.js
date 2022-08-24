@@ -8,7 +8,12 @@ function LongCard({ content }) {
     footprintNum: content.footprintNum,
   };
   return (
-    <div className={styles.card_long}>
+    <div
+      className={styles.card_long}
+      onClick={() => {
+        window.location.href = `/footstep/${content.userId}/${content.pageId}`;
+      }}
+    >
       <img
         className={styles.card_profile_img}
         src={content.userImgUrl}

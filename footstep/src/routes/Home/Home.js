@@ -73,6 +73,8 @@ function Home({ userId, login }) {
       stampNum: contentJson.stampNum,
       footprintNum: contentJson.footprintNum,
       commentNum: contentJson.commentNum,
+      userId: contentJson.userId,
+      pageId: contentJson.pageId,
     };
     // console.log(content);
 
@@ -102,6 +104,8 @@ function Home({ userId, login }) {
         stampNum: contentJson.stampNum,
         footprintNum: contentJson.footprintNum,
         commentNum: contentJson.commentNum,
+        pageId: contentJson.curPageId,
+        userId: contentJson.userId,
       };
       // console.log(content);
 
@@ -195,7 +199,7 @@ function Home({ userId, login }) {
                   ? trendContent
                       .slice(0, 12)
                       .map((item, index) => (
-                        <ShortCard content={item} key={index} />
+                        <ShortCard content={item} key={index} userId={userId} />
                       ))
                   : null}
               </div>
