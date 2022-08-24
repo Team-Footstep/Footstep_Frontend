@@ -16,27 +16,30 @@ function App() {
   const [userId, setUserId] = useState(0);
   //userId===0 -> 로그인 안 된 상태
   //userId>0 -> 로그인 된 상태 / 로그인 된 userId값
-  useEffect(() => {
-    console.log("로그인 된 아이디: ", userId);
-  }, [userId]);
+  const [login, setLogin] = useState(false);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/users/confirmlogin"
+          element={
+            <Confirm type="login" setUserId={setUserId} setLogin={setLogin} />
+          }
+        />
+        <Route path="/" element={<Home userId={userId} login={login} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/terms" element={<LoginTerms />} />
         <Route
           path="/users/signup/confirm"
           element={<Confirm type="signup" />}
         />
-        <Route
-          path="/users/confirmlogin"
-          element={<Confirm type="login" setUserId={setUserId} />}
-        />
         <Route path="/myfootstep" element={<MyFootstep userId={userId}/>} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
-        <Route path="/search" element={<Search />} />
+        <Route
+          path="/search"
+          element={<Search userId={userId} login={login} />}
+        />
         <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
