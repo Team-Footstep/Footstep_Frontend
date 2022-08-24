@@ -23,6 +23,10 @@ function Home({ userId, login }) {
     job: "",
     footprint: "",
     userId: "",
+    topPageId: {
+      stamp: "",
+      print: "",
+    },
   });
 
   const getLoginProfile = async (userid) => {
@@ -32,8 +36,12 @@ function Home({ userId, login }) {
       img: json.result.userImgUrl,
       name: json.result.userName,
       job: json.result.job,
-      footprintNum: json.result.footprintNum,
+      footprint: json.result.footprintNum,
       userId: json.result.userId,
+      topPageId: {
+        stamp: json.result.getStampTopPageRes.topStampPageId,
+        print: json.result.getPrintTopPageRes.topPrintPageId,
+      },
     };
 
     // console.log(profile);
@@ -148,14 +156,7 @@ function Home({ userId, login }) {
         upper_block={false}
       />
       <div className={styles.contents}>
-        <SideBar
-          img={loginProfile.img}
-          name={loginProfile.name}
-          job={loginProfile.job}
-          footprint={loginProfile.footprintNum}
-          display={!open}
-          login={login}
-        />
+        <SideBar profile={loginProfile} display={!open} login={login} />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
             <TopBanner />

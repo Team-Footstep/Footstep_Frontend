@@ -21,10 +21,10 @@
   line-height: 2rem;
   letter-spacing: -0.007rem;
   color: var(--footstep_blue);
-  cursor: pointer;
 }
 .open,
-.close {
+.close,
+.none {
   width: 1.8rem;
   height: 1.8rem;
   display: inline-block;
@@ -43,12 +43,6 @@
   margin-left: 2.2rem;
 }
 
-.menu_detail::marker {
-  margin-right: 0.8rem;
-  line-height: 1.8rem;
-  vertical-align: middle;
-}
-
 a.detail {
   font-size: 1.2rem;
   font-weight: normal;
@@ -56,6 +50,11 @@ a.detail {
   letter-spacing: -0.007rem;
   text-align: left;
   color: var(--footstep_blue);
+  display: inline-block;
+  width: 11.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 a.detail:hover {

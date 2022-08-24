@@ -1,28 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../SideBar/SideBar.module.css";
 import Button from "../Button/Button.js";
 import SubToggle from "../SubToggle/SubToggle";
 
-function SideBar({ img, name, job, footprint, display, login }) {
+function SideBar({ profile, display, login }) {
+  const [printList, setPrintList] = useState([]);
+  const [stampList, setStampList] = useState([]);
+
+  const getBookmark = async () => {
+    const json = await (await fetch(`/bookmarks/${profile.userId}`)).json();
+    console.log(json);
+
+    for (let result of json.result) {
+      if (result.stampOrPrint === "P") {
+        setPrintList((current) => [result, ...current]);
+      } else if (result.stampOrPrint === "S") {
+        setStampList((current) => [result, ...current]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log(profile);
+    if (profile.userId > 0) {
+      getBookmark();
+    }
+  }, [profile]);
+
   return (
     <div className={`${display ? styles.blind : null}`}>
       <div className={styles.side_bar}>
         <div className={`${styles.profile} ${login ? null : styles.blind}`}>
-          <img src={img} className={styles.img}></img>
-          <h3 className={styles.name}>{name}</h3>
-          <h4 className={styles.job}>{job}</h4>
+          <img src={profile.img} className={styles.img}></img>
+          <h3 className={styles.name}>{profile.name}</h3>
+          <h4 className={styles.job}>{profile.job}</h4>
           <div className={styles.footprint}>
             <p>footprint</p>
             <div className={styles.footprintNum}>
-              {footprint >= 1000
-                ? `${Math.floor(footprint / 1000)}K`
-                : footprint}
+              {profile.footprint >= 1000
+                ? `${Math.floor(profile.footprint / 1000)}K`
+                : profile.footprint}
             </div>
           </div>
           <div className={styles.menu}>
-            <SubToggle title={"Portfolio"} />
-            <SubToggle title={"My Footstep"} />
-            <SubToggle title={"My Follow"} />
+            {/* <SubToggle
+              type={0}
+              topPageId={profile.topPageId}
+              userId={profile.userId}
+              bookmark={[]}
+            /> */}
+            <p>Portfolio</p>
+            <SubToggle
+              type={1}
+              topPageId={profile.topPageId}
+              userId={profile.userId}
+              bookmark={printList}
+            />
+            <SubToggle
+              type={2}
+              topPageId={profile.topPageId}
+              userId={profile.userId}
+              bookmark={stampList}
+            />
           </div>
         </div>
         <div
@@ -37,9 +76,9 @@ function SideBar({ img, name, job, footprint, display, login }) {
             시작하기
           </a>
           <div className={styles.menu}>
-            <SubToggle title={"Portfolio"} />
-            <SubToggle title={"My Footstep"} />
-            <SubToggle title={"My Follow"} />
+            <p>Portfolio</p>
+            <p>My Footstep</p>
+            <p>My Follow</p>
           </div>
         </div>
         <div className={login ? null : styles.blind}>
