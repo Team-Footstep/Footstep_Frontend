@@ -14,14 +14,6 @@ function Login() {
     <div>
       <Header state={open} clickFunc={sideBarHandler} upper_block={false} />
       <div className={styles.contents}>
-        <SideBar
-          img={null}
-          name={"문비"}
-          job={"프론트앤드 디자이너"}
-          footprint={2000}
-          display={!open}
-          login={false}
-        />
         <LoginCard />
       </div>
     </div>

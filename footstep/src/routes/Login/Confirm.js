@@ -52,10 +52,10 @@ function Confirm({ type, setUserId, setLogin }) {
     if (type === "signup") {
       confirmSignup(email, token);
     } else if (type === "login") {
-      // confirmLogin(email, token);
-      setUserId(1);
-      setLogin(true);
-      navigate("/");
+      confirmLogin(email, token);
+      // setUserId(110);
+      // setLogin(true);
+      // navigate("/");
     }
   }, []);
 

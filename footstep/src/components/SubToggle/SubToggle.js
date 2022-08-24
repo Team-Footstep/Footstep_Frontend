@@ -41,7 +41,7 @@ function SubToggle({ type, userId, topPageId, bookmark }) {
               type === 1
                 ? `/myfootstep/${topPageId.print}`
                 : type === 2
-                ? `/myfootstep/${topPageId.stamp}`
+                ? `/myfollow/${topPageId.stamp}`
                 : "#"
             }
           >
@@ -55,7 +55,7 @@ function SubToggle({ type, userId, topPageId, bookmark }) {
               <a
                 key={index}
                 className={styles.detail}
-                href={`myfootstep/${item.pageId}`}
+                href={`/myfootstep/${item.pageId}`}
               >
                 {item.preview}
               </a>
@@ -65,7 +65,7 @@ function SubToggle({ type, userId, topPageId, bookmark }) {
               <a
                 key={index}
                 className={styles.detail}
-                href={`myfollow/${item.pageId}`}
+                href={`/myfollow/${item.pageId}`}
               >
                 {item.preview}
               </a>

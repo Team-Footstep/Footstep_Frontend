@@ -1,7 +1,7 @@
 import CardFooter from "../Button/CardFooter";
 import styles from "./ShortCard.module.css";
 
-function ShortCard({ content }) {
+function ShortCard({ content, userId }) {
   const footContent = {
     commentNum: content.commentNum,
     stampNum: content.stampNum,
@@ -9,7 +9,14 @@ function ShortCard({ content }) {
   };
 
   return (
-    <div className={styles.card_short}>
+    <div
+      className={styles.card_short}
+      onClick={() => {
+        userId === content.userId
+          ? (window.location.href = `/myfootstep/${content.pageId}`)
+          : (window.location.href = `/footstep/${content.userId}/${content.pageId}`);
+      }}
+    >
       <img
         className={styles.card_profile_img}
         src={content.userImgUrl}
