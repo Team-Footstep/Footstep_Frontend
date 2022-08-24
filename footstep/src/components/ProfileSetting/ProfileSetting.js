@@ -16,16 +16,15 @@ function ProfileSetting() {
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
   );
 
-  const updateUserinfo = (userinfo) => {
+  const updateUserinfo = () => {
+    const userinfoobj = userinfo;
     fetch(`/users/modify/2`, {
       method: "PATCH",
       headers: {
         "content-Type": "application/json",
       },
       body: JSON.stringify({
-        job: userinfo.job,
-        userName: userinfo.userName,
-        introduction: userinfo.introduction,
+        userinfoobj,
       }),
     })
       .then((res) => res.json())
@@ -38,7 +37,7 @@ function ProfileSetting() {
       );
   };
 
-  const updateEmail = (email) => {
+  const updateEmail = () => {
     fetch(`/users/modifyEmail/2`, {
       method: "PATCH",
       headers: {
@@ -60,15 +59,11 @@ function ProfileSetting() {
     });
     setEmail(json.result.email);
   };
+
   useEffect(() => {
     getProfile();
   }, []);
 
-  // const [userinfo, setUserinfo] = useState({
-  //   userName: json.result.userName,
-  //   job: json.result.job,
-  //   introduction: json.result.introduction,
-  // });
   const onChange_User_Info = (event) => {
     setUserinfo({
       ...userinfo,
@@ -106,7 +101,7 @@ function ProfileSetting() {
 
   const onSubmit_User_Info = (event) => {
     event.preventDefault();
-    updateUserinfo();
+    updateUserinfo(userinfo);
   };
 
   const onSubmit_Change_Email = (e) => {
