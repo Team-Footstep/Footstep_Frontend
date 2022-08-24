@@ -7,7 +7,6 @@ function ProfileSetting() {
     userName: "",
     job: "",
     introduction: "",
-    userImgUrl: "",
   });
   const [email, setEmail] = useState("");
   const [code, setCode] = useState({
@@ -27,11 +26,16 @@ function ProfileSetting() {
         job: userinfo.job,
         userName: userinfo.userName,
         introduction: userinfo.introduction,
-        userImgUrl: null,
       }),
     })
       .then((res) => res.json())
-      .then((result) => setUserinfo(result));
+      .then((result) =>
+        setUserinfo({
+          userName: result.userName,
+          job: result.job,
+          introduction: result.introduction,
+        })
+      );
   };
 
   const updateEmail = (email) => {
@@ -40,14 +44,10 @@ function ProfileSetting() {
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify({
-        userId: 2,
-        email: email,
-      }),
+      body: JSON.stringify(email),
     })
       .then((res) => res.json())
-      .then((result) => setEmail(result));
-    setEmail("");
+      .then((result) => setEmail(result.email));
   };
 
   const getProfile = async () => {
@@ -57,7 +57,6 @@ function ProfileSetting() {
       userName: json.result.userName,
       job: json.result.job,
       introduction: json.result.introduction,
-      userImgUrl: json.result.userImgUrl,
     });
     setEmail(json.result.email);
   };
