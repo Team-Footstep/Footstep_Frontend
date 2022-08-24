@@ -3,6 +3,7 @@ import styles from "./Comments_SideBar.module.css";
 import CommentList from "../CommentList/CommentList";
 import moment from 'moment';
 import 'moment/locale/ko';
+import uuid from "react-uuid";
 
 function Comments_SideBar({ display, commentArray, propFunction, getUserID }) {
   const [userimg] = useState([]);
@@ -18,9 +19,9 @@ function Comments_SideBar({ display, commentArray, propFunction, getUserID }) {
   };
 
   const NEWCOMMENTS = {
-    comment_id: `${Date.now()}`,
-    blockId: "0",
-    userId: `${getUserID}`,
+    comment_id: uuid(),
+    blockId: 0,
+    userId: getUserID,
     userName: "홍길동",
     content: "",
     createdAt: `${moment().format('YYYY-MM-DD HH:mm')}`

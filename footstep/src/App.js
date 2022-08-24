@@ -34,7 +34,7 @@ function App() {
           path="/users/confirmlogin"
           element={<Confirm type="login" setUserId={setUserId} />}
         />
-        <Route path="/myfootstep" element={<MyFootstep />} />
+        <Route path="/myfootstep" element={<MyFootstep userId={userId}/>} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route path="/search" element={<Search />} />
         <Route path="/test" element={<Test />} />
