@@ -53,7 +53,7 @@ function Confirm({ type, setUserId, setLogin }) {
       confirmSignup(email, token);
     } else if (type === "login") {
       // confirmLogin(email, token);
-      setUserId(2);
+      setUserId(1);
       setLogin(true);
       navigate("/");
     }
