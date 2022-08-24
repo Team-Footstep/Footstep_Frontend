@@ -11,6 +11,8 @@ import Search from "./routes/Search/Search.js";
 import SubPage from "./routes/SubPage/SubPage.js";
 import LoginTerms from "./routes/Login/LoginTerms";
 import Confirm from "./routes/Login/Confirm";
+import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
+import OtherFootstep from "./routes/OtherFootstep/OtherFootstep";
 
 function App() {
   const [userId, setUserId] = useState(0);
@@ -41,6 +43,8 @@ function App() {
           element={<Search userId={userId} login={login} />}
         />
         <Route path="/test" element={<Test />} />
+        <Route path="/submyfootstep" element={<SubMyFootstep/>}/>
+        <Route path="/otherfootstep" element={<OtherFootstep/>}/>
       </Routes>
     </Router>
   );

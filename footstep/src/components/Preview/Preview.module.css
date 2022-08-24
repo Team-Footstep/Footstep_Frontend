@@ -1,0 +1,38 @@
+.preview{
+    position: absolute;
+    width: 100.8rem;
+    height: 15.8rem;
+    left: 23.3rem;
+    top: 3rem;
+    background: #F8FBFE;
+    box-shadow: 0rem 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.preview_title h2 {
+    top: 2.6rem;
+    height: 3.5rem;
+    font-family: "Noto Sans KR";
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: 0.05rem;
+    text-align: left;
+    color: var(--1-st-blue);
+}
+
+.preview_content p{
+    width: 85.2rem;
+    height: 5.8rem;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.034rem;
+    text-align: left;
+    color: var(--font-black);
+}

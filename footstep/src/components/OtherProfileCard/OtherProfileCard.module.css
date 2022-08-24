@@ -1,0 +1,145 @@
+.profilebox{
+    width: 108.3rem;
+    height: 19.5rem;
+    background-color: none;
+    margin: auto;
+    justify-content: center;
+    margin-top: 3rem;
+
+}
+
+.profile_card {
+    width: 100.8rem;
+    height: 19.5rem;
+    background-color: var(--whiteblue-bg);
+    border-radius: 1.5rem;
+    box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    text-align: left;
+    margin-top: 3rem;
+  }
+
+  .image {
+    width: 15rem;
+    height: 15.1rem;
+    left: -7.5rem;
+    top: 2.2rem;
+  
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0rem 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+  }
+  
+  .content {
+    position: absolute;
+    left: 11.8rem;
+  }
+  .username {
+    position: absolute;
+    /* width: 6.3rem; */
+    height: 2.7rem;
+    top: 2.1rem;
+    font-family: Pretendard;
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: 0.05rem;
+    text-align: left;
+    color: var(--footstep_blue);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .job {
+    position: absolute;
+    width: 23.9rem;
+    height: 2.7rem;
+    top: 5.3rem;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.034rem;
+    text-align: left;
+    color: var(--gray-font);
+  }
+  .job span {
+    margin-left: 0.5rem;
+  }
+  .introduction {
+    position: absolute;
+    width: 70rem;
+    height: 4.8rem;
+    top: 12.1rem;
+    font-family: Pretendard;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.034rem;
+    text-align: left;
+    color: var(--font-black);
+    overflow: hidden;
+  }
+  
+  .line_4 {
+    position: absolute;
+    width: 70rem;
+    height: 0.15rem;
+    top: 9.65rem;
+    background-color: rgba(152, 172, 206, 0.6);
+  }
+
+  .Foot_print {
+    /* position: absolute; */
+    /* width: 6.5rem; */
+    height: 2rem;
+    top: 3.2rem;
+    font-family: Pretendard;
+    font-size: 1.4rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: 0.032rem;
+    text-align: right;
+    color: var(--gray-font);
+    margin-right: 0.5rem;
+    margin-left: 1.5rem;
+  }
+
+  .footprintNum{
+    /* position: absolute; */
+    /* width: 1.9rem; */
+    height: 2rem;
+    font-family: Pretendard;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: 0.032rem;
+    text-align: right;
+    color: var(--gray-font);
+  }
+  
+  .plus_btn{
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    left:84rem;
+    top:2.3rem;
+    flex-grow: 0;
+    background-image: url(../../icons/plus.svg);
+    /* background-color: var(--grayblue-border); */
+  }
+                   
