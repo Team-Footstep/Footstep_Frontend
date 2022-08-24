@@ -39,11 +39,13 @@ function MyFootstep () {
           <div className={styles.scroll}>
             <div className={styles.body_contents}>
             <TopBanner />
+            
             </div>
           </div>
         <div>
           <Comments_SideBar display={commentsopen} />
         </div>
+        
         </div>
       
       <Footer />

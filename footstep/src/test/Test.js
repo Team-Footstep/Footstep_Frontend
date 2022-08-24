@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Header from "../components/Header/Header.js";
 import SideBar from "../components/SideBar/SideBar.js";
 import Comments_SideBar from "../components/Comments_SideBar/Comments_SideBar";

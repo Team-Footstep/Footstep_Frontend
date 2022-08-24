@@ -14,49 +14,6 @@ function Search() {
 
     const [cate, setCate] = useState(true);
 
-    //임시 데이터, api에서 받아온 결과로 대체할 예정
-    // function Test() {
-    //     useEffect(() => {
-    //         fetch("/search/?word=")
-    //             .then((response) => {
-    //                 return response.json();
-    //             })
-    //             .then(function (data) {
-    //                 console.log(JSON.stringify(data));
-    //             });
-    //     }, []);
-
-    // function useFetch(url) {
-    //     const [title, setTitle] = useState(true);
-    //     const [img_url, setimg_url] = useState(null);
-    //     const [name, setName] = useState(null);
-    //     const [job, setJob] = useState(null);
-    //     const [content, setContent] = useState(null);
-    //     const [date, setDate] = useState(null);
-    //     const [foot_cnt, setFoot_cnt] = useState(null);
-
-      
-    //     useEffect(() => {
-    //       searchResultArr
-    //         .fetch(url)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //           setData(data);
-    //           setLoading(false);
-    //         })
-    //         .catch((error) => {
-    //           setError(error);
-    //           setLoading(false);
-    //         });
-    //     }, [url]);
-      
-    //     return { loading, data, error };
-    //   }
-    // -----------------------------------------------------
-    // 
-
-
-    //--------------------------------------------------
     const [word, setWord] = useState("");
     const getWord = (text)=>{
         setWord(text);

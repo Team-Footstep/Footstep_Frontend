@@ -9,6 +9,8 @@ import Route_ProfileSetting from "./routes/ProfileSetting/ProfileSetting.js";
 import Search from "./routes/Search/Search.js";
 import Test from "./test/Test.js";
 import LoginTerms from "./routes/Login/LoginTerms";
+import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
+import OtherFootstep from "./routes/OtherFootstep/OtherFootstep";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route path="/search" element={<Search />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/submyfootstep" element={<SubMyFootstep/>}/>
+        <Route path="/otherfootstep" element={<OtherFootstep/>}/>
       </Routes>
     </Router>
   );
