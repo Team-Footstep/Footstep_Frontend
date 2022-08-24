@@ -1,22 +1,88 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "../ProfileSetting/ProfileSetting.module.css";
 import { Link } from "react-router-dom";
 
 function ProfileSetting() {
-  const [values, setValues] = useState({
-    name: "",
+  const [userinfo, setUserinfo] = useState({
+    userName: "",
     job: "",
-    about_me: "",
-    email: "",
+    introduction: "",
+    userImgUrl: "",
+  });
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState({
     code: "",
   });
+  const [Image, setImage] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
 
-  const onChange = (event) => {
-    setValues({
-      ...values,
+  const updateUserinfo = (userinfo) => {
+    fetch(`/users/modify/2`, {
+      method: "PATCH",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        job: userinfo.job,
+        userName: userinfo.userName,
+        introduction: userinfo.introduction,
+        userImgUrl: null,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => setUserinfo(result));
+  };
+
+  const updateEmail = (email) => {
+    fetch(`/users/modifyEmail/2`, {
+      method: "PATCH",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: 2,
+        email: email,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => setEmail(result));
+    setEmail("");
+  };
+
+  const getProfile = async () => {
+    const json = await (await fetch(`/users/profile/2`)).json();
+    console.log(json);
+    setUserinfo({
+      userName: json.result.userName,
+      job: json.result.job,
+      introduction: json.result.introduction,
+      userImgUrl: json.result.userImgUrl,
+    });
+    setEmail(json.result.email);
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  // const [userinfo, setUserinfo] = useState({
+  //   userName: json.result.userName,
+  //   job: json.result.job,
+  //   introduction: json.result.introduction,
+  // });
+  const onChange_User_Info = (event) => {
+    setUserinfo({
+      ...userinfo,
       [event.target.name]: event.target.value,
     });
-    // values.about_me = values.replace.about_me("\r", "<br/>");
+  };
+
+  const onChange_Change_Email = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChange_Certifi_Code = (e) => {
+    setCode(e.target.value);
   };
 
   const onChange_image = (e) => {
@@ -39,26 +105,27 @@ function ProfileSetting() {
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  const onSubmit = (event) => {
+  const onSubmit_User_Info = (event) => {
     event.preventDefault();
-    // alert(JSON.stringify(values, null, 2));
+    updateUserinfo();
+  };
+
+  const onSubmit_Change_Email = (e) => {
+    e.preventDefault();
     const regEmail =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-    if (!regEmail.test(values.email)) {
+    if (!regEmail.test(email)) {
       return alert("e-mail양식이 틀렸습니다");
     } else {
-      alert(JSON.stringify(values, null, 2));
+      updateEmail();
     }
   };
 
-  const onClick = () => {
-    setValues(values.map((k) => ""));
-    //변경하기를 클릭할시 input안의 state value값을 초기화 하고싶다!!!
+  const onSubmit_Certifi_Code = (e) => {
+    e.preventDefault();
+    const jsonstr_code = JSON.stringify(code, null, 2);
+    console.log(jsonstr_code);
   };
-
-  const [Image, setImage] = useState(
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-  );
   const fileInput = useRef(null);
 
   // const obj = JSON.parse(values);
@@ -108,35 +175,35 @@ function ProfileSetting() {
             />
           </div>
           <form
-            action=""
+            action="/users/modify/${userId}"
             method="post"
             name="Profile_info"
             className={styles.profile_form_container}
-            onSubmit={onSubmit}
+            onSubmit={onSubmit_User_Info}
           >
             <div className={styles.profile_textbox}>
               <div>
                 <label htmlFor="name">이름</label>
                 <input
                   type="text"
-                  id="name"
+                  // id="name"
                   className={`${styles.name} ${styles.inputstyles}`}
-                  name="name"
-                  value={values.name}
+                  name="userName"
+                  value={userinfo.userName}
                   placeholder="이름을 작성해 주세요..."
-                  onChange={onChange}
+                  onChange={onChange_User_Info}
                 ></input>
               </div>
               <div>
                 <label htmlFor="job">직업</label>
                 <input
                   type="text"
-                  id="job"
+                  // id="job"
                   className={`${styles.job} ${styles.inputstyles}`}
                   name="job"
-                  value={values.job}
+                  value={userinfo.job}
                   placeholder="직업을 작성해 주세요..."
-                  onChange={onChange}
+                  onChange={onChange_User_Info}
                 ></input>
               </div>
               <div>
@@ -151,12 +218,12 @@ function ProfileSetting() {
                   onChange={onChange}
                 ></input> */}
                 <textarea
-                  id="about_me"
+                  // id="about_me"
                   className={`${styles.about_me} ${styles.inputstyles}`}
-                  name="about_me"
-                  value={values.about_me}
+                  name="introduction"
+                  value={userinfo.introduction}
                   placeholder="자기소개를 작성해 주세요..."
-                  onChange={onChange}
+                  onChange={onChange_User_Info}
                 ></textarea>
               </div>
             </div>
@@ -183,7 +250,7 @@ function ProfileSetting() {
             action=""
             method="post"
             name="Email_Authentication"
-            onSubmit={onSubmit}
+            onSubmit={onSubmit_Change_Email}
             className={styles.email_form_container}
           >
             <div className={styles.emailtextbox_sendbutton}>
@@ -191,12 +258,12 @@ function ProfileSetting() {
                 <label htmlFor="email">이메일</label>
                 <input
                   type="text"
-                  id="email"
+                  // id="email"
                   name="email"
                   className={`${styles.email} ${styles.inputstyles}`}
-                  value={values.email}
+                  value={email}
                   placeholder="e-mail을 작성해 주세요..."
-                  onChange={onChange}
+                  onChange={onChange_Change_Email}
                 ></input>
               </div>
               <div>
@@ -208,29 +275,30 @@ function ProfileSetting() {
                 </button>
               </div>
             </div>
+          </form>
 
+          <form
+            action=""
+            method="post"
+            // name="Email_Authentication"
+            onSubmit={onSubmit_Certifi_Code}
+            className={styles.email_form_container}
+          >
             <div className={styles.codetextbox_changebutton}>
               <div>
                 <label htmlFor="code">코드입력</label>
                 <input
                   type="number"
-                  id="code"
+                  // id="code"
                   name="code"
                   className={`${styles.code} ${styles.inputstyles}`}
-                  value={values.code}
+                  value={code}
                   placeholder="코드를 입력해 주세요..."
-                  onChange={onChange}
+                  onChange={onChange_Certifi_Code}
                 ></input>
               </div>
               <div>
-                <button
-                  type="button"
-                  onClick={onClick}
-                  className={styles.change}
-                >
-                  {/* <span className={styles.text_change}>변경하기</span> */}
-                  변경하기
-                </button>
+                <button className={styles.change}>변경하기</button>
               </div>
             </div>
           </form>
