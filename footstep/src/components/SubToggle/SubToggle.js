@@ -26,8 +26,6 @@ function SubToggle({ type, userId, topPageId, bookmark }) {
     setMarkList(bookmark);
   }, [bookmark]);
 
-  console.log(markList);
-
   return (
     <div className={styles.menu}>
       <div className={styles.title}>
@@ -52,15 +50,27 @@ function SubToggle({ type, userId, topPageId, bookmark }) {
         )}
       </div>
       <div className={`${styles.menu_detail} ${openSub ? null : styles.blind}`}>
-        {markList.map((item, index) => (
-          <a
-            key={index}
-            className={styles.detail}
-            href={`footstep/${item.userId}/${item.pageId}`}
-          >
-            {item.preview}
-          </a>
-        ))}
+        {type === 1
+          ? markList.map((item, index) => (
+              <a
+                key={index}
+                className={styles.detail}
+                href={`myfootstep/${item.pageId}`}
+              >
+                {item.preview}
+              </a>
+            ))
+          : type === 2
+          ? markList.map((item, index) => (
+              <a
+                key={index}
+                className={styles.detail}
+                href={`myfollow/${item.pageId}`}
+              >
+                {item.preview}
+              </a>
+            ))
+          : null}
       </div>
     </div>
   );

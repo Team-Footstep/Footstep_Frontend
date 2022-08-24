@@ -21,7 +21,6 @@ function SideBar({ profile, display, login }) {
   };
 
   useEffect(() => {
-    console.log(profile);
     if (profile.userId > 0) {
       getBookmark();
     }
