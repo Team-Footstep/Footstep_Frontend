@@ -4,28 +4,28 @@
   "message": "요청에 성공하였습니다.",
   "result": [
     {
-      "pageId": "1",
+      "pageId": 1,
       "comments": [
         {
-          "comment_id": "2",
-          "blockId": "14",
-          "userId": "13",
+          "comment_id": "3e1a25-012b-bbd-346-e04c7a8cf5c",
+          "blockId": "7b4f1f-e125-522c-db0-36a08d58f",
+          "userId": 13,
           "userName": "홍길동",
           "content": "댓글입니다.",
           "createdAt": "2022-07-24 23:13"
         },
         {
-          "comment_id": "25",
-          "blockId": "14",
-          "userId": "165",
+          "comment_id": "7b4f1f-e125-522c-db0-36a08d58f",
+          "blockId": "7b4f1f-e125-522c-db0-36a08d58f",
+          "userId": 165,
           "userName": "정경은",
           "content": "댓글입니다.2",
           "createdAt": "2022-07-24 23:27"
         },
         {
-          "comment_id": "6324",
-          "blockId": "2",
-          "userId": "13574",
+          "comment_id": "c00cb65-b30-7dc0-5df-457c80ee218",
+          "blockId": "652407a-61d3-f622-83e-cba8cdee23bd",
+          "userId": 13574,
           "userName": "허서윤",
           "content": "댓글입니다.3",
           "createdAt": "2022-07-24 23:59"

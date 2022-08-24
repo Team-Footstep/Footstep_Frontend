@@ -34,7 +34,7 @@ function App() {
           path="/users/signup/confirm"
           element={<Confirm type="signup" />}
         />
-        <Route path="/myfootstep" element={<MyFootstep />} />
+        <Route path="/myfootstep" element={<MyFootstep userId={userId}/>} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route
           path="/search"
