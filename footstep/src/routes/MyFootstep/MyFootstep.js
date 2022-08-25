@@ -37,11 +37,12 @@ function MyFootstep() {
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
+
   const [loading, setLoading] = useState(true);
   const EMPTY_BLOCK = {
-    blockId: Date.now(),
+    blockId: Math.floor(Math.random() * 1000000),
     content: "",
-    childPageId: 0,
+    childPageId: null,
     originalFolloweeId: {
       followeeId: 0,
       followeeImgUrl: null,
@@ -74,7 +75,7 @@ function MyFootstep() {
     getLoginProfile(userId);
     getNewContent();
     // getNewComments();
-  }, []);
+  }, [PAGE_ID]);
 
   const getLoginProfile = async (userid) => {
     const json = await (await fetch(`/users/profile/${userid}`)).json();
@@ -102,23 +103,32 @@ function MyFootstep() {
   //content get
   const patchContent = async () => {
     const blockTemplate = localBlock.map(list => (
+      list.isNewBlock !== undefined ?
       {
-        userId: parseInt(loginProfile.userId),
+        userId: parseInt(userId),
         blockId: list.blockId,
         curPageId: parseInt(PAGE_ID),
         childPageId: list.childPageId,
         content: list.content,
         isNewBlock: list.isNewBlock,
         status: list.status
+      } : {
+        userId: parseInt(userId),
+        blockId: list.blockId,
+        curPageId: parseInt(PAGE_ID),
+        childPageId: list.childPageId,
+        content: list.content,
+        isNewBlock: 0,
+        status: list.status
       }
     ));
-    console.log(blockTemplate[0]);
-    await fetch(`pages/save`, {
-      method: "PATCH",
+    const jsonTemplate = {...PATCH_TEMPLATE, contentList: blockTemplate}
+    await fetch(`/pages/save`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...PATCH_TEMPLATE, contentList: blockTemplate}),
+      body: JSON.stringify(jsonTemplate),
     }).then((res) => res.json())
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
@@ -126,10 +136,14 @@ function MyFootstep() {
   };
   //comments
   const getNewComments = async (pageId, blockId) => {
-    await fetch(`/comment/${pageId}/${blockId}`)
+    const json = await fetch(`/comment/${pageId}/${blockId}`)
       .then((response) => response.json())
       .then((data) => (data.isSuccess && data.result.length !== 0) ? setLocalComment([...localComment, data.result[0]]) : setLocalComment([...localComment]))
       .catch((error) => console.log(error));
+      console.log(json);
+      // if (json.isSuccess && json.result.length !== 0) {
+
+      // }
   };
 
   const getCommentArray = (blockArray, pageId) => {
@@ -137,6 +151,10 @@ function MyFootstep() {
       getNewComments(pageId, list.blockId);
     })
   };
+
+  // useEffect(()=> {
+  //   window.location.reload();
+  // }, []);
 
   // useEffect(()=>{
   //   getCommentArray(localLiveBlock, PAGE_ID);
@@ -211,7 +229,7 @@ function MyFootstep() {
         <SideBar profile={loginProfile} display={!open} login={login} />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
-            {parseInt(pageId) === loginProfile.topPageId.print ? (
+            {parseInt(PAGE_ID) === loginProfile.topPageId.print ? (
               <TopBanner />
             ) : (
               <div>
@@ -249,7 +267,7 @@ function MyFootstep() {
                 commentData={localComment}
                 propDataFunction={handleTextData}
                 userId={USER_ID}
-                pageId={pageId}
+                pageId={PAGE_ID}
                 editorType={"myfootstep"}
               />
               <Button

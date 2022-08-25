@@ -6,6 +6,7 @@ import useNumberFormatter from "../../Hooks/useNumberFormatter.js";
 import usefocusContentEditableTextToEnd from "../../Hooks/usefocusContentEditableTextToEnd.js";
 import useClick from '../../Hooks/useClick.js';
 import CommentModal from '../CommentModal/CommentModal.js';
+import MyFootstep from '../../routes/MyFootstep/MyFootstep';
 // import uuid from "react-uuid";
 
 function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime, profileData}) {
@@ -17,7 +18,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
 
   const CHILD_ID = targetTextArray["childPageId"];
   //하위 페이지 데이터 입력받음
-  const newChildId = Date.now();
+  const newChildId = Math.floor(Math.random() * 1000000);
   //새로운 childId 부여
   const textContent = targetTextArray["content"];
   //content 키 영역의 text만 추출
@@ -91,7 +92,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
         blockId: blockId,
         content: e.target.innerText.replace(/<div>|<\/div>|<br>|/gi, "").slice(0, caretPosition), 
         childPageId: CHILD_ID
-        }, {...NEWLINE_OBJECT, blockId: Date.now(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
+        }, {...NEWLINE_OBJECT, blockId: Math.floor(Math.random() * 1000000), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
     } else {
       return;
     };
@@ -168,7 +169,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
   const handleNewCommentSubmit = (event) => {
     event.preventDefault();
     setComments([...comments, {
-      "commentId": Date.now(),
+      "commentId": Math.floor(Math.random() * 1000000),
       "blockId": blockId,
       "userId": userId,
       "userName": profileData.name,
@@ -241,11 +242,11 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
       <div className={`${styles.innerpage_modal} ${detailDisplay ? null : styles.blind}`}>
         <div className={`${styles.subpage_btn} ${((CHILD_ID === 0) && ((type === "myfootstep") || (type === "myfollow"))) ? null : styles.blind}`}>
           <span className={`${styles.add_icon} ${styles.icon}`}></span>
-          <Link to={`/subpage/${newChildId}`} className={`${styles.add} ${styles.icon_text}`}>작성</Link>
+          <Link to={`/myfootstep/${CHILD_ID}`} className={`${styles.add} ${styles.icon_text}`}>작성</Link>
         </div>
         <div className={`${styles.subpage_btn} ${CHILD_ID !== 0 ? null : styles.blind}`}>
           <span className={`${styles.detail_icon} ${styles.icon}`}></span>
-          <Link to={`/subpage/${CHILD_ID}`} className={`${styles.detail} ${styles.icon_text}`}>자세히</Link>
+          <Link to={type === "myfootstep" ? `/myfootstep/${CHILD_ID}` : `/footstep/${userId}/${CHILD_ID}`} className={`${styles.detail} ${styles.icon_text}`}>자세히</Link>
         </div>
         <div className={styles.bar}></div>
         <div className={`${styles.subpage_btn}`} onClick={handleCommentDisplay}>
