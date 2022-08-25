@@ -3,18 +3,17 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../../components/SideBar/SideBar.js";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
-import MyfootstepBanner from "../../components/Banner/MyfootstepBanner";
-import TopBanner from "../../components/Banner/TopBanner";
 import Comments_SideBar from "../../components/Comments_SideBar/Comments_SideBar";
 import TextEditor from "../../components/TextEditor/TextEditor.js";
 import newDummyComment from "../../db/newDummyComment.json";
 import dummyBlock from "../../db/dummyBlock.json";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import OtherProfileCard from "../../components/OtherProfileCard/OtherProfileCard";
 import deleteImg from "../../icons/delete.svg";
 
-function MyFootstep() {
-  const [cookie, setCookie, removeCookie] = useCookies("id");
+function Footstep() {
+  const [cookie] = useCookies("id");
   const userId = cookie.id;
   const login = cookie.id !== undefined ? true : false;
 
@@ -37,6 +36,19 @@ function MyFootstep() {
   const [localComment, setLocalComment] = useState(
     newDummyComment["result"][0]["comments"]
   );
+  const [otherProfileContent, setOtherProfileContent] = useState({
+    userId: "",
+    userImgUrl: "",
+    userName: "",
+    job: "",
+    footprintNum: "",
+    introduction: "",
+    topPageId: {
+      stamp: "",
+      print: "",
+    },
+  });
+  const pageUserId = useParams().userId;
   const pageId = useParams().pageId;
   console.log("pageId: ", pageId);
   const sideBarHandler = () => {
@@ -50,6 +62,7 @@ function MyFootstep() {
       window.location.href = "/login";
     }
     getLoginProfile(userId);
+    getOtherProfileContent(pageUserId);
     getNewContent();
     getNewComments();
   }, []);
@@ -73,10 +86,36 @@ function MyFootstep() {
     setLoginProfile(profile);
   };
 
+  const getOtherProfileContent = async (userid) => {
+    console.log("함수 실행");
+    const json = await (await fetch(`/users/profile/${userid}`)).json();
+    console.log(json);
+
+    const content = {
+      userId: json.result.userId,
+      userImgUrl: json.result.userImgUrl,
+      userName: json.result.userName,
+      job: json.result.job,
+      footprintNum: json.result.footprintNum,
+      introduction: json.result.introduction,
+      topPageId: {
+        stamp: json.result.getStampTopPageRes.topStampPageId,
+        print: json.result.getPrintTopPageRes.topPrintPageId,
+      },
+    };
+    console.log(content);
+
+    setOtherProfileContent(content);
+  };
+
   const getNewContent = async () => {
     await fetch(`/pages/get/${pageId}`)
       .then((response) => response.json())
-      .then((data) => setLocalLiveBlock(data["result"]["blocks"]))
+      .then((data) => {
+        console.log(data);
+        setPreviewText(data.result.preview);
+        setLocalLiveBlock(data["result"]["blocks"]);
+      })
       .catch((error) => console.log(error));
   };
   //content get
@@ -160,8 +199,8 @@ function MyFootstep() {
         <SideBar profile={loginProfile} display={!open} login={login} />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
-            {parseInt(pageId) === loginProfile.topPageId.print ? (
-              <TopBanner />
+            {parseInt(pageId) === otherProfileContent.topPageId.print ? (
+              <OtherProfileCard content={otherProfileContent} />
             ) : (
               <div>
                 <div className={styles.previewbox}>
@@ -188,9 +227,9 @@ function MyFootstep() {
                     <div className={styles.deleteText}>페이지 삭제</div>
                   </button>
                 </div>
-                <div className={styles.line}></div>
               </div>
             )}
+            <div className={styles.line}></div>
             <div className={styles.body_texteditor}>
               <TextEditor
                 // blockData={dummyBlock["result"]["blocks"]}
@@ -198,7 +237,7 @@ function MyFootstep() {
                 commentData={newDummyComment["result"][0]["comments"]}
                 propDataFunction={handleTextData}
                 userId={USER_ID}
-                pageId={pageId}
+                pageId={14}
                 editorType={"myfootstep"}
               />
             </div>
@@ -218,4 +257,4 @@ function MyFootstep() {
   );
 }
 
-export default MyFootstep;
+export default Footstep;
