@@ -15,39 +15,22 @@ import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
 import OtherFootstep from "./routes/OtherFootstep/OtherFootstep";
 
 function App() {
-  const [userId, setUserId] = useState(1);
-  //userId===0 -> 로그인 안 된 상태
-  //userId>0 -> 로그인 된 상태 / 로그인 된 userId값
-  const [login, setLogin] = useState(true);
-
   return (
     <Router>
       <Routes>
-        <Route
-          path="/users/confirmlogin"
-          element={
-            <Confirm type="login" setUserId={setUserId} setLogin={setLogin} />
-          }
-        />
-        <Route path="/" element={<Home userId={userId} login={login} />} />
+        <Route path="/users/confirmlogin" element={<Confirm type="login" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/terms" element={<LoginTerms />} />
         <Route
           path="/users/signup/confirm"
           element={<Confirm type="signup" />}
         />
-        <Route
-          path="/myfootstep/:pageId"
-          element={<MyFootstep userId={userId} login={login} />}
-        />
+        <Route path="/myfootstep/:pageId" element={<MyFootstep />} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
-        <Route
-          path="/search"
-          element={<Search userId={userId} login={login} />}
-        />
-        <Route path="/test" element={<Test />} />
-        <Route path="/submyfootstep" element={<SubMyFootstep/>}/>
-        <Route path="/otherfootstep" element={<OtherFootstep/>}/>
+        <Route path="/search" element={<Search />} />
+        <Route path="/submyfootstep" element={<SubMyFootstep />} />
+        <Route path="/otherfootstep" element={<OtherFootstep />} />
       </Routes>
     </Router>
   );

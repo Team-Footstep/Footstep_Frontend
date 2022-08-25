@@ -6,9 +6,14 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import SearchText from "../../components/SearchResult/SearchText";
 import SearchProfile from "../../components/SearchResult/SearchProfile";
 import { useLocation } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-function Search({ userId, login }) {
+function Search() {
   const [open, setOpen] = useState(false);
+  const [cookie, setCookie, removeCookie] = useCookies("id");
+  const userId = cookie.id;
+  const login = cookie.id !== undefined ? true : false;
+
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
@@ -75,7 +80,7 @@ function Search({ userId, login }) {
     const json = await (
       await fetch(`/search?word=${word}&page=${page}`)
     ).json();
-    // console.log(json.result.postInfoList, json.result.usersInfoList);
+    console.log(json.result.postInfoList, json.result.usersInfoList);
 
     for (let user of json.result.usersInfoList) {
       getProfile(user);

@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-function Confirm({ type, setUserId, setLogin }) {
+function Confirm({ type }) {
   const location = useLocation().search;
   const navigate = useNavigate();
+  const [cookie, setCookie, removeCookie] = useCookies(["id"]);
 
   const email = location.substring(
     location.indexOf("?email=") + 7,
@@ -38,8 +40,11 @@ function Confirm({ type, setUserId, setLogin }) {
     console.log(json);
 
     if (json.code === 1000 && json.result.status === 1) {
-      setUserId(json.result.userId);
-      setLogin(true);
+      let now = new Date();
+      setCookie("id", json.result.userId, {
+        path: "/",
+        expires: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7),
+      });
       alert("로그인에 성공하였습니다.");
       navigate(`/`);
     } else {
@@ -53,9 +58,6 @@ function Confirm({ type, setUserId, setLogin }) {
       confirmSignup(email, token);
     } else if (type === "login") {
       confirmLogin(email, token);
-      // setUserId(110);
-      // setLogin(true);
-      // navigate("/");
     }
   }, []);
 
