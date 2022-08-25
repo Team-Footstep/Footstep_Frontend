@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Comments_SideBar.module.css";
 import CommentList from "../CommentList/CommentList";
+import { useParams } from "react-router-dom";
 import moment from 'moment';
 import 'moment/locale/ko';
 import uuid from "react-uuid";
 
-function Comments_SideBar({ display, commentArray, propFunction, getUserID }) {
+function Comments_SideBar({ display, commentArray, propFunction, profileData }) {
   const [userimg] = useState([]);
   const [username, setUsername] = useState("IBORY");
   const [comment, setComment] = useState("");
   const [feedcomments, setFeedcomments] = useState(commentArray);
   const [isvalid, setIsvalid] = useState(false);
-  const COMMENT_ID = "comment_id";
+  const COMMENT_ID = "commentId";
 
   const post = () => {
     setFeedcomments([...feedcomments, comment]);
@@ -19,12 +20,14 @@ function Comments_SideBar({ display, commentArray, propFunction, getUserID }) {
   };
 
   const NEWCOMMENTS = {
-    comment_id: uuid(),
+    commentId: Date.now(),
     blockId: 0,
-    userId: getUserID,
-    userName: "홍길동",
+    pageId: useParams().pageId,
+    userId: profileData.userId,
+    userName: profileData.name,
+    userImgUrl: profileData.img,
     content: "",
-    createdAt: `${moment().format('YYYY-MM-DD HH:mm')}`
+    updatedAt: `${moment().format('YYYY-MM-DD HH:mm')}`
   };
 
   useEffect(()=>{

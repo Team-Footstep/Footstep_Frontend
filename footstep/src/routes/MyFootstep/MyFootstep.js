@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../../components/SideBar/SideBar.js";
 import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
-import MyfootstepBanner from "../../components/Banner/MyfootstepBanner";
 import TopBanner from "../../components/Banner/TopBanner";
 import Comments_SideBar from "../../components/Comments_SideBar/Comments_SideBar";
 import TextEditor from "../../components/TextEditor/TextEditor.js";
-import newDummyComment from "../../db/newDummyComment.json";
-import dummyBlock from "../../db/dummyBlock.json";
 import { useParams } from "react-router-dom";
+import Button from "../../components/Button/Button";
 import { useCookies } from "react-cookie";
 import deleteImg from "../../icons/delete.svg";
 
@@ -34,14 +32,39 @@ function MyFootstep() {
   const [commentsopen, setCommentsOpen] = useState(false);
   const [localLiveBlock, setLocalLiveBlock] = useState([]);
   const [localBlock, setLocalBlock] = useState(localLiveBlock);
-  const [localComment, setLocalComment] = useState(
-    newDummyComment["result"][0]["comments"]
-  );
-  const pageId = useParams().pageId;
-  console.log("pageId: ", pageId);
+  const [localComment, setLocalComment] = useState([]);
+  const PAGE_ID = useParams().pageId;
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
+
+  const [loading, setLoading] = useState(true);
+  const EMPTY_BLOCK = {
+    blockId: Math.floor(Math.random() * 1000000),
+    content: "",
+    childPageId: null,
+    originalFolloweeId: {
+      followeeId: 0,
+      followeeImgUrl: null,
+      originalId: 0,
+      originalImgUrl:null
+    },
+    status: 1,
+    isNewBlock: 1,
+    stampNum: 0,
+    footprintNum: 0
+  }
+  const PATCH_TEMPLATE = { 
+    pageId : parseInt(PAGE_ID),
+    userId : parseInt(userId),
+    preview : "프리뷰입니다.",
+    status : 1,
+    stampOrPrint : "S",
+    bookmark : 0,
+    access : 1,
+    contentList : [],
+    depth : 1
+  }
 
   //calling api area==================
   useEffect(() => {
@@ -51,12 +74,11 @@ function MyFootstep() {
     }
     getLoginProfile(userId);
     getNewContent();
-    getNewComments();
-  }, []);
+    // getNewComments();
+  }, [PAGE_ID]);
 
   const getLoginProfile = async (userid) => {
     const json = await (await fetch(`/users/profile/${userid}`)).json();
-    console.log(json);
     const profile = {
       img: json.result.userImgUrl,
       name: json.result.userName,
@@ -68,34 +90,76 @@ function MyFootstep() {
         print: json.result.getPrintTopPageRes.topPrintPageId,
       },
     };
-
-    // console.log(profile);
     setLoginProfile(profile);
   };
 
   const getNewContent = async () => {
-    await fetch(`/pages/get/${pageId}`)
+    await fetch(`/pages/get/${PAGE_ID}`)
       .then((response) => response.json())
-      .then((data) => setLocalLiveBlock(data["result"]["blocks"]))
+      .then((data) => (data.result.blocks.length !== 0) ? setLocalLiveBlock(data["result"]["blocks"]) : setLocalLiveBlock([EMPTY_BLOCK]))
       .catch((error) => console.log(error));
+      getCommentArray(localLiveBlock, PAGE_ID);
   };
   //content get
   const patchContent = async () => {
-    await await fetch(`pages/save`, {
-      method: "POST",
+    const blockTemplate = localBlock.map(list => (
+      list.isNewBlock !== undefined ?
+      {
+        userId: parseInt(userId),
+        blockId: list.blockId,
+        curPageId: parseInt(PAGE_ID),
+        childPageId: list.childPageId,
+        content: list.content,
+        isNewBlock: list.isNewBlock,
+        status: list.status
+      } : {
+        userId: parseInt(userId),
+        blockId: list.blockId,
+        curPageId: parseInt(PAGE_ID),
+        childPageId: list.childPageId,
+        content: list.content,
+        isNewBlock: 0,
+        status: list.status
+      }
+    ));
+    const jsonTemplate = {...PATCH_TEMPLATE, contentList: blockTemplate}
+    await fetch(`/pages/save`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(localBlock),
-    }).catch((error) => console.log(error));
+      body: JSON.stringify(jsonTemplate),
+    }).then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+    console.log({...PATCH_TEMPLATE, contentList: blockTemplate});
+  };
+  //comments
+  const getNewComments = async (pageId, blockId) => {
+    const json = await fetch(`/comment/${pageId}/${blockId}`)
+      .then((response) => response.json())
+      .then((data) => (data.isSuccess && data.result.length !== 0) ? setLocalComment([...localComment, data.result[0]]) : setLocalComment([...localComment]))
+      .catch((error) => console.log(error));
+      console.log(json);
+      // if (json.isSuccess && json.result.length !== 0) {
+
+      // }
   };
 
-  const getNewComments = async () => {
-    await fetch(`/comment/${4}/${2}`)
-      .then((response) => response.json())
-      .then((data) => console.log("comments data message", data.message))
-      .catch((error) => console.log(error));
+  const getCommentArray = (blockArray, pageId) => {
+    blockArray.map(list => {
+      getNewComments(pageId, list.blockId);
+    })
   };
+
+  // useEffect(()=> {
+  //   window.location.reload();
+  // }, []);
+
+  // useEffect(()=>{
+  //   getCommentArray(localLiveBlock, PAGE_ID);
+  //   console.log("data loaded:", localComment);
+  // }, []);
   //comment get
   //calling api area==================
 
@@ -104,10 +168,8 @@ function MyFootstep() {
   };
 
   // TextEditor===============
-  // dummy id value
-
-  // const USER_ID = "13";
   const USER_ID = userId;
+
   //local data array
   const handleTextData = (liveTextArray, deadTextArray, localCommentArray) => {
     console.log(
@@ -118,14 +180,13 @@ function MyFootstep() {
       "localCommentArray",
       localCommentArray
     );
-    // setLocalLiveBlock(liveTextArray);
-    // setLocalLiveBlock([...liveTextArray]);
-    setLocalBlock(liveTextArray + deadTextArray);
+    setLocalBlock(liveTextArray.concat(deadTextArray));
     setLocalComment(localCommentArray);
   };
+
   //TextEditor===============
   const handleCommentData = (feedcomments) => {
-    console.log("댓글 업데이트:", feedcomments);
+    console.log("사이드바 댓글 업데이트:", feedcomments);
   };
 
   const [previewText, setPreviewText] = useState("");
@@ -147,6 +208,14 @@ function MyFootstep() {
   //   keys[e.keyCode] = false;
   // }
 
+  // useEffect(() => {
+  //   console.log(history);
+  //   const unblock = history.block("정말 떠나실건가요 ㅠㅠ?");
+  //   return () => {
+  //     unblock();
+  //   };
+  // }, [history]);
+
   return (
     <div>
       <Header
@@ -160,7 +229,7 @@ function MyFootstep() {
         <SideBar profile={loginProfile} display={!open} login={login} />
         <div className={styles.scroll}>
           <div className={styles.body_contents}>
-            {parseInt(pageId) === loginProfile.topPageId.print ? (
+            {parseInt(PAGE_ID) === loginProfile.topPageId.print ? (
               <TopBanner />
             ) : (
               <div>
@@ -195,11 +264,15 @@ function MyFootstep() {
               <TextEditor
                 // blockData={dummyBlock["result"]["blocks"]}
                 blockData={localLiveBlock}
-                commentData={newDummyComment["result"][0]["comments"]}
+                commentData={localComment}
                 propDataFunction={handleTextData}
                 userId={USER_ID}
-                pageId={pageId}
+                pageId={PAGE_ID}
                 editorType={"myfootstep"}
+              />
+              <Button
+                value={"저장하기"}
+                onClick={patchContent}
               />
             </div>
           </div>
@@ -208,7 +281,7 @@ function MyFootstep() {
           <Comments_SideBar
             display={commentsopen}
             commentArray={localComment}
-            getUserId={USER_ID}
+            profileData={loginProfile}
             propFunction={handleCommentData}
           />
         </div>
