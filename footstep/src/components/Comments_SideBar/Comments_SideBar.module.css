@@ -1,0 +1,84 @@
+/* 전체적으로 꾸미자 */
+
+.comments_sidebar {
+  float: right;
+  width: 32rem;
+  height: 94vh;
+  background-color: var(--whiteblue-bg);
+  position: fixed;
+  top: 6rem;
+  right: 0;
+}
+
+.bottom_border {
+  border-bottom: solid 0.1rem #999fa7;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.title {
+  width: 3rem;
+  height: 2rem;
+  font-family: NotoSans;
+  font-size: 1.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -00.11rem;
+  text-align: left;
+  color: #000;
+  /* margin: 1.5rem 0 1.5rem 1.5rem; */
+}
+
+textarea {
+  display: inline-block;
+  resize: none;
+  width: 26.4rem;
+  height: 6.5rem;
+  border-radius: 1rem;
+  border: solid 0.1rem var(--whiteblue-bg);
+  background-color: var(--white);
+  outline-color: var(--light-blue);
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.input_image {
+  width: 2rem;
+  height: 2rem;
+  box-shadow: 0 0.4rem 0.6rem 0 rgba(0, 0, 0, 0.1);
+  background-color: #d9d9d9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.input_box {
+  width: 29rem;
+  height: 6.5rem;
+  position: absolute;
+  left: 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.input_image {
+  display: inline-block;
+  position: relative;
+  bottom: 4.5rem;
+  margin-right: 0.6rem;
+}
+
+.post_btn {
+  position: absolute;
+  bottom: 0.5rem;
+  margin-left: -3rem;
+  width: 2.2rem;
+  height: 2rem;
+  background-image: url(../../icons/Post_Icon.svg);
+}
+
+.blind {
+  display: none;
+}

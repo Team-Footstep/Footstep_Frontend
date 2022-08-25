@@ -1,0 +1,17 @@
+.button {
+  padding: 0.3rem 2rem;
+  margin: 0 1rem;
+  border: solid 0.2rem var(--grayblue-border);
+  border-radius: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--grayblue-border);
+}
+
+.button:hover {
+  border: solid 0.2rem var(--footstep_blue);
+  background-color: var(--footstep_blue);
+  color: var(--white);
+}

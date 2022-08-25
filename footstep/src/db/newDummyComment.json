@@ -1,0 +1,42 @@
+{
+  "isSuccess": "true",
+  "code": "1000",
+  "message": "요청에 성공하였습니다.",
+  "result": [
+    {
+      "pageId": 1,
+      "comments": [
+        {
+          "commentId": 2,
+          "blockId": 2,
+          "pageId": 3,
+          "userId": 13,
+          "userName": "홍길동",
+          "content": "댓글입니다.",
+          "updatedAt": "2022-07-24 23:13",
+          "userImgUrl": "https://placeimg.com/640/480/animals"
+        },
+        {
+          "commentId": 3,
+          "blockId": 3,
+          "pageId": 3,
+          "userId": 165,
+          "userName": "정경은",
+          "content": "댓글입니다.2",
+          "updatedAt": "2022-07-24 23:27",
+          "userImgUrl": "https://placeimg.com/640/480/animals"
+        },
+        {
+          "commentId": 10,
+          "blockId": 10,
+          "pageId": 3,
+          "userId": 13574,
+          "userName": "허서윤",
+          "content": "댓글입니다.3",
+          "updatedAt": "2022-07-24 23:59",
+          "userImgUrl": "https://placeimg.com/640/480/animals"
+        }
+      ]
+    }
+  ]
+}
