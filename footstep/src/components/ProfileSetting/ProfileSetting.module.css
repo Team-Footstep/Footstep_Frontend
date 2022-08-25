@@ -259,7 +259,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 66rem;
+  width: 33rem;
   height: 11.1rem;
   margin-top: 2.7rem;
 }
@@ -267,13 +267,13 @@ button {
 .emailtextbox_sendbutton {
   position: relative;
   /* margin-top: 2.7rem; */
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .codetextbox_changebutton {
   position: relative;
   /* margin-top: 2.7rem; */
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .email,
