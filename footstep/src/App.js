@@ -13,7 +13,7 @@ import LoginTerms from "./routes/Login/LoginTerms";
 import Confirm from "./routes/Login/Confirm";
 
 function App() {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUserId] = useState(2);
   //userId===0 -> 로그인 안 된 상태
   //userId>0 -> 로그인 된 상태 / 로그인 된 userId값
   const [login, setLogin] = useState(true);
