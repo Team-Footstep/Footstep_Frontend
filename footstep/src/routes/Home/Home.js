@@ -9,10 +9,15 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard.js";
 import TopBanner from "../../components/Banner/TopBanner.js";
 import BodyBanner from "../../components/Banner/BodyBanner.js";
 import MainSearchBar from "../../components/MainSearchBar/MainSearchBar.js";
+import { useCookies } from "react-cookie";
 
-function Home({ userId, login }) {
+function Home() {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(true);
+  const [cookie, setCookie, removeCookie] = useCookies("id");
+  const userId = cookie.id;
+  const login = cookie.id !== undefined ? true : false;
+
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
@@ -122,7 +127,6 @@ function Home({ userId, login }) {
   };
 
   useEffect(() => {
-    console.log("로그인 된 아이디: ", userId, login);
     if (userId > 0) {
       getLoginProfile(userId);
       getNewContent();
@@ -130,6 +134,7 @@ function Home({ userId, login }) {
 
     getTrendContent();
   }, []);
+  console.log("로그인 된 아이디: ", userId, login);
 
   // {
   //   userImgUrl: "https://placeimg.com/640/480/animals",

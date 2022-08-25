@@ -8,8 +8,13 @@ import Comments_SideBar from "../../components/Comments_SideBar/Comments_SideBar
 import TextEditor from "../../components/TextEditor/TextEditor.js";
 import { useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { useCookies } from "react-cookie";
 
-function MyFootstep({ userId, login}) {
+function MyFootstep() {
+  const [cookie, setCookie, removeCookie] = useCookies("id");
+  const userId = cookie.id;
+  const login = cookie.id !== undefined ? true : false;
+
   const [loginProfile, setLoginProfile] = useState({
     img: "",
     name: "",
@@ -21,6 +26,7 @@ function MyFootstep({ userId, login}) {
       print: "",
     },
   });
+
   const [open, setOpen] = useState(false);
   const [commentsopen, setCommentsOpen] = useState(false);
   const [localLiveBlock, setLocalLiveBlock] = useState([]);
@@ -60,6 +66,10 @@ function MyFootstep({ userId, login}) {
 
   //calling api area==================
   useEffect(() => {
+    if (userId === undefined) {
+      alert("로그인이 필요합니다");
+      window.location.href = "/login";
+    }
     getLoginProfile(userId);
     getNewContent();
     // getNewComments();

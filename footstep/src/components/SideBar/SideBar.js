@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "../SideBar/SideBar.module.css";
 import Button from "../Button/Button.js";
 import SubToggle from "../SubToggle/SubToggle";
+import { useCookies } from "react-cookie";
 
 function SideBar({ profile, display, login }) {
   const [printList, setPrintList] = useState([]);
   const [stampList, setStampList] = useState([]);
+  const [cookie, setCookie, removeCookie] = useCookies(["id"]);
 
   const getBookmark = async () => {
     const json = await (await fetch(`/bookmarks/${profile.userId}`)).json();
@@ -18,6 +20,11 @@ function SideBar({ profile, display, login }) {
         setStampList((current) => [result, ...current]);
       }
     }
+  };
+
+  const logout = () => {
+    removeCookie("id");
+    window.location.href = "/";
   };
 
   useEffect(() => {
@@ -81,8 +88,13 @@ function SideBar({ profile, display, login }) {
           </div>
         </div>
         <div className={login ? null : styles.blind}>
-          <Button value={`설정`} onClick={null} />
-          <Button value={`로그아웃`} onClick={null} />
+          <Button
+            value={`설정`}
+            onClick={() => {
+              window.location.href = "/profilesetting";
+            }}
+          />
+          <Button value={`로그아웃`} onClick={logout} />
         </div>
       </div>
       <div className={`${styles.block} ${display ? styles.blind : null}`}></div>
