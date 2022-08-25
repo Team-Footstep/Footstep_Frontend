@@ -53,8 +53,8 @@ function MyFootstep() {
     footprintNum: 0
   }
   const PATCH_TEMPLATE = { 
-    pageId : PAGE_ID,
-    userId : userId,
+    pageId : parseInt(PAGE_ID),
+    userId : parseInt(userId),
     preview : "프리뷰입니다.",
     status : 1,
     stampOrPrint : "S",
@@ -100,15 +100,28 @@ function MyFootstep() {
   };
   //content get
   const patchContent = async () => {
-    await await fetch(`pages/save`, {
+    const blockTemplate = localBlock.map(list => (
+      {
+        userId: parseInt(loginProfile.userId),
+        blockId: list.blockId,
+        curPageId: parseInt(PAGE_ID),
+        childPageId: list.childPageId,
+        content: list.content,
+        isNewBlock: list.isNewBlock,
+        status: list.status
+      }
+    ));
+    console.log(blockTemplate[0]);
+    await fetch(`pages/save`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...PATCH_TEMPLATE, contentList: localBlock}),
+      body: JSON.stringify({...PATCH_TEMPLATE, contentList: blockTemplate}),
     }).then((res) => res.json())
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
+    console.log({...PATCH_TEMPLATE, contentList: blockTemplate});
   };
   //comments
   const getNewComments = async (pageId, blockId) => {
@@ -148,7 +161,7 @@ function MyFootstep() {
       "localCommentArray",
       localCommentArray
     );
-    setLocalBlock(liveTextArray + deadTextArray);
+    setLocalBlock(liveTextArray.concat(deadTextArray));
     setLocalComment(localCommentArray);
   };
 
