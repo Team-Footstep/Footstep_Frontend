@@ -7,8 +7,6 @@ import Login from "./routes/Login/Login.js";
 import MyFootstep from "./routes/MyFootstep/MyFootstep.js";
 import Route_ProfileSetting from "./routes/ProfileSetting/ProfileSetting";
 import Search from "./routes/Search/Search.js";
-// import Test from "./test/Test.js";
-import SubPage from "./routes/SubPage/SubPage.js";
 import LoginTerms from "./routes/Login/LoginTerms";
 import Confirm from "./routes/Login/Confirm";
 import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
@@ -45,7 +43,6 @@ function App() {
           path="/search"
           element={<Search userId={userId} login={login} />}
         />
-        <Route path="/test" element={<Test />} />
         <Route path="/submyfootstep" element={<SubMyFootstep/>}/>
         <Route path="/otherfootstep" element={<OtherFootstep/>}/>
       </Routes>

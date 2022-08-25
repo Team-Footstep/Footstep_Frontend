@@ -6,20 +6,18 @@ import useNumberFormatter from "../../Hooks/useNumberFormatter.js";
 import usefocusContentEditableTextToEnd from "../../Hooks/usefocusContentEditableTextToEnd.js";
 import useClick from '../../Hooks/useClick.js';
 import CommentModal from '../CommentModal/CommentModal.js';
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 
-function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime}) {
+function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunction, propCommentFunction, status, focus, userId, nowTime, profileData}) {
   const BLOCK_ID = "blockId";
-  const COMMENT_ID = "comment_id";
-  // const textArray = blockArray["result"]; => 이미 번역되어 들어옴
-  // const targetTextArray = blockArray.filter((id) => id[BLOCK_ID] == blockId);
+  const COMMENT_ID = "commentId";
   const targetTextArray = blockObj;
   //입력받은 id에 해당하는 Array 필터
   const [comments, setComments] = useState(commentArray);
 
   const CHILD_ID = targetTextArray["childPageId"];
   //하위 페이지 데이터 입력받음
-  const newChildId = uuid();
+  const newChildId = Date.now();
   //새로운 childId 부여
   const textContent = targetTextArray["content"];
   //content 키 영역의 text만 추출
@@ -34,7 +32,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
       followeeId:0,
     },
     status: 1,
-    new: 1,
+    isNewBlock: 1,
     stampNum: 0,
     footprintNum: 0
   };
@@ -93,7 +91,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
         blockId: blockId,
         content: e.target.innerText.replace(/<div>|<\/div>|<br>|/gi, "").slice(0, caretPosition), 
         childPageId: CHILD_ID
-        }, {...NEWLINE_OBJECT, blockId: uuid(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
+        }, {...NEWLINE_OBJECT, blockId: Date.now(), content: e.target.innerText.slice(document.getSelection().extentOffset)}, true, false, null, caretPosition);
     } else {
       return;
     };
@@ -170,12 +168,13 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
   const handleNewCommentSubmit = (event) => {
     event.preventDefault();
     setComments([...comments, {
-      "comment_id": uuid(),
+      "commentId": Date.now(),
       "blockId": blockId,
       "userId": userId,
-      "userName": "홍길동",
+      "userName": profileData.name,
       "content": event.target[0].value,
-      "createdAt": nowTime
+      "updatedAt": nowTime,
+      "userImgUrl": profileData.img
     }])
     event.target[0].value = "";
   };
@@ -229,7 +228,7 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
         </div>
         <div className={styles.contentbox}>
           <span onContextMenu={detailDisplayHandler} className={`${styles.handling_icon} ${styles.icon}`}></span>
-          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyPress={handleKey} onKeyDown={handleDelete} disabled={false} className={`${styles.default_text} ${CHILD_ID !== 0 ? styles.parent_page : null}`} html={newtext}/>
+          <ContentEditable innerRef={inputRef} onChange={handleChange} onKeyPress={handleKey} onKeyDown={handleDelete} disabled={(type === "myfootstep") || (type === "myfollow") ? false : true} className={`${styles.default_text} ${CHILD_ID !== 0 ? styles.parent_page : null}`} html={newtext}/>
         </div>
         <div className={`${styles.interaction_info} ${(targetTextArray["stampNum"] === 0 && targetTextArray["footprintNum"] === 0) ? styles.blind : null}`}>
           <button className={`${styles.info_icon} ${styles.icon}`}></button>
@@ -284,9 +283,9 @@ function NewTextTemplate ({blockObj, commentArray, blockId, type, propBlockFunct
               edit={false}
               bar={list !== commentArray[commentArray.length - 1] ? true : false}
               editable={userId === list.userId ? true : false}
-              imgURL={null}
+              imgURL={profileData.img}
               newComment={false}
-              elapsedTime={relativeTime(list.createdAt)}
+              elapsedTime={relativeTime(list.updatedAt)}
             />
           ))
         }

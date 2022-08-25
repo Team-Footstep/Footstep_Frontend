@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./TextEditor.module.css";
 import { useState, useEffect, useRef } from "react";
 import NewTextTemplate from "../TextEditor/NewTextTemplate";
+import { useParams } from "react-router-dom";
 import moment from 'moment';
 import 'moment/locale/ko';
 
-function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, editorType}) {
+function TextEditor ({blockData, commentData, propDataFunction, userId, editorType, profileData, loading}) {
   const [nowTime, setNowTime] = useState(moment().format('YYYY-MM-DD HH:mm'));
   // let [localTextArray, setLocalTextArray] = useState(blockData);
   const [localCommentArray, setLocalCommentArray] = useState(commentData);
@@ -13,12 +14,35 @@ function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, 
   const [deadTextArray, setDeadTextArray] = useState([]);
   const [focus, setFocus] = useState(0);
   // const [edited, setEdited] = useState(0);
-  const COMMENT_ID = "comment_id";
+  const COMMENT_ID = "commentId";
   const BLOCK_ID = "blockId";
+  const PAGE_ID = useParams().pageId;
 
+  // useEffect(()=> {
+  //   setLocalCommentArray([...commentData]);
+  // }, [commentData]);
+
+  // const getNewComments = async (pageId, blockId) => {
+  //   await fetch(`/comment/${pageId}/${blockId}`)
+  //     .then((response) => response.json())
+  //     .then((data) => (data.result.length === 0) ? setLocalCommentArray([...localCommentArray]) : setLocalCommentArray([...localCommentArray, data.result[0]]))
+  //     .catch((error) => console.log(error));
+  // };
+
+  // const getCommentArray = (blockArray, pageId) => {
+  //   blockArray.map(list => {
+  //     getNewComments(pageId, list.blockId);
+  //   })
+  // };
+
+  // useEffect(()=>{
+  //   getCommentArray(blockData, PAGE_ID);
+  //   console.log("data loaded:", localCommentArray);
+  // }, [loading]);
 
   useEffect(()=> {
     setLiveTextArray([...blockData]);
+    setLocalCommentArray([...commentData]);
   }, [blockData]);
 
   //delete & edited & added 처리
@@ -85,22 +109,11 @@ function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, 
       setFocus((focus < liveTextArray.length) ? focus+1 : focus);
     };
   };
-  
-  const hi = () => {
-    // console.log(localTextArray);
-    // console.log("caret:", document.getSelection());
-    console.log("localCommentArray", localCommentArray);
-    console.log("liveTextArray", liveTextArray);
-    console.log("focus", focus);
-  };
-  // useRelativeTime("2022-08-18 10:10");
 
   useEffect(() => {
     propDataFunction(liveTextArray, deadTextArray, localCommentArray);
     setNowTime(moment().format('YYYY-MM-DD HH:mm'));
   }, [localCommentArray, liveTextArray, deadTextArray, focus]);
-
-
 
   return (
     <div className={styles.texteditor_list} onKeyDown={handleFocus}>
@@ -109,7 +122,7 @@ function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, 
           <NewTextTemplate
           key={list[BLOCK_ID]}
           blockObj={list}
-          commentArray={localCommentArray.filter(comment => {return comment["blockId"] === list[BLOCK_ID]})}
+          commentArray={localCommentArray.filter(comment => {return comment[BLOCK_ID] === list[BLOCK_ID]})}
           blockId={list[BLOCK_ID]}
           type={editorType}
           propBlockFunction={propBlockFunction}
@@ -120,10 +133,10 @@ function TextEditor ({blockData, commentData, propDataFunction, userId, pageId, 
           }//ToDo: liveTextArray의 값만 받아서 focus할 수 있도록 수정할 필요
           userId={userId}
           nowTime={nowTime}
+          profileData={profileData}
         />
         ))}
       </div>
-      <button onClick={hi}>console.log(localTextArray)</button>
     </div>
   )
 }

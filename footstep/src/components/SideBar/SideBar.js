@@ -9,7 +9,7 @@ function SideBar({ profile, display, login }) {
 
   const getBookmark = async () => {
     const json = await (await fetch(`/bookmarks/${profile.userId}`)).json();
-    console.log(json);
+    // console.log(json);
 
     for (let result of json.result) {
       if (result.stampOrPrint === "P") {

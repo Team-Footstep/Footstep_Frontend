@@ -3,7 +3,7 @@ import styles from "./CommentList.module.css";
 import useRelativeTime from "../../Hooks/useRelativeTime"
 
 function CommentList({ data }) {
-  const thisTime = useRelativeTime(data.createdAt);
+  const thisTime = useRelativeTime(data.updatedAt);
   return (
     <div className={styles.userCommentBox}>
       <div className={styles.user_image_name}>
