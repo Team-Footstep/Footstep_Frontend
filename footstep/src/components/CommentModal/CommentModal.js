@@ -16,6 +16,8 @@ function CommentModal ({commentObj, propfunction, edit, bar, editable, imgURL, n
     setDisplay(false);
   };
 
+  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setOnEdit(false);
@@ -26,6 +28,18 @@ function CommentModal ({commentObj, propfunction, edit, bar, editable, imgURL, n
       event.target[0].value = "";
     };
   };
+
+  // const postComment = async () => {
+  //   await await fetch(`comment/${commentObj.pageId}/${commentObj.blockId}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({...PATCH_TEMPLATE, contentList: localBlock}),
+  //   }).then((res) => res.json())
+  //   .then((data) => console.log(data))
+  //   .catch((error) => console.log(error));
+  // };
 
   const handleDelete = () => {
     propfunction(null, localCommentObj);

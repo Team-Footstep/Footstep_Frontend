@@ -91,7 +91,7 @@ function MyFootstep({ userId, login}) {
   //content get
   const patchContent = async () => {
     await await fetch(`pages/save`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
