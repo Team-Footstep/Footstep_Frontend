@@ -11,6 +11,7 @@ import LoginTerms from "./routes/Login/LoginTerms";
 import Confirm from "./routes/Login/Confirm";
 import SubMyFootstep from "./routes/SubMyFootstep/SubMyFootstep";
 import OtherFootstep from "./routes/OtherFootstep/OtherFootstep";
+import Footstep from "./routes/OtherFootstep/Footstep";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           element={<Confirm type="signup" />}
         />
         <Route path="/myfootstep/:pageId" element={<MyFootstep />} />
+        <Route path="/footstep/:userId/:pageId" element={<Footstep />} />
         <Route path="/profilesetting" element={<Route_ProfileSetting />} />
         <Route path="/search" element={<Search />} />
         <Route path="/submyfootstep" element={<SubMyFootstep />} />
