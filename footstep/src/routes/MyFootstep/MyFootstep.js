@@ -59,7 +59,7 @@ function MyFootstep() {
     userId : parseInt(userId),
     preview : "프리뷰입니다.",
     status : 1,
-    stampOrPrint : "S",
+    stampOrPrint : "P",
     bookmark : 0,
     access : 1,
     contentList : [],
