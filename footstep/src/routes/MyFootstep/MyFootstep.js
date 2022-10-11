@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer.js";
 import TopBanner from "../../components/Banner/TopBanner";
 import Comments_SideBar from "../../components/Comments_SideBar/Comments_SideBar";
 import TextEditor from "../../components/TextEditor/TextEditor.js";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { useCookies } from "react-cookie";
 import deleteImg from "../../icons/delete.svg";
@@ -37,6 +37,7 @@ function MyFootstep() {
   const sideBarHandler = () => {
     setOpen((prev) => !prev);
   };
+  console.log(useLocation().pathname);
 
   const [loading, setLoading] = useState(true);
   const EMPTY_BLOCK = {
@@ -59,7 +60,7 @@ function MyFootstep() {
     userId: parseInt(userId),
     preview: "프리뷰입니다.",
     status: 1,
-    stampOrPrint: "P",
+    stampOrPrint: useLocation().pathname.indexOf("footstep") !== -1 ? "P" : "S",
     bookmark: 0,
     access: 1,
     contentList: [],
