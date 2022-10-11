@@ -86,7 +86,7 @@ function Search() {
       getProfile(user);
     }
 
-    // setUserList((current) => [...json.result.usersInfoList, ...current]);
+    setUserList((current) => [...json.result.usersInfoList, ...current]);
     setPostList((current) => [...json.result.postInfoList, ...current]);
   };
   // console.log(userList, postList);

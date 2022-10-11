@@ -244,12 +244,12 @@ function Footstep() {
           </div>
         </div>
         <div>
-          <Comments_SideBar
+          {/* <Comments_SideBar
             display={commentsopen}
             commentArray={localComment}
             getUserId={USER_ID}
             propFunction={handleCommentData}
-          />
+          /> */}
         </div>
       </div>
       <Footer />

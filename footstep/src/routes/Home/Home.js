@@ -149,12 +149,7 @@ function Home() {
   //   commentNum: "16",
   // }
 
-  const keywords = [
-    "프론트엔드 경험",
-    "백엔드 경력",
-    "IT회사 면접",
-    "디자인 커리큘럼",
-  ];
+  const keywords = ["페이지", "프리뷰", "프론트엔드", "디자인 커리큘럼"];
   return (
     <div>
       <Header

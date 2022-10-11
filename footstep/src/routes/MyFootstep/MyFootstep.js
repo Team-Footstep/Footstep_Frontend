@@ -47,24 +47,24 @@ function MyFootstep() {
       followeeId: 0,
       followeeImgUrl: null,
       originalId: 0,
-      originalImgUrl:null
+      originalImgUrl: null,
     },
     status: 1,
     isNewBlock: 1,
     stampNum: 0,
-    footprintNum: 0
-  }
-  const PATCH_TEMPLATE = { 
-    pageId : parseInt(PAGE_ID),
-    userId : parseInt(userId),
-    preview : "프리뷰입니다.",
-    status : 1,
-    stampOrPrint : "S",
-    bookmark : 0,
-    access : 1,
-    contentList : [],
-    depth : 1
-  }
+    footprintNum: 0,
+  };
+  const PATCH_TEMPLATE = {
+    pageId: parseInt(PAGE_ID),
+    userId: parseInt(userId),
+    preview: "프리뷰입니다.",
+    status: 1,
+    stampOrPrint: "P",
+    bookmark: 0,
+    access: 1,
+    contentList: [],
+    depth: 1,
+  };
 
   //calling api area==================
   useEffect(() => {
@@ -96,60 +96,70 @@ function MyFootstep() {
   const getNewContent = async () => {
     await fetch(`/pages/get/${PAGE_ID}`)
       .then((response) => response.json())
-      .then((data) => (data.result.blocks.length !== 0) ? setLocalLiveBlock(data["result"]["blocks"]) : setLocalLiveBlock([EMPTY_BLOCK]))
+      .then((data) =>
+        data.result.blocks.length !== 0
+          ? setLocalLiveBlock(data["result"]["blocks"])
+          : setLocalLiveBlock([EMPTY_BLOCK])
+      )
       .catch((error) => console.log(error));
-      getCommentArray(localLiveBlock, PAGE_ID);
+    getCommentArray(localLiveBlock, PAGE_ID);
   };
   //content get
   const patchContent = async () => {
-    const blockTemplate = localBlock.map(list => (
-      list.isNewBlock !== undefined ?
-      {
-        userId: parseInt(userId),
-        blockId: list.blockId,
-        curPageId: parseInt(PAGE_ID),
-        childPageId: list.childPageId,
-        content: list.content,
-        isNewBlock: list.isNewBlock,
-        status: list.status
-      } : {
-        userId: parseInt(userId),
-        blockId: list.blockId,
-        curPageId: parseInt(PAGE_ID),
-        childPageId: list.childPageId,
-        content: list.content,
-        isNewBlock: 0,
-        status: list.status
-      }
-    ));
-    const jsonTemplate = {...PATCH_TEMPLATE, contentList: blockTemplate}
+    const blockTemplate = localBlock.map((list) =>
+      list.isNewBlock !== undefined
+        ? {
+            userId: parseInt(userId),
+            blockId: list.blockId,
+            curPageId: parseInt(PAGE_ID),
+            childPageId: list.childPageId,
+            content: list.content,
+            isNewBlock: list.isNewBlock,
+            status: list.status,
+          }
+        : {
+            userId: parseInt(userId),
+            blockId: list.blockId,
+            curPageId: parseInt(PAGE_ID),
+            childPageId: list.childPageId,
+            content: list.content,
+            isNewBlock: 0,
+            status: list.status,
+          }
+    );
+    const jsonTemplate = { ...PATCH_TEMPLATE, contentList: blockTemplate };
     await fetch(`/pages/save`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(jsonTemplate),
-    }).then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error));
-    console.log({...PATCH_TEMPLATE, contentList: blockTemplate});
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+    console.log({ ...PATCH_TEMPLATE, contentList: blockTemplate });
   };
   //comments
   const getNewComments = async (pageId, blockId) => {
     const json = await fetch(`/comment/${pageId}/${blockId}`)
       .then((response) => response.json())
-      .then((data) => (data.isSuccess && data.result.length !== 0) ? setLocalComment([...localComment, data.result[0]]) : setLocalComment([...localComment]))
+      .then((data) =>
+        data.isSuccess && data.result.length !== 0
+          ? setLocalComment([...localComment, data.result[0]])
+          : setLocalComment([...localComment])
+      )
       .catch((error) => console.log(error));
-      console.log(json);
-      // if (json.isSuccess && json.result.length !== 0) {
+    console.log(json);
+    // if (json.isSuccess && json.result.length !== 0) {
 
-      // }
+    // }
   };
 
   const getCommentArray = (blockArray, pageId) => {
-    blockArray.map(list => {
+    blockArray.map((list) => {
       getNewComments(pageId, list.blockId);
-    })
+    });
   };
 
   // useEffect(()=> {
@@ -270,10 +280,7 @@ function MyFootstep() {
                 pageId={PAGE_ID}
                 editorType={"myfootstep"}
               />
-              <Button
-                value={"저장하기"}
-                onClick={patchContent}
-              />
+              <Button value={"저장하기"} onClick={patchContent} />
             </div>
           </div>
         </div>
